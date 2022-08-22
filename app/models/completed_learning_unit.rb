@@ -1,0 +1,2 @@
+class CompletedLearningUnit < ApplicationRecord
+end
