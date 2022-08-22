@@ -1,0 +1,2 @@
+class LearningUnit < ApplicationRecord
+end
