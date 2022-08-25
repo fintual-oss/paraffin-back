@@ -25,9 +25,9 @@ Things you may want to cover:
 
 * ...
 
-## Comando útiles 
+## Cheat sheet
 ```bash
-# inicia carpeta spec en el proyecto
+# generates the spec directory 
 rails generate spec:install
-# NO usar rspec --init
+# DO NOT use rspec --init
 ```
