@@ -24,3 +24,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Comando útiles 
+```bash
+# inicia carpeta spec en el proyecto
+rails generate spec:install
+# NO usar rspec --init
+```
