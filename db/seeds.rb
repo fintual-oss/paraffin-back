@@ -1,21 +1,20 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
-
-user_1 = User.create(name: "Ale")
-user_2 = User.create(name: "Cris")
-user_3 = User.create(name: "Rony")
-user_4 = User.create(name: "Ceci")
-curriculum_1 = Curriculum.create(name: "Fullstack Developer")
-learning_unit_1 = LearningUnit.create(name: "Ruby")
-learning_unit_2 = LearningUnit.create(name: "Rails")
-c_a_1 = CurriculumAffiliation.create(curriculum: curriculum_1, learning_unit: learning_unit_1)
-c_a_2 = CurriculumAffiliation.create(curriculum: curriculum_1, learning_unit: learning_unit_2)
-resource_1 = Resource.create(user: user_1, learning_unit: learning_unit_1, name: 'Ruby for dummies', url: 'fakeurl.io')
-resource_comment_1 = ResourceComment.create(user: user_2, resource: resource_1, content: 'Vale pico tu wea')
-resource_evaluation_1 = ResourceEvaluation.create(user: user_3, resource: resource_1, evaluation: 5)
-resource_evaluation_2 = ResourceEvaluation.create(user: user_4, resource: resource_1, evaluation: 3)
-
-#completed_learning_unit_1 = CompletedLearningUnit.create(user: user_4, learning_unit: learning_unit_1)
-
-#p user_1, curriculum_1, learning_unit_1, learning_unit_2, c_a_1, c_a_2, resource_1, resource_comment_1, resource_evaluation_1
+f_user = User.create(name: 'Ale')
+s_user = User.create(name: 'Cris')
+t_user = User.create(name: 'Rony')
+fisrt_curr = Curriculum.create(name: 'Fullstack Developer')
+f_learning_unit = LearningUnit.create(name: 'Ruby')
+s_learning_unit = LearningUnit.create(name: 'Rails')
+CurriculumAffiliation.create(curriculum: fisrt_curr,
+                                learning_unit: f_learning_unit)
+CurriculumAffiliation.create(curriculum: fisrt_curr, 
+                                learning_unit: s_learning_unit)
+f_resource = Resource.create(user: f_user, learning_unit: f_learning_unit,
+                                name: 'Ruby for dummies', url: 'fakeurl.io')
+ResourceComment.create(user: s_user, resource: f_resource,
+                        content: 'Vale pico tu wea')
+ResourceEvaluation.create(user: t_user, resource: f_resource, evaluation: 5)
+ResourceEvaluation.create(user: s_user, resource: f_resource, evaluation: 3)
+CompletedLearningUnit.create(user: f_user, learning_unit: f_learning_unit)
