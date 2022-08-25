@@ -1,4 +1,4 @@
 class CompletedLearningUnit < ApplicationRecord
-  belongs_to :users
-  belongs_to :learning_units
+  belongs_to :user
+  belongs_to :learning_unit
 end
