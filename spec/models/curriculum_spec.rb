@@ -5,4 +5,8 @@ RSpec.describe Curriculum, type: :model do
     curriculum = Curriculum.new(name: nil)
     expect(curriculum).to_not be_valid
   end
+  it 'is valid with a name' do
+    curriculum = Curriculum.new(name: 'Curriculum')
+    expect(curriculum).to be_valid
+  end
 end
