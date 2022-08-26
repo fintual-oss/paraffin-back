@@ -25,9 +25,3 @@ Things you may want to cover:
 
 * ...
 
-## Cheat sheet
-```bash
-# generates the spec directory 
-rails generate spec:install
-# DO NOT use rspec --init
-```
