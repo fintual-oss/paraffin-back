@@ -1,27 +1,40 @@
-# README
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)  [![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
+# Paraffin
 
-**Paraffin** project, created by the Iron Team (Ronny, Ale, Cris & Cecy) at the FIN bootcamp by Fintual.
+## The Team
 
-This project is based on **Ruby 3.1.2** and **Ruby on Rails 7.0.1.3**
+Created by the Iron Team (Ronny, Ale, Cris & Cecy) at the FIN bootcamp by Fintual.
+All (most) of this code was writen in Puerto Natales, under the benevolent protection of [Donmilo](http://donmilo.cl/).
 
-Things you may want to cover:
 
-* Ruby version
+## The Stack
 
-* System dependencies
+### Main players
 
-* Configuration
+- Ruby
+- Rails
+- Postgres
+- Rspec
 
-* Database creation
+## Getting Started
 
-* Database initialization
+0. Before everything, you should have Docker and Docker Compose in your computer (Docker desktop includes both).
 
-* How to run the test suite
+1. Clone this repo and cd into your directory.
+    
+    git clone git@github.com:rtichauerv/paraffin.git && cd paraffin
 
-* Services (job queues, cache servers, search engines, etc.)
+2. In another terminal window, build and run your app with Compose.
 
-* Deployment instructions
+    docker compose build
+    docker compose up
 
-* ...
+3. Enter http://localhost:3000/ in a browser to see the application running.
 
+4. Finally, you need to create the database and seed it. In another terminal, run:
+
+    docker compose run web rake db:create db:seed
+
+## Coding Practices
+
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)  
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
