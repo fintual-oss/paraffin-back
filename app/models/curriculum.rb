@@ -1,4 +1,5 @@
 class Curriculum < ApplicationRecord
+  validates :name, presence: true
   has_many :curriculum_affiliations
   has_many :learning_units, through: :curriculum_affiliations
 end
