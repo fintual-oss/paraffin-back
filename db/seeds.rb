@@ -6,12 +6,13 @@
 f_user = User.create(name: 'Ale')
 s_user = User.create(name: 'Cris')
 t_user = User.create(name: 'Rony')
-fisrt_curr = Curriculum.create(name: 'Fullstack Developer')
+User.create(name: 'Ceci')
+first_curr = Curriculum.create(name: 'Fullstack Developer')
 f_learning_unit = LearningUnit.create(name: 'Ruby')
 s_learning_unit = LearningUnit.create(name: 'Rails')
-CurriculumAffiliation.create(curriculum: fisrt_curr,
+CurriculumAffiliation.create(curriculum: first_curr,
                              learning_unit: f_learning_unit)
-CurriculumAffiliation.create(curriculum: fisrt_curr,
+CurriculumAffiliation.create(curriculum: first_curr,
                              learning_unit: s_learning_unit)
 f_resource = Resource.create(user: f_user, learning_unit: f_learning_unit,
                              name: 'Ruby for dummies', url: 'fakeurl.io')
