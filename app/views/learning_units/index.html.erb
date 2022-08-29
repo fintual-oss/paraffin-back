@@ -2,9 +2,10 @@
 <ul>
   <% @learning_units.each do |learning_unit| %>
     <li>
-      <a href="/learning_units/<%= learning_unit.id %>">
-        <%= learning_unit.name %>
-      </a>
+      <p><%learning_unit.name%></p>
+      <form action="/learning_units/<%= learning_unit.id %>">
+        <input type="submit" value="Ver curso"/>
+      </form>
     </li>
   <% end %>
 </ul>
