@@ -1,0 +1,8 @@
+<h1><%= @curriculum.name %> </h1>
+<ul>
+  <% @learning_units.each do |learning_unit| %>
+    <li>
+      <%= learning_unit.name %>
+    </li>
+  <% end %>
+</ul>
