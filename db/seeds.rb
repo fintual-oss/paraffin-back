@@ -3,10 +3,10 @@
 # The data can then be loaded with the bin/rails db:seed command (or created
 # alongside the database with db:setup).
 
-f_user = User.create(name: 'Ale')
-s_user = User.create(name: 'Cris')
-t_user = User.create(name: 'Rony')
-User.create(name: 'Ceci')
+f_user = User.create(name: 'Ale', email: 'ale@paraffin.com')
+s_user = User.create(name: 'Cris', email: 'cris@paraffin.com')
+t_user = User.create(name: 'Rony', email: 'rony@paraffin.com')
+User.create(name: 'Ceci', email: 'ceci@paraffin.com')
 first_curr = Curriculum.create(name: 'Fullstack Developer')
 f_learning_unit = LearningUnit.create(name: 'Ruby')
 s_learning_unit = LearningUnit.create(name: 'Rails')
