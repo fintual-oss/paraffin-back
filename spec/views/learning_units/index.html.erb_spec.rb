@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'learning_units/index', type: :view do
-  before(:each) do
+  before do
     assign(:learning_units, [
              LearningUnit.create!(
                name: 'Intro to python'
@@ -14,13 +14,18 @@ RSpec.describe 'learning_units/index', type: :view do
            Curriculum.create!(
              name: 'test'
            ))
+    render
   end
 
-  it 'renders the list of learning resources of a specific curriculum' do
-    render
-
+  it do
     expect(rendered).to match(/Title/)
+  end
+
+  it do
     expect(rendered).to include('python')
+  end
+
+  it do
     expect(rendered).to match(/test/)
   end
 end
