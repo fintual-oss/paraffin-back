@@ -21,3 +21,7 @@ ResourceComment.create(user: s_user, resource: f_resource,
 ResourceEvaluation.create(user: t_user, resource: f_resource, evaluation: 5)
 ResourceEvaluation.create(user: s_user, resource: f_resource, evaluation: 3)
 CompletedLearningUnit.create(user: f_user, learning_unit: f_learning_unit)
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password',
+                    password_confirmation: 'password')
+end
