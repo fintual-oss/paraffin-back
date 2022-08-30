@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/landing_page', to: 'static_pages#landing_page'
 
-  resources :curriculums, only: %i[show index] do
+  resources :curriculums, only: [:show] do
     resources :learning_units, only: [:index]
   end
 
