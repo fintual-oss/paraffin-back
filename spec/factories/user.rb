@@ -5,6 +5,5 @@ FactoryBot.define do
       "john_#{n}@example.com"
     end
     password { 'password' }
-    reset_password_token { '1234567890' }
   end
 end
