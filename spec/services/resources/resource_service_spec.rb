@@ -1,14 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe Resources::ResourceService, type: :model do
+RSpec.describe Resources::ResourceService do
   let(:user) { create(:user) }
   let(:learning_unit) { create(:learning_unit) }
-  let(:resource) { create(:resource) }
-  let(:service) { Resources::ResourceService.new(resource) }
+
+  let(:resource) { create(:resource, user:) }
+
+  let(:service) { described_class.new(resource) }
 
   describe '#comments' do
     context 'when there are no comments' do
-      it 'returns an empty array' do
+      it do
         expect(service.comments).to be_empty
       end
     end
@@ -43,12 +45,8 @@ RSpec.describe Resources::ResourceService, type: :model do
   end
 
   describe '#created_by' do
-    context 'when a resource is created' do
-      let(:my_resource) { create(:resource, user:) }
-      let(:my_service) { Resources::ResourceService.new(my_resource) }
-      it 'returns the name of the user' do
-        expect(my_service.created_by).to eq(user.name)
-      end
+    it do
+      expect(service.created_by).to eq(user.name)
     end
   end
 end
