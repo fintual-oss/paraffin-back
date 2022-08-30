@@ -1,7 +1,8 @@
 require 'rails_helper'
 RSpec.describe ResourcesController, type: :request do
   describe 'GET /show' do
-    let(:resource) { create(:resource) }
+    let(:user) { create(:user) }
+    let(:resource) { create(:resource, user:) }
     let(:comment) { create(:resource_comment, resource:) }
     let(:comments) { [comment] }
     let(:average) { 3 }
@@ -15,10 +16,14 @@ RSpec.describe ResourcesController, type: :request do
         average:
       )
     end
+    before do
+      sign_in user
+    end
 
     def perform
       get resource_path(resource)
     end
+
     before do
       allow(Resources::ResourceService)
         .to receive(:new)
