@@ -2,17 +2,18 @@ require 'rails_helper'
 
 RSpec.describe 'learning_units/index', type: :view do
   before(:each) do
-    assign(:learning_units, [
-             LearningUnit.create!(
-               name: 'Intro to python'
-             ),
-             LearningUnit.create!(
-               name: 'Title'
-             )
-           ])
+    mock_learning_units = [
+      LearningUnit.create!(
+        name: 'Intro to python'
+      ),
+      LearningUnit.create!(
+        name: 'Title'
+      )
+    ]
     assign(:curriculum,
            Curriculum.create!(
-             name: 'test'
+             name: 'test',
+             learning_units: mock_learning_units
            ))
   end
 
