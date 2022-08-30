@@ -12,6 +12,9 @@ gem 'devise', github: 'heartcombo/devise', ref: 'f8d1ea90bc3'
 # Active Admin for backoffice
 gem 'activeadmin'
 
+# Deprecated indirect dependency for activeadmin
+gem 'sassc', require: false
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
