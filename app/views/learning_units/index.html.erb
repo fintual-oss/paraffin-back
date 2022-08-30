@@ -1,0 +1,10 @@
+<h1><%= @curriculum.name %></h1>
+<ul>
+  <% @learning_units.each do |learning_unit| %>
+    <li>
+      <a href="/learning_units/<%= learning_unit.id %>">
+        <%= learning_unit.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
