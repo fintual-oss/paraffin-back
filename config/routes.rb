@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'static_pages/landing_page', to: 'static_pages#landing_page'
+  resources :resources, only: %i[show]
 
   resources :curriculums, only: [:show] do
     resources :learning_units, only: [:index]

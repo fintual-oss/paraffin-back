@@ -1,0 +1,10 @@
+<% if comments.any? %>
+  <h3> Comments: </h3>
+  <% comments.each do |comment| %>
+    <li>
+      <%=format_comment(comment)%>
+    </li>
+  <% end %>
+<% else %>
+  <h3>There are no comments yet</h3>
+<% end %>
