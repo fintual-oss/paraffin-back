@@ -6,7 +6,7 @@
 f_user = User.create(name: 'Ale', email: 'ale@paraffin.com', password: 'password')
 s_user = User.create(name: 'Cris', email: 'cris@paraffin.com', password: 'password')
 t_user = User.create(name: 'Rony', email: 'rony@paraffin.com', password: 'password')
-User.create(name: 'Ceci', email: 'ceci@paraffin.com', password: 'password')
+User.create(name: 'Cecy', email: 'cecy@paraffin.com', password: 'password')
 first_curr = Curriculum.create(name: 'Fullstack Developer')
 f_learning_unit = LearningUnit.create(name: 'Ruby')
 s_learning_unit = LearningUnit.create(name: 'Rails')
