@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :resources, only: %i[show] do
     resources :resource_comments, only: %i[create]
+    resources :resource_evaluations, only: %i[create]
   end
 
   resources :curriculums, only: [:show] do
