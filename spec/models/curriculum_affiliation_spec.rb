@@ -7,37 +7,8 @@ RSpec.describe CurriculumAffiliation, type: :model do
     end
   end
 
-  context 'when has valid attributes' do
-    let(:curriculum_affiliation) do
-      build :curriculum_affiliation,
-            curriculum: build(:curriculum),
-            learning_unit: build(:learning_unit)
-    end
-
-    it do
-      expect(curriculum_affiliation).to be_valid
-    end
-  end
-
-  context 'when has has no curriculum_id' do
-    let(:curriculum_affiliation) do
-      build :curriculum_affiliation,
-            curriculum: nil
-    end
-
-    it do
-      expect(curriculum_affiliation).not_to be_valid
-    end
-  end
-
-  context 'when has has no learning_unit_id' do
-    let(:curriculum_affiliation) do
-      build :curriculum_affiliation,
-            learning_unit: nil
-    end
-
-    it do
-      expect(curriculum_affiliation).not_to be_valid
-    end
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:curriculum) }
+    it { is_expected.to validate_presence_of(:learning_unit) }
   end
 end
