@@ -7,6 +7,7 @@ RSpec.describe ResourceCommentsController, type: :request do
     before do
       sign_in user
     end
+
     context 'when writing a new comment' do
       let(:content) { 'test_comment' }
       let(:params) do
@@ -19,7 +20,7 @@ RSpec.describe ResourceCommentsController, type: :request do
       end
 
       it do
-        expect { perform }.to change { ResourceComment.count }.by(1)
+        expect { perform }.to change(ResourceComment, :count).by(1)
       end
 
       it "redirects to resource's show page" do
