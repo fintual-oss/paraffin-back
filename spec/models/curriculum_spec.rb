@@ -7,13 +7,7 @@ RSpec.describe Curriculum, type: :model do
     end
   end
 
-  it 'is not valid without a name' do
-    curriculum = described_class.new(name: nil)
-    expect(curriculum).not_to be_valid
-  end
-
-  it 'is valid with a name' do
-    curriculum = described_class.new(name: 'Curriculum')
-    expect(curriculum).to be_valid
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
   end
 end
