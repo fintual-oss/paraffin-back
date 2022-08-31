@@ -5295,3 +5295,6 @@ Flexport/NewGlobalModel:
 
 Rails/HasManyOrHasOneDependent:
   Enabled: pending
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
