@@ -16,19 +16,17 @@ RSpec.describe ResourcesController, type: :request do
         average:
       )
     end
+
     before do
       sign_in user
-    end
-
-    def perform
-      get resource_path(resource)
-    end
-
-    before do
       allow(Resources::ResourceService)
         .to receive(:new)
         .with(resource)
         .and_return(resource_service_mock)
+    end
+
+    def perform
+      get resource_path(resource)
     end
 
     it do
