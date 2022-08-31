@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_000054) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_31_141732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -41,11 +41,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_000054) do
   end
 
   create_table 'completed_learning_units', force: :cascade do |t|
-    t.boolean 'is_completed'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.integer 'user_id'
-    t.integer 'learning_unit_id'
+    t.integer 'user_id', null: false
+    t.integer 'learning_unit_id', null: false
   end
 
   create_table 'curriculum_affiliations', force: :cascade do |t|
@@ -59,14 +58,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_000054) do
     t.string 'name'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.integer 'curriculum_affiliation_id'
   end
 
   create_table 'learning_units', force: :cascade do |t|
     t.string 'name'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.integer 'curriculum_affiliation_id'
   end
 
   create_table 'resource_comments', force: :cascade do |t|
