@@ -9,3 +9,5 @@
 <hr>
 
 <%= render partial: 'average', locals: {average: @service.average} %>
+
+<%= render partial: 'new_comment', locals: {resource_id: @service.id} %>
