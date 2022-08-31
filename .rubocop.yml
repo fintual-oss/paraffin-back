@@ -2,6 +2,12 @@ inherit_from: .rubocop_todo.yml
 
 # Common configuration.
 
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-flexport
+
 AllCops:
   RubyInterpreters:
     - ruby
@@ -253,7 +259,7 @@ Gemspec/DependencyVersion:
 
 Gemspec/DeprecatedAttributeAssignment:
   Description: Checks that deprecated attribute assignments are not set in a gemspec file.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.30'
   Include:
     - '**/*.gemspec'
@@ -279,7 +285,7 @@ Gemspec/OrderedDependencies:
 
 Gemspec/RequireMFA:
   Description: 'Checks that the gemspec has metadata to require Multi-Factor Authentication from RubyGems.'
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.23'
   Reference:
     - https://guides.rubygems.org/mfa-requirement-opt-in/
@@ -948,7 +954,6 @@ Layout/IndentationWidth:
   # Number of spaces for each indentation level.
   Width: 2
   AllowedPatterns: []
-  IgnoredPatterns: [] # deprecated
 
 Layout/InitialIndentation:
   Description: >-
@@ -975,7 +980,7 @@ Layout/LineContinuationLeadingSpace:
   Description: >-
                   Use trailing spaces instead of leading spaces in strings
                   broken over multiple lines (by a backslash).
-  Enabled: pending
+  Enabled: false
   AutoCorrect: false
   SafeAutoCorrect: false
   VersionAdded: '1.31'
@@ -987,7 +992,7 @@ Layout/LineContinuationLeadingSpace:
 
 Layout/LineContinuationSpacing:
   Description: 'Checks the spacing in front of backslash in line continuations.'
-  Enabled: pending
+  Enabled: false
   AutoCorrect: true
   SafeAutoCorrect: true
   VersionAdded: '1.31'
@@ -1031,7 +1036,6 @@ Layout/LineLength:
   # elements. Strings will be converted to Regexp objects. A line that matches
   # any regular expression listed in this option will be ignored by LineLength.
   AllowedPatterns: []
-  IgnoredPatterns: [] # deprecated
 
 Layout/MultilineArrayBraceLayout:
   Description: >-
@@ -1159,13 +1163,6 @@ Layout/MultilineMethodDefinitionBraceLayout:
     - symmetrical
     - new_line
     - same_line
-
-Layout/MultilineMethodParameterLineBreaks:
-  Description: >-
-                 Checks that each parameter in a multi-line method definition
-                 starts on a separate line.
-  Enabled: false
-  VersionAdded: '1.32'
 
 Layout/MultilineOperationIndentation:
   Description: >-
@@ -1506,7 +1503,7 @@ Lint/AmbiguousBlockAssociation:
   VersionChanged: '1.13'
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
+
 
 Lint/AmbiguousOperator:
   Description: >-
@@ -1600,7 +1597,6 @@ Lint/Debugger:
   Enabled: true
   VersionAdded: '0.14'
   VersionChanged: '1.10'
-  DebuggerReceivers: [] # deprecated
   DebuggerMethods:
     # Groups are available so that a specific group can be disabled in
     # a user's configuration, but are otherwise not significant.
@@ -2004,7 +2000,6 @@ Lint/NumberConversion:
   SafeAutoCorrect: false
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
   IgnoredClasses:
     - Time
     - DateTime
@@ -2152,11 +2147,6 @@ Lint/RequireParentheses:
                  about precedence.
   Enabled: true
   VersionAdded: '0.18'
-
-Lint/RequireRangeParentheses:
-  Description: 'Checks that a range literal is enclosed in parentheses when the end of the range is at a line break.'
-  Enabled: pending
-  VersionAdded: '1.32'
 
 Lint/RequireRelativeSelfPath:
   Description: 'Checks for uses a file requiring itself with `require_relative`.'
@@ -2353,7 +2343,6 @@ Lint/UnreachableLoop:
     # RSpec uses `times` in its message expectations
     # eg. `exactly(2).times`
     - !ruby/regexp /(exactly|at_least|at_most)\(\d+\)\.times/
-  IgnoredPatterns: [] # deprecated
 
 Lint/UnusedBlockArgument:
   Description: 'Checks for unused block arguments.'
@@ -2458,7 +2447,6 @@ Metrics/AbcSize:
   # a Float.
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
   CountRepeatedAttributes: true
   Max: 17
 
@@ -2475,7 +2463,6 @@ Metrics/BlockLength:
     # associated blocks.
     - refine
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
   Exclude:
     - '**/*.gemspec'
 
@@ -2507,7 +2494,6 @@ Metrics/CyclomaticComplexity:
   VersionChanged: '0.81'
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
   Max: 7
 
 Metrics/MethodLength:
@@ -2521,7 +2507,6 @@ Metrics/MethodLength:
   CountAsOne: []
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
 
 Metrics/ModuleLength:
   Description: 'Avoid modules longer than 100 lines of code.'
@@ -2551,7 +2536,6 @@ Metrics/PerceivedComplexity:
   VersionChanged: '0.81'
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
   Max: 8
 
 ################## Migration #############################
@@ -2780,7 +2764,6 @@ Naming/MethodName:
   #     - '\A\s*onSelectionCleared\s*'
   #
   AllowedPatterns: []
-  IgnoredPatterns: [] # deprecated
 
 Naming/MethodParameterName:
   Description: >-
@@ -3142,7 +3125,6 @@ Style/BlockDelimiters:
     - proc
     - it
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
   # The AllowBracesOnProceduralOneLiners option is ignored unless the
   # EnforcedStyle is set to `semantic`. If so:
   #
@@ -3251,7 +3233,6 @@ Style/ClassEqualityComparison:
     - equal?
     - eql?
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
 
 Style/ClassMethods:
   Description: 'Use self when defining module/class methods.'
@@ -3540,11 +3521,6 @@ Style/EmptyElse:
     - both
   AllowComments: false
 
-Style/EmptyHeredoc:
-  Description: 'Checks for using empty heredoc to reduce redundancy.'
-  Enabled: pending
-  VersionAdded: '1.32'
-
 Style/EmptyLambdaParameter:
   Description: 'Omit parens for empty lambda parameters.'
   Enabled: true
@@ -3715,7 +3691,6 @@ Style/FormatStringToken:
   VersionChanged: '1.0'
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
 
 Style/FrozenStringLiteralComment:
   Description: >-
@@ -4017,26 +3992,6 @@ Style/LineEndConcatenation:
   SafeAutoCorrect: false
   VersionAdded: '0.18'
   VersionChanged: '0.64'
-
-Style/MagicCommentFormat:
-  Description: 'Use a consistent style for magic comments.'
-  Enabled: pending
-  VersionAdded: '1.35'
-  EnforcedStyle: snake_case
-  SupportedStyles:
-    # `snake` will enforce the magic comment is written
-    # in snake case (words separated by underscores).
-    # Eg: froze_string_literal: true
-    - snake_case
-    # `kebab` will enforce the magic comment is written
-    # in kebab case (words separated by hyphens).
-    # Eg: froze-string-literal: true
-    - kebab_case
-  DirectiveCapitalization: lowercase
-  ValueCapitalization: ~
-  SupportedCapitalizations:
-    - lowercase
-    - uppercase
 
 Style/MapCompactWithConditionalBlock:
   Description: 'Prefer `select` or `reject` over `map { ... }.compact`.'
@@ -4446,7 +4401,6 @@ Style/NumericPredicate:
     - comparison
   AllowedMethods: []
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
   # Exclude RSpec specs because assertions like `expect(1).to be > 0` cause
   # false positives.
   Exclude:
@@ -5089,7 +5043,6 @@ Style/SymbolProc:
     - respond_to
     - define_method
   AllowedPatterns: []
-  IgnoredMethods: [] # deprecated
   AllowComments: false
   Exclude:
     - 'db/migrate/**'
@@ -5336,3 +5289,9 @@ Style/ZeroLengthPredicate:
   Safe: false
   VersionAdded: '0.37'
   VersionChanged: '0.39'
+
+Flexport/NewGlobalModel:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: pending
