@@ -1,0 +1,20 @@
+<% unless evaluation.nil? %>
+  <%= "Your current evaluation is #{evaluation.evaluation}" %>
+  if you want to change your evaluation, submit it again
+<% end %>
+
+<%= form_with scope: :resource_evaluations,
+  url: resource_resource_evaluations_path(resource_id), local: true do |f| %>
+    <%= f.radio_button :evaluation, 1, required: true %>
+    <%= f.label :one_star, "1" %>
+    <%= f.radio_button :evaluation, 2%>
+    <%= f.label :two_stars, "2" %>
+    <%= f.radio_button :evaluation, 3 %>
+    <%= f.label :three_stars, "3" %>
+    <%= f.radio_button :evaluation, 4 %>
+    <%= f.label :four_stars, "4" %>
+    <%= f.radio_button :evaluation, 5 %>
+    <%= f.label :five_stars, "5" %>
+    <br>
+    <%= f.submit %>
+<% end %>

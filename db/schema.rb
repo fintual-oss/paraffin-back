@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_31_141732) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_31_195045) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -23,9 +23,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_141732) do
     t.bigint 'author_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index %w[author_type author_id], name: 'index_active_admin_comments_on_author'
+    t.index ['author_type', 'author_id'], name: 'index_active_admin_comments_on_author'
     t.index ['namespace'], name: 'index_active_admin_comments_on_namespace'
-    t.index %w[resource_type resource_id], name: 'index_active_admin_comments_on_resource'
+    t.index ['resource_type', 'resource_id'], name: 'index_active_admin_comments_on_resource'
   end
 
   create_table 'admin_users', force: :cascade do |t|
@@ -43,8 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_141732) do
   create_table 'completed_learning_units', force: :cascade do |t|
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.bigint 'user_id'
-    t.bigint 'learning_unit_id'
+    t.bigint 'user_id', null: false
+    t.bigint 'learning_unit_id', null: false
     t.index ['learning_unit_id'], name: 'index_completed_learning_units_on_learning_unit_id'
     t.index ['user_id'], name: 'index_completed_learning_units_on_user_id'
   end
@@ -87,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_141732) do
     t.bigint 'resource_id'
     t.bigint 'user_id'
     t.index ['resource_id'], name: 'index_resource_evaluations_on_resource_id'
+    t.index ['user_id', 'resource_id'], name: 'index_resource_evaluations_on_user_id_and_resource_id', unique: true
     t.index ['user_id'], name: 'index_resource_evaluations_on_user_id'
   end
 

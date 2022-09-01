@@ -1,6 +1,7 @@
-<%= form_with scope: :resource_comments, url: resource_resource_comments_path(resource_id), local: true do |f| %>
+<%= form_with scope: :resource_comments,
+  url: resource_resource_comments_path(resource_id), local: true do |f| %>
   <p>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, required: true %>
     <%= f.submit %>
   </p>
 <% end %>
