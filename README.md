@@ -1,4 +1,7 @@
 # Paraffin
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop) [![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a8924cfe1a51fd8463d7/maintainability)](https://codeclimate.com/github/rtichauerv/paraffin/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/a8924cfe1a51fd8463d7/test_coverage)](https://codeclimate.com/github/rtichauerv/paraffin/test_coverage)
+
 
 ## The Team
 
@@ -34,7 +37,4 @@ All (most) of this code was writen in Puerto Natales, under the benevolent prote
 
     docker compose run web rake db:create db:seed
 
-## Coding Practices
 
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)  
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
