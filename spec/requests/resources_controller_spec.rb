@@ -10,6 +10,7 @@ RSpec.describe ResourcesController, type: :request do
       instance_double(
         Resources::ResourceService,
         id: 4,
+        url: 'http://google.com',
         learning_unit_name: 'Ruby on Rails',
         created_by: 'Matías Hurtado',
         comments:,
