@@ -31,10 +31,8 @@ All (most) of this code was writen in Puerto Natales, under the benevolent prote
     docker compose build
     docker compose up
 
-3. Enter http://localhost:3000/ in a browser to see the application running.
+3. You need to create the database. In another terminal, run:
 
-4. Finally, you need to create the database and seed it. In another terminal, run:
+    `docker compose run web rake db:create db:migrate db:seed`
 
-    docker compose run web rake db:create db:seed
-
-
+4. Finally, enter http://localhost:3000/ in a browser to see the application running.
