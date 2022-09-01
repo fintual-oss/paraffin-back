@@ -37,8 +37,16 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       # Add or replace test runners here
-      - name: Run tests
-        run: bin/rake
+      - name: Build and test with RSpec
+      - run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rspec
+      # Code climate
+      - name: Code Climate Coverage Action
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
 
   lint:
     runs-on: ubuntu-latest
