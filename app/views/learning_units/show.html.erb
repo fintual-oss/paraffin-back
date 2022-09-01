@@ -1,1 +1,10 @@
 <h1><%= @learning_unit.name %></h1>
+
+<ul>
+  <% @learning_unit.resources.each do |resource| %>
+    <li>
+      <p><%= resource.name %></p>
+      <%= link_to "See resource", resource_path(resource), class: 'button' %>
+    </li>
+  <% end %>
+</ul>
