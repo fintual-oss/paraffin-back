@@ -47,8 +47,6 @@ jobs:
         run: |
           export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
           ./cc-test-reporter after-build -r ${{secrets.CC_TEST_REPORTER_ID}}
-        with:
-          debug: true
         if: ${{ github.event_name == 'push' }}
 
   lint:
