@@ -2,6 +2,8 @@
 <h2> This resource belongs to <%=@service.learning_unit_name %> </h2>
 <h2> This resource was created by <%= @service.created_by %> </h2>
 
+<%= link_to "Go to resource's link", @service.url %>
+
 <hr>
 
 <%= render partial: 'evaluation', locals: {resource_id: @service.id,
