@@ -7,10 +7,14 @@
 <%= render partial: 'evaluation', locals: {resource_id: @service.id,
   evaluation: @evaluation} %>
 
-<%= render partial: 'comments', locals: {comments: @service.comments} %>
-
 <hr>
 
 <%= render partial: 'average', locals: {average: @service.average} %>
+
+<hr>
+
+<%= render partial: 'comments', locals: {comments: @service.comments} %>
+
+<hr>
 
 <%= render partial: 'new_comment', locals: {resource_id: @service.id} %>
