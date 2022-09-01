@@ -26,7 +26,7 @@ RSpec.describe ResourceEvaluationsController, type: :request do
         perform
         expect(ResourceEvaluation
                .find_by(user_id: user.id, resource_id: resource.id)
-               .evaluation).to eq(5)
+               .evaluation).to eq(3)
       end
 
       it "doesn't create a new object in the database" do
