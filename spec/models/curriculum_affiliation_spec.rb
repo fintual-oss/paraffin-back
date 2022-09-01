@@ -6,8 +6,4 @@ RSpec.describe CurriculumAffiliation, type: :model do
       expect(build(:curriculum_affiliation)).to be_valid
     end
   end
-
-  it 'is valid with valid attributes'
-  it 'is not valid without a curriculum_id'
-  it 'is not valid without a learning_unit_id'
 end

@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe CompletedLearningUnit, type: :model do
-  it 'is valid with valid attributes'
-  it 'is not valid without a user_id'
-  it 'is not valid without a learning_unit_id'
+  context 'when creating an object with the factory' do
+    it do
+      expect(build(:completed_learning_unit)).to be_valid
+    end
+  end
 end

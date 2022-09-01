@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Curriculum, type: :model do
+RSpec.describe LearningUnit, type: :model do
   context 'when creating an object with the factory' do
     it do
-      expect(build(:curriculum)).to be_valid
+      expect(build(:learning_unit)).to be_valid
     end
   end
 
