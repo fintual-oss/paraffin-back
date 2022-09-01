@@ -28,11 +28,10 @@ All (most) of this code was writen in Puerto Natales, under the benevolent prote
 
 2. In another terminal window, build and run your app with Compose.
 
-    docker compose build
-    docker compose up
+    `$ docker compose up --build`
 
 3. You need to create the database. In another terminal, run:
 
-    `docker compose run web rake db:create db:migrate db:seed`
+    `$ docker compose run web rake db:create db:migrate db:seed`
 
 4. Finally, enter http://localhost:3000/ in a browser to see the application running.
