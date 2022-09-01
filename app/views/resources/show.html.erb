@@ -2,21 +2,21 @@
 <h2> This resource belongs to <%=@service.learning_unit_name %> </h2>
 <h2> This resource was created by <%= @service.created_by %> </h2>
 
-<%= link_to "Go to resource's link", @service.url %>
+<%= render partial: 'link_to_url', locals: { url: @service.url } %>
 
 <hr>
 
-<%= render partial: 'evaluation', locals: {resource_id: @service.id,
-  evaluation: @evaluation} %>
+<%= render partial: 'evaluation', locals: { resource_id: @service.id,
+  evaluation: @evaluation } %>
 
 <hr>
 
-<%= render partial: 'average', locals: {average: @service.average} %>
+<%= render partial: 'average', locals: { average: @service.average } %>
 
 <hr>
 
-<%= render partial: 'comments', locals: {comments: @service.comments} %>
+<%= render partial: 'comments', locals: { comments: @service.comments } %>
 
 <hr>
 
-<%= render partial: 'new_comment', locals: {resource_id: @service.id} %>
+<%= render partial: 'new_comment', locals: { resource_id: @service.id } %>
