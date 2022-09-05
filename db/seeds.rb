@@ -16,10 +16,13 @@ CurriculumAffiliation.create(curriculum: first_curr,
                              learning_unit: s_learning_unit)
 f_resource = Resource.create(user: f_user, learning_unit: f_learning_unit,
                              name: 'Ruby for dummies', url: 'fakeurl.io')
+s_resource = Resource.create(user: s_user, learning_unit: f_learning_unit,
+                             name: 'The best Ruby', url: 'fakeurl.io')
 ResourceComment.create(user: s_user, resource: f_resource,
                        content: 'Vale pico tu wea')
 ResourceEvaluation.create(user: t_user, resource: f_resource, evaluation: 5)
 ResourceEvaluation.create(user: s_user, resource: f_resource, evaluation: 3)
+ResourceEvaluation.create(user: t_user, resource: s_resource, evaluation: 1)
 CompletedLearningUnit.create(user: f_user, learning_unit: f_learning_unit)
 if Rails.env.development?
   AdminUser.create!(email: 'admin@example.com', password: 'password',
