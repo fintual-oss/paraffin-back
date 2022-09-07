@@ -24,7 +24,9 @@ RSpec.describe ResourceCommentsController, type: :request do
       end
 
       it "redirects to resource's show page" do
-        expect(perform).to redirect_to(resource)
+        expect(perform).to redirect_to(
+          learning_unit_resource_path(resource.learning_unit_id, resource.id)
+        )
       end
 
       it 'shows the new comment right away' do

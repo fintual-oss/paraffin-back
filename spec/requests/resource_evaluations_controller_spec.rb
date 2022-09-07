@@ -42,7 +42,7 @@ RSpec.describe ResourceEvaluationsController, type: :request do
 
     context 'when trying to create a new evaluation' do
       it "doesn't display any previous evaluation for this user-resource" do
-        get resource_path(resource)
+        get learning_unit_resource_path(resource.learning_unit, resource)
         expect(response.body).not_to include('Your current evaluation is')
       end
 
