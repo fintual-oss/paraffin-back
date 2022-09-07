@@ -17,7 +17,8 @@ RSpec.describe CurriculumsController, type: :request do
 
       it 'redirects to the learning units index page' do
         perform
-        expect(perform).to redirect_to(curriculum_learning_units_path(curriculum))
+        expect(perform)
+          .to redirect_to(curriculum_learning_units_path(curriculum))
       end
     end
   end
