@@ -1,6 +1,6 @@
 module Resources
   class ResourceService
-    delegate :id, :learning_unit, to: :@resource
+    delegate :id, :url, :learning_unit, to: :@resource
     delegate :user, to: :@resource, private: true
     delegate :name, to: :learning_unit, prefix: :learning_unit
 

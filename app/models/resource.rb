@@ -3,4 +3,6 @@ class Resource < ApplicationRecord
   belongs_to :learning_unit
   has_many :resource_comments
   has_many :resource_evaluations
+
+  validates :url, url: { allow_blank: true }
 end
