@@ -4,7 +4,7 @@
   <% @learning_unit.resources.each do |resource| %>
     <li>
       <p><%= resource.name %></p>
-      <%= link_to "See resource", resource_path(resource), class: 'button' %>
+      <%= link_to "See resource", learning_unit_resource_path(resource), class: 'button' %>
     </li>
   <% end %>
 </ul>
