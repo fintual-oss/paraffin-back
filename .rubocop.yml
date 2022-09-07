@@ -75,6 +75,10 @@ AllCops:
     - '.git/**/*'
     - 'db/migrate/*'
     - 'db/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'config/*'
+    - 'config/**/*'
   # Default formatter will be used if no `-f/--format` option is given.
   DefaultFormatter: progress
   # Cop names are displayed in offense messages by default. Change behavior
@@ -1023,7 +1027,7 @@ Layout/LineLength:
   Enabled: true
   VersionAdded: '0.25'
   VersionChanged: '1.4'
-  Max: 120
+  Max: 80
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
   AllowHeredoc: true
