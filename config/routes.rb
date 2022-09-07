@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :learning_units, only: [:show] do
     resources :resources, only: [:show]
+    resources :completed_learning_units, only %i[create delete]
   end
 
   root 'curriculums#show'
