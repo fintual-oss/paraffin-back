@@ -1,5 +1,7 @@
 <h1><%= @learning_unit.name %></h1>
 
+<%= render partial: 'curriculum', locals: { curriculum: @curriculum } %>
+
 <ul>
   <% @learning_unit.resources.each do |resource| %>
     <li>
