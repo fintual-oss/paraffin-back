@@ -1,14 +1,7 @@
 <h1><%= @learning_unit.name %></h1>
 
-<% if @learning_unit.resources.any? %>
-  <ul>
-    <% @learning_unit.resources.each do |resource| %>
-      <li>
-        <p><%= resource.name %></p>
-        <%= link_to "See resource", resource_path(resource), class: 'button' %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <h3>There are no resources yet</h3>
-<% end %>
+<%= render partial: 'curriculum',
+  locals: { curriculum: @curriculum, learning_unit: @learning_unit } %>
+
+<%= render partial: 'resources_of_learning_unit',
+  locals: { learning_unit: @learning_unit } %>
