@@ -1,5 +1,6 @@
 <h1> Showing resource <%= @service.id %> </h1>
-<h2> This resource belongs to <%=@service.learning_unit_name %> </h2>
+<h2> This resource belongs to <%=link_to @service.learning_unit_name,
+  learning_unit_path(@service.learning_unit) %> </h2>
 <h2> This resource was created by <%= @service.created_by %> </h2>
 
 <%= render partial: 'link_to_url', locals: { url: @service.url } %>
