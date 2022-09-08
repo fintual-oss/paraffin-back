@@ -53,4 +53,41 @@ RSpec.describe ResourcesController, type: :request do
       end
     end
   end
+
+  describe 'POST /create' do
+    let(:user) { create(:user) }
+    let(:learning_unit) { create(:learning_unit) }
+
+    before do
+      sign_in user
+    end
+
+    context 'when creating a new resource' do
+      let(:name) { 'Even more Ruby' }
+      let(:url) { 'https://www.youtube.com' }
+      let(:params) do
+        { 'resource':
+          { 'name': name, 'url': url },
+          'learning_unit_id': learning_unit.id }
+      end
+
+      def perform
+        post learning_unit_resources_path(params)
+      end
+
+      it 'increases the number of resources by 1' do
+        expect { perform }.to change(Resource, :count).by(1)
+      end
+
+      it "redirects to learning unit's show page" do
+        expect(perform).to redirect_to(learning_unit)
+      end
+
+      it 'shows the new resource right away' do
+        perform
+        follow_redirect!
+        expect(response.body).to include(name)
+      end
+    end
+  end
 end
