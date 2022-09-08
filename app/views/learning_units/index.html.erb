@@ -1,14 +1,6 @@
 <h1><%= @curriculum.name %></h1>
 
 <ul>
-  <% @curriculum.learning_units.each do |learning_unit| %>
-    <li>
-      <%= learning_unit.name %> <%=
-        link_to "See Learning Unit",
-        learning_unit_path(learning_unit, curriculum_id: @curriculum.id),
-        class: 'button'
-      %>
-      <br><br>
-    </li>
-  <% end %>
+  <%= render partial: 'learning_units_of_curriculum',
+    locals: { curriculum: @curriculum } %>
 </ul>
