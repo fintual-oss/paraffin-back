@@ -9,14 +9,28 @@ RSpec.describe LearningUnitsController, type: :request do
       sign_in user
     end
 
+    def perform
+      get learning_unit_path(learning_unit)
+    end
+
     context 'when accesing to the learning unit page' do
-      def perform
-        get learning_unit_path(learning_unit)
-      end
+      let!(:resource) { create(:resource, user:, learning_unit:) }
 
       it 'shows the name of the learning unit' do
         perform
         expect(response.body).to include(learning_unit.name)
+      end
+
+      it 'shows the name of the resource' do
+        perform
+        expect(response.body).to match(resource.name)
+      end
+    end
+
+    context 'when there are no resources' do
+      it do
+        perform
+        expect(response.body).to include('There are no resources yet')
       end
     end
   end
