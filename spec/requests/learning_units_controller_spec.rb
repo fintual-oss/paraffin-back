@@ -15,7 +15,6 @@ RSpec.describe LearningUnitsController, type: :request do
     end
 
     context 'when accesing to the learning unit page' do
-
       it 'shows the name of the learning unit' do
         perform
         expect(response.body).to include(learning_unit.name)
