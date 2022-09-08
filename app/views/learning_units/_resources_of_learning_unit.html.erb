@@ -1,0 +1,10 @@
+<ul>
+  <% learning_unit.resources.each do |resource| %>
+    <li>
+      <%= resource.name %> <%= link_to "See resource",
+        resource_path(resource),
+        class: 'button' %>
+      <br><br>
+    </li>
+  <% end %>
+</ul>
