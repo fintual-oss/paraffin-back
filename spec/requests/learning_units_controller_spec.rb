@@ -4,7 +4,6 @@ RSpec.describe LearningUnitsController, type: :request do
   describe 'GET /show' do
     let(:user) { create(:user) }
     let(:learning_unit) { create(:learning_unit) }
-    let(:resource) { create(:resource, user:, learning_unit:) }
 
     before do
       sign_in user
@@ -15,6 +14,8 @@ RSpec.describe LearningUnitsController, type: :request do
     end
 
     context 'when accesing to the learning unit page' do
+      let!(:resource) { create(:resource, user:, learning_unit:) }
+
       it 'shows the name of the learning unit' do
         perform
         expect(response.body).to include(learning_unit.name)
@@ -22,13 +23,11 @@ RSpec.describe LearningUnitsController, type: :request do
 
       it 'shows the name of the resource' do
         perform
-        expect(response.body).to match(resource.learning_unit.name)
+        expect(response.body).to match(resource.name)
       end
     end
 
     context 'when there are no resources' do
-      let(:resources) { [] }
-
       it do
         perform
         expect(response.body).to include('There are no resources yet')
