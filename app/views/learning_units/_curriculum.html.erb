@@ -1,0 +1,5 @@
+<% unless curriculum.nil? %>
+  <%= "Go back to the " %> <%= link_to "#{curriculum.name}'s curriculum",
+    curriculum_path(curriculum) %>
+  <br><br>
+<% end %>
