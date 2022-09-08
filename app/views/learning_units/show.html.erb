@@ -1,6 +1,7 @@
 <h1><%= @learning_unit.name %></h1>
 
-<%= render partial: 'curriculum', locals: { curriculum: @curriculum } %>
+<%= render partial: 'curriculum',
+  locals: { curriculum: @curriculum, learning_unit: @learning_unit } %>
 
 <%= render partial: 'resources_of_learning_unit',
   locals: { learning_unit: @learning_unit } %>
