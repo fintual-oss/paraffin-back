@@ -5,7 +5,7 @@ class LearningUnitsController < ApplicationController
   def index; end
 
   def show
-    defined?(set_curriculum) && set_curriculum
+    set_curriculum if params.key?('curriculum_id')
   end
 
   private
