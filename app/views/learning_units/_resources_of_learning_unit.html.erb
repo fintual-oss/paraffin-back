@@ -1,10 +1,14 @@
-<ul>
-  <% learning_unit.resources.each do |resource| %>
-    <li>
-      <%= resource.name %> <%= link_to "See resource",
-        resource_path(resource),
-        class: 'button' %>
-      <br><br>
-    </li>
-  <% end %>
-</ul>
+<% if learning_unit.resources.any? %>
+  <ul>
+    <% learning_unit.resources.each do |resource| %>
+      <li>
+        <%= resource.name %> <%= link_to "See resource",
+          resource_path(resource),
+          class: 'button' %>
+        <br><br>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>There are no resources yet</h3>
+<% end %>
