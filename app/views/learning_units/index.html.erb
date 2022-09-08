@@ -3,8 +3,12 @@
 <ul>
   <% @curriculum.learning_units.each do |learning_unit| %>
     <li>
-      <p><%= learning_unit.name %></p>
-      <%= link_to "Ver curso", learning_unit_path(learning_unit), class: 'button' %>
+      <%= learning_unit.name %> <%=
+        link_to "See Learning Unit",
+        learning_unit_path(learning_unit, curriculum_id: @curriculum.id),
+        class: 'button'
+      %>
+      <br><br>
     </li>
   <% end %>
 </ul>
