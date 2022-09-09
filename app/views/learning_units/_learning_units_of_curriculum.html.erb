@@ -1,12 +1,20 @@
 <ul>
-  <% curriculum.learning_units.each do |learning_unit| %>
+  <% service.user_learning_units.each do |user_learning_unit| %>
     <li>
-      <%= learning_unit.name %> <%=
+      <%= user_learning_unit[:learning_unit].name %>
+      <%=
         link_to "See Learning Unit",
-        learning_unit_path(learning_unit, curriculum_id: curriculum.id),
+        learning_unit_path(user_learning_unit[:learning_unit], curriculum_id: curriculum.id),
         class: 'button'
       %>
-      <br><br>
+      <%=
+        render partial: 'completed_learning_unit',
+          locals:
+          {
+            learning_unit: user_learning_unit[:learning_unit],
+            completed: user_learning_unit[:completed_by_user]
+          } 
+      %>
     </li>
   <% end %>
 </ul>

@@ -2,7 +2,12 @@ class LearningUnitsController < ApplicationController
   before_action :set_curriculum, only: [:index]
   before_action :set_learning_unit, only: [:show]
 
-  def index; end
+  def index
+    @service = LearningUnits::DisplayUserLearningUnit.new(
+      @curriculum,
+      current_user
+    )
+  end
 
   def show
     set_curriculum if params.key?('curriculum_id')

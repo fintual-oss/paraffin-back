@@ -29,7 +29,7 @@ RSpec.describe ResourcesController, type: :request do
     end
 
     def perform
-      get resource_path(resource)
+      get resource_path(resource.id)
     end
 
     it do

@@ -1,0 +1,11 @@
+<% if completed %>
+    <%= button_to('Completed',
+      learning_unit_completed_learning_unit_path(id: completed, learning_unit_id: learning_unit.id),
+      method: "delete",
+      remote: false) %>
+<% else %>
+  <%= button_to('Not completed',
+    learning_unit_completed_learning_units_path(learning_unit_id: learning_unit.id),
+    method: "post",
+    remote: false) %>
+<% end %>
