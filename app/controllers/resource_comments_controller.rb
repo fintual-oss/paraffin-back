@@ -7,12 +7,6 @@ class ResourceCommentsController < ApplicationController
       user: current_user,
       resource_id:
     )
-    redirect_to_resource(resource_id)
-  end
-
-  private
-
-  def redirect_to_resource(resource_id)
     redirect_to(resource_path(resource_id))
   end
 end
