@@ -7,6 +7,6 @@ class ResourceCommentsController < ApplicationController
       user: current_user,
       resource_id:
     )
-    redirect_to(resource_path(resource_id))
+    redirect_to(Resource.find(resource_id))
   end
 end
