@@ -5,3 +5,8 @@
 
 <%= render partial: 'resources_of_learning_unit',
   locals: { learning_unit: @learning_unit } %>
+
+<h2>Add a resource:</h2>
+
+<%= render partial: 'new_resource',
+  locals: { learning_unit: @learning_unit } %>

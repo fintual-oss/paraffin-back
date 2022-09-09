@@ -1,0 +1,13 @@
+<%= form_with model: [ learning_unit, learning_unit.resources.create ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name, :required => true %>
+  </p>
+  <p>
+    <%= form.label :url %><br>
+    <%= form.url_field :url, :required => true %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     resources :learning_units, only: [:index]
   end
 
-  resources :learning_units, only: [:show]
+  resources :learning_units, only: [:show] do
+    resources :resources, only: %i[create]
+  end
 
   root 'curriculums#show'
 end
