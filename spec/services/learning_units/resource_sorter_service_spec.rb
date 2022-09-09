@@ -13,7 +13,7 @@ RSpec.describe LearningUnits::ResourceSorterService do
   end
   let!(:third_resource) { create(:resource, learning_unit:, user: first_user) }
 
-  describe '#sorted_resources' do
+  describe '#resources_sorted_by_evaluation' do
     def create_evaluation(user, resource, evaluation)
       create(
         :resource_evaluation,
@@ -53,12 +53,14 @@ RSpec.describe LearningUnits::ResourceSorterService do
       let(:fourth_user) { create(:user) }
 
       it 'sorts resources correctly' do
-        expect(service.sorted_resources).to eq(expected_sorted_array)
+        expect(service.resources_sorted_by_evaluation)
+          .to eq(expected_sorted_array)
       end
 
       it 'ignores nil evaluations in the average' do
         create_evaluation(fourth_user, second_resource, nil)
-        expect(service.sorted_resources).to eq(expected_sorted_array)
+        expect(service.resources_sorted_by_evaluation)
+          .to eq(expected_sorted_array)
       end
     end
 
@@ -72,7 +74,8 @@ RSpec.describe LearningUnits::ResourceSorterService do
       end
 
       it 'returns the resources in any order' do
-        expect(service.sorted_resources).to match_array(expected_sorted_array)
+        expect(service.resources_sorted_by_evaluation)
+          .to match_array(expected_sorted_array)
       end
     end
 
@@ -81,7 +84,7 @@ RSpec.describe LearningUnits::ResourceSorterService do
       let(:new_service) { described_class.new(new_learning_unit) }
 
       it do
-        expect(new_service.sorted_resources).to be_empty
+        expect(new_service.resources_sorted_by_evaluation).to be_empty
       end
     end
   end

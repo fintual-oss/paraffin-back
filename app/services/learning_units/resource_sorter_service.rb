@@ -5,8 +5,8 @@ module LearningUnits
       @learning_unit = learning_unit
     end
 
-    def sorted_resources
-      resources = set_resources
+    def resources_sorted_by_evaluation
+      resources = resource_evaluations_query
       resources.map do |array|
         { id: array[0][0], name: array[0][1], evaluation: array[1] }
       end
@@ -14,7 +14,7 @@ module LearningUnits
 
     private
 
-    def set_resources
+    def resource_evaluations_query
       Resource.where(learning_unit: @learning_unit)
               .left_joins(:resource_evaluations)
               .group(:id, :name)
