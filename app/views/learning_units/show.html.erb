@@ -4,9 +4,9 @@
   locals: { curriculum: @curriculum, learning_unit: @learning_unit } %>
 
 <%= render partial: 'resources_of_learning_unit',
-  locals: { learning_unit: @learning_unit } %>
+  locals: { resources: @service.resources_sorted_by_evaluation } %>
 
-<h2>Add a resource:</h2>
+  <h2>Add a resource:</h2>
 
-<%= render partial: 'new_resource',
-  locals: { learning_unit: @learning_unit } %>
+  <%= render partial: 'new_resource',
+    locals: { learning_unit: @learning_unit } %>
