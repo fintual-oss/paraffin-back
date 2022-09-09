@@ -25,7 +25,7 @@ RSpec.describe ResourceCommentsController, type: :request do
 
       it "redirects to resource's show page" do
         expect(perform).to redirect_to(
-          learning_unit_resource_path(resource.learning_unit_id, resource.id)
+          resource_path(resource.id)
         )
       end
 
