@@ -6,6 +6,7 @@ RSpec.describe ResourcesController, type: :request do
     let(:comment) { create(:resource_comment, resource:) }
     let(:comments) { [comment] }
     let(:average) { 3 }
+    let(:learning_unit) { create(:learning_unit) }
     let(:resource_service_mock) do
       instance_double(
         Resources::ResourceService,
@@ -14,7 +15,8 @@ RSpec.describe ResourcesController, type: :request do
         learning_unit_name: 'Ruby on Rails',
         created_by: 'Matías Hurtado',
         comments:,
-        average:
+        average:,
+        learning_unit:
       )
     end
 
