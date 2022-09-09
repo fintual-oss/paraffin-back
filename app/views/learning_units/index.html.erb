@@ -1,4 +1,4 @@
 <h1><%= @curriculum.name %></h1>
 
   <%= render partial: 'learning_units_of_curriculum',
-    locals: { curriculum: @service } %>
+    locals: { curriculum: @curriculum, service: @service } %>

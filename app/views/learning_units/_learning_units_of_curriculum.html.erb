@@ -1,10 +1,10 @@
 <ul>
-  <% @service.user_learning_units.each do |user_learning_unit| %>
+  <% service.user_learning_units.each do |user_learning_unit| %>
     <li>
       <%= user_learning_unit[:learning_unit].name %>
       <%=
         link_to "See Learning Unit",
-        learning_unit_path(learning_unit, curriculum_id: curriculum.id),
+        learning_unit_path(user_learning_unit[:learning_unit], curriculum_id: curriculum.id),
         class: 'button'
       %>
       <%=
