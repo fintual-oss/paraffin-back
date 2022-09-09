@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  get 'static_pages/landing_page', to: 'static_pages#landing_page'
-
   resources :resources, only: %i[show] do
     resources :resource_comments, only: %i[create]
     resources :resource_evaluations, only: %i[create]

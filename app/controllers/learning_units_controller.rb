@@ -6,6 +6,7 @@ class LearningUnitsController < ApplicationController
 
   def show
     set_curriculum if params.key?('curriculum_id')
+    @service = LearningUnits::ResourceSorterService.new(@learning_unit)
   end
 
   private
