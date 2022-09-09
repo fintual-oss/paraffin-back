@@ -1,14 +1,18 @@
-<% if learning_unit.resources.any? %>
-  <ul>
-    <% learning_unit.resources.each do |resource| %>
-      <li>
-        <%= resource.name %> <%= link_to "See resource",
-          resource_path(resource),
-          class: 'button' %>
+<% if resources.any? %>
+  <table>
+    <% resources.each do |resource| %>
+      <tr>
+        <td> <b> <%= resource[:name] %> </b> </td>
+        <td> <b>
+          <%= resource[:evaluation].nil? ? 'N/A' : resource[:evaluation] %>
+        </b> </td>
+        <td> <%= link_to "See resource",
+        resource_path(resource[:id]),
+        class: 'button' %> </td>
         <br><br>
-      </li>
+      </tr>
     <% end %>
-  </ul>
+  </table>
 <% else %>
   <h3>There are no resources yet</h3>
 <% end %>
