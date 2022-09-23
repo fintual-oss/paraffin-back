@@ -75,11 +75,11 @@ describe 'Curriculums API' do
     end
   end
 
-  path '/api/learning_units/{learning_units_id}/completed' do
+  path '/api/learning_units/{learning_unit_id}/completed' do
     get 'Return Learning Unit status' do
       tags 'Learning Units'
       description 'Retrieves if current user completed provided Learning Unit'
-      parameter name: :learning_units_id, in: :path, type: :string
+      parameter name: :learning_unit_id, in: :path, type: :string
       produces 'application/json'
 
       response '200', 'Success' do
@@ -92,10 +92,10 @@ describe 'Curriculums API' do
     end
   end
 
-  path '/api/learning_units/{learning_units_id}/resources' do
+  path '/api/learning_units/{learning_unit_id}/resources' do
     get 'Returns all Resources from Learning Unit' do
       tags 'Resources'
-      parameter name: :learning_units_id, in: :path, type: :string
+      parameter name: :learning_unit_id, in: :path, type: :string
       produces 'application/json'
 
       response '200', 'Success' do
@@ -113,10 +113,10 @@ describe 'Curriculums API' do
     end
   end
 
-  path '/api/resources/{resources_id}/average_evaluation' do
+  path '/api/resources/{resource_id}/average_evaluation' do
     get 'Returns Resource average evaluation ' do
       tags 'Resources'
-      parameter name: :resources_id, in: :path, type: :string
+      parameter name: :resource_id, in: :path, type: :string
       produces 'application/json'
 
       response '200', 'Success' do

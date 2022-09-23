@@ -153,7 +153,7 @@
         }
       }
     },
-    "/api/learning_units/{learning_units_id}/completed": {
+    "/api/learning_units/{learning_unit_id}/completed": {
       "get": {
         "summary": "Return Learning Unit status",
         "tags": [
@@ -162,7 +162,7 @@
         "description": "Retrieves if current user completed provided Learning Unit",
         "parameters": [
           {
-            "name": "learning_units_id",
+            "name": "learning_unit_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -189,7 +189,7 @@
         }
       }
     },
-    "/api/learning_units/{learning_units_id}/resources": {
+    "/api/learning_units/{learning_unit_id}/resources": {
       "get": {
         "summary": "Returns all Resources from Learning Unit",
         "tags": [
@@ -197,7 +197,7 @@
         ],
         "parameters": [
           {
-            "name": "learning_units_id",
+            "name": "learning_unit_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -233,7 +233,7 @@
         }
       }
     },
-    "/api/resources/{resources_id}/average_evaluation": {
+    "/api/resources/{resource_id}/average_evaluation": {
       "get": {
         "summary": "Returns Resource average evaluation ",
         "tags": [
@@ -241,7 +241,7 @@
         ],
         "parameters": [
           {
-            "name": "resources_id",
+            "name": "resource_id",
             "in": "path",
             "required": true,
             "schema": {
