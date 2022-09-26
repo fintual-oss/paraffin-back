@@ -41,7 +41,7 @@ describe 'Curriculums API' do
       produces 'application/json'
       operationId 'getCurriculum'
 
-      let(:id) { Curriculum.create(name: 'Intro to Swag').id }
+      let(:id) { create(:curriculum).id }
 
       response '200', 'Success' do
         schema type: :object,
