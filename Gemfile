@@ -54,6 +54,9 @@ gem 'bootsnap', require: false
 # Checks that a URL given as a string is valid
 gem 'validate_url'
 
+gem 'rswag-api'
+gem 'rswag-ui'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -70,6 +73,7 @@ group :development, :test do
   gem 'rubocop-performance', '1.14.2', require: false
   gem 'rubocop-rails', '2.15.2', require: false
   gem 'rubocop-rspec', '2.11.1', require: false
+  gem 'rswag-specs'
 end
 
 group :development do
