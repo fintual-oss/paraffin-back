@@ -59,6 +59,12 @@ describe 'Curriculums API' do
         before do
           sign_out user
         end
+        let(:id) {Curriculum.create(name:"Intro to Swag").id}
+        run_test!
+      end
+
+      response '404', 'Not Found' do
+        let(:id) {Curriculum.new(name:"Intro to Swag").id}
         run_test!
       end
 
