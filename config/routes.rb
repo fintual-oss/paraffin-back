@@ -22,12 +22,15 @@ Rails.application.routes.draw do
   root 'curriculums#show'
 
   namespace :api do
-    resources :curriculums, only: %i[] do
+    resources :curriculums, only: %i[index show] do
       resources :learning_units, only: %i[index]
     end
 
     resources :learning_units, only: %i[show] do
       get 'completed'
     end
+
+    get 'current_user', to: 'users#current'
+
   end
 end
