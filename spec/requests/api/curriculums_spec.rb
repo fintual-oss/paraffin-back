@@ -1,11 +1,21 @@
 require 'swagger_helper'
+require 'rails_helper'
 
 describe 'Curriculums API' do
 
+  let!(:user) { create(:user) }
+  let!(:curriculum) { create(:curriculum) }
+
+  before do
+    sign_in user
+  end
+
   path '/api/curriculums' do
+
     get 'Returns all Curriculums' do
       tags 'Curriculums'
       produces 'application/json'
+      operationId "getCurriculums"
 
       response '200', 'Success' do
         schema type: :array,
@@ -18,6 +28,13 @@ describe 'Curriculums API' do
         }
         run_test!
       end
+
+      response '401', 'Unauthorized' do
+        before do
+          sign_out user
+        end
+        run_test!
+      end
     end
   end
 
@@ -26,6 +43,7 @@ describe 'Curriculums API' do
       tags 'Curriculums'
       parameter name: :id, in: :path, type: :string
       produces 'application/json'
+      operationId "getCurriculum"
 
       response '200', 'Success' do
         schema type: :object,
@@ -33,9 +51,19 @@ describe 'Curriculums API' do
           id: {type: :integer},
           name: {type: :string}
         }
+        let(:id) {Curriculum.create(name:"Intro to Swag").id}
         run_test!
       end
+
+      response '401', 'Unauthorized' do
+        before do
+          sign_out user
+        end
+        run_test!
+      end
+
     end
+
   end
 
 end
