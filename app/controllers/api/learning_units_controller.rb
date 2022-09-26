@@ -1,5 +1,5 @@
 module Api
-  class LearningUnitsController < ApplicationController
+  class LearningUnitsController < ApiApplicationController
     def show
       learning_unit = LearningUnit.find(params[:id])
       render json: learning_unit
@@ -12,12 +12,13 @@ module Api
     end
 
     def completed
+      learning_unit_id = LearningUnit.find(params[:learning_unit_id])
       completed_by_user = CompletedLearningUnit.find_by(
         user: current_user,
-        learning_unit_id: params[:learning_unit_id]
+        learning_unit_id:
       )
       completed = completed_by_user ? true : false
-      render json: completed
+      render json: { completed: }
     end
   end
 end
