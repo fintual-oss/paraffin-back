@@ -20,4 +20,14 @@ Rails.application.routes.draw do
   end
 
   root 'curriculums#show'
+
+  namespace :api do
+    resources :curriculums, only: %i[] do
+      resources :learning_units, only: %i[index]
+    end
+
+    resources :learning_units, only: %i[show] do
+      get 'completed'
+    end
+  end
 end
