@@ -64,7 +64,7 @@ describe 'Curriculums API' do
       end
 
       response '404', 'Not Found' do
-        let(:id) {Curriculum.new(name:"Intro to Swag").id}
+        let(:id) { 'invalid' }
         run_test!
       end
 

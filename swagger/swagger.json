@@ -32,6 +32,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -52,6 +55,7 @@
             }
           }
         ],
+        "operationId": "getCurriculum",
         "responses": {
           "200": {
             "description": "Success",
@@ -70,6 +74,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -268,12 +278,13 @@
         }
       }
     },
-    "/current_user": {
+    "/api/current_user": {
       "get": {
         "summary": "Returns current user",
         "tags": [
           "Users"
         ],
+        "operationId": "getCurrentUser",
         "responses": {
           "200": {
             "description": "Success",
@@ -295,6 +306,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
