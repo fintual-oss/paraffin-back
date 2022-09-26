@@ -3,8 +3,9 @@ require 'rails_helper'
 
 describe 'Learning Units API' do
   let(:user) { create(:user) }
-  before do
-    sign_in user
+
+  before do |response|
+    sign_in user unless response.metadata[:skip_before]
   end
 
   path '/api/curriculums/{curriculum_id}/learning_units' do
@@ -13,26 +14,23 @@ describe 'Learning Units API' do
       produces 'application/json'
       parameter name: :curriculum_id, in: :path, type: :string
 
-      let(:curriculum_id) { (curriculum_with_learning_units).id }
-      
+      let(:curriculum_id) { curriculum_with_learning_units.id }
+
       response '200', 'Success' do
         schema type: :array,
-        items: {
-          type: :object,
-          properties: {
-            id: {type: :integer},
-            name: {type: :string}
-          }
-        },
-        required: [ 'id', 'name' ]
-      
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   name: { type: :string }
+                 }
+               },
+               required: %w[id name]
+
         run_test!
       end
 
-      response '401', 'Unauthorized' do
-        before do
-          sign_out user
-        end
+      response '401', 'Unauthorized', skip_before: true do
         run_test!
       end
 
@@ -53,18 +51,15 @@ describe 'Learning Units API' do
 
       response '200', 'Success' do
         schema type: :object,
-        properties: {
-          id: {type: :integer},
-          name: {type: :string}
-        }
-        
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string }
+               }
+
         run_test!
       end
 
-      response '401', 'Unauthorized' do
-        before do
-          sign_out user
-        end
+      response '401', 'Unauthorized', skip_before: true do
         run_test!
       end
 
@@ -86,17 +81,14 @@ describe 'Learning Units API' do
 
       response '200', 'Success' do
         schema type: :object,
-        properties: {
-          completed: {type: :boolean}
-        }
+               properties: {
+                 completed: { type: :boolean }
+               }
 
         run_test!
       end
 
-      response '401', 'Unauthorized' do
-        before do
-          sign_out user
-        end
+      response '401', 'Unauthorized', skip_before: true do
         run_test!
       end
 
@@ -106,5 +98,4 @@ describe 'Learning Units API' do
       end
     end
   end
-
 end
