@@ -29,5 +29,8 @@ Rails.application.routes.draw do
     resources :learning_units, only: %i[show] do
       get 'completed'
     end
+
+    get 'current_user', to: 'users#current'
+
   end
 end
