@@ -13,9 +13,8 @@ describe 'Learning Units API' do
       produces 'application/json'
       parameter name: :curriculum_id, in: :path, type: :string
 
-      let(:learning_unit) { create(:learning_unit, name: 'ruby') }
-      let(:curriculum_id) { create(:curriculum, name: 'fullstack', learning_units: [learning_unit] ).id }
-
+      let(:curriculum_id) { (curriculum_with_learning_units).id }
+      
       response '200', 'Success' do
         schema type: :array,
         items: {
