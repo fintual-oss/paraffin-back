@@ -13,6 +13,7 @@ describe 'Learning Units API' do
       tags 'Learning Units'
       produces 'application/json'
       parameter name: :curriculum_id, in: :path, type: :string
+      operationId 'getCurriculumLearningUnits'
 
       let(:curriculum_id) { curriculum_with_learning_units.id }
 
@@ -46,6 +47,7 @@ describe 'Learning Units API' do
       tags 'Learning Units'
       parameter name: :id, in: :path, type: :string
       produces 'application/json'
+      operationId 'getLearningUnit'
 
       let(:id) { create(:learning_unit, name: 'ruby').id }
 
@@ -76,6 +78,7 @@ describe 'Learning Units API' do
       description 'Retrieves if current user completed provided Learning Unit'
       parameter name: :learning_unit_id, in: :path, type: :string
       produces 'application/json'
+      operationId 'getLearningUnitStatus'
 
       let(:learning_unit_id) { create(:learning_unit, name: 'ruby').id }
 

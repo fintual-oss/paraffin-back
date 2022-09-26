@@ -79,7 +79,7 @@
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Curriculum not found"
           }
         }
       }
@@ -100,6 +100,7 @@
             }
           }
         ],
+        "operationId": "getCurriculumLearningUnits",
         "responses": {
           "200": {
             "description": "Success",
@@ -117,10 +118,20 @@
                         "type": "string"
                       }
                     }
-                  }
+                  },
+                  "required": [
+                    "id",
+                    "name"
+                  ]
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Curriculum not found"
           }
         }
       }
@@ -141,6 +152,7 @@
             }
           }
         ],
+        "operationId": "getLearningUnit",
         "responses": {
           "200": {
             "description": "Success",
@@ -159,6 +171,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Learning Unit not found"
           }
         }
       }
@@ -180,6 +198,7 @@
             }
           }
         ],
+        "operationId": "getLearningUnitStatus",
         "responses": {
           "200": {
             "description": "Success",
@@ -195,85 +214,12 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/learning_units/{learning_unit_id}/resources": {
-      "get": {
-        "summary": "Returns all Resources from Learning Unit",
-        "tags": [
-          "Resources"
-        ],
-        "parameters": [
-          {
-            "name": "learning_unit_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "integer"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "url": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/resources/{resource_id}/average_evaluation": {
-      "get": {
-        "summary": "Returns Resource average evaluation ",
-        "tags": [
-          "Resources"
-        ],
-        "parameters": [
-          {
-            "name": "resource_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "average_evaluation": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              }
-            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Learning Unit not found"
           }
         }
       }
