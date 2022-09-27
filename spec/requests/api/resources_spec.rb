@@ -22,9 +22,9 @@ describe 'Resources API' do
                items: {
                  type: :object,
                  properties: {
-                  id: { type: :integer },
-                  name: { type: :string },
-                  url: { type: :string }
+                   id: { type: :integer },
+                   name: { type: :string },
+                   url: { type: :string }
                  }
                },
                required: %w[id name]
@@ -36,7 +36,7 @@ describe 'Resources API' do
       end
 
       response '404', 'Learning Unit not found' do
-        let(:learning_unit_id) { "invalid" }
+        let(:learning_unit_id) { 'invalid' }
         run_test!
       end
     end
@@ -70,5 +70,4 @@ describe 'Resources API' do
       end
     end
   end
-
 end
