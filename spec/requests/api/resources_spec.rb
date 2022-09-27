@@ -36,7 +36,7 @@ describe 'Resources API' do
       end
 
       response '404', 'Learning Unit not found' do
-        let(:learning_unit_id) { 5 }
+        let(:learning_unit_id) { "invalid" }
         run_test!
       end
     end
@@ -49,16 +49,14 @@ describe 'Resources API' do
       produces 'application/json'
       operationId 'getResource'
 
-      let(:id) { create(:resource, name: 'ruby').id }
+      let(:id) { create(:resource).id }
 
       response '200', 'Success' do
         schema type: :object,
                properties: {
                  id: { type: :integer },
-                 name: { type: :string },
-                 url: { type: :string }
+                 name: { type: :string }
                }
-
         run_test!
       end
 

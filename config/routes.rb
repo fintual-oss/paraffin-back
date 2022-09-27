@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :curriculums, only: %i[index show] do
-      resources :learning_units, only: %i[index show]
+      resources :learning_units, only: %i[index]
     end
 
     resources :learning_units, only: %i[show] do
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       resources :resources, only: %i[index]
     end
 
+    resources :resources, only: %i[show]
 
     get 'current_user', to: 'users#current'
 
