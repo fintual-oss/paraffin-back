@@ -31,7 +31,9 @@ Rails.application.routes.draw do
       resources :resources, only: %i[index]
     end
 
-    resources :resources, only: %i[show]
+    resources :resources, only: %i[show] do
+      get 'average_evaluation'
+    end
 
     get 'current_user', to: 'users#current'
 

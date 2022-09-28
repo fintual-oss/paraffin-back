@@ -70,4 +70,38 @@ describe 'Resources API' do
       end
     end
   end
+
+  path '/api/resources/{id}/average_evaluation' do
+    get 'Returns Resource average evaluation' do
+      tags 'Resources'
+      parameter name: :id, in: :path, type: :string
+      produces 'application/json'
+      operationId 'getResourceAverageEvaluation'
+
+      let(:id) { create(:resource).id }
+      let(:resource_evaluation) { 
+        create(:resource_evaluation, 
+                resource: Resource.find(id),
+                evaluation: 3
+                ) }
+
+      response '200', 'Success' do
+        schema type: :object,
+               properties: {
+                 average_evaluation: { type: :string }
+               }
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '404', 'Resource not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
 end
