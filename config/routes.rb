@@ -28,6 +28,11 @@ Rails.application.routes.draw do
 
     resources :learning_units, only: %i[show] do
       get 'completed'
+      resources :resources, only: %i[index]
+    end
+
+    resources :resources, only: %i[show] do
+      get 'average_evaluation'
     end
 
     resources :resources, only: %i[show]

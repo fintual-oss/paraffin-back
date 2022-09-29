@@ -16,5 +16,5 @@ class Resource < ApplicationRecord
   has_many :resource_comments
   has_many :resource_evaluations
 
-  validates :url, url: { allow_blank: true }
+  validates :url, url: { allow_blank: false }
 end
