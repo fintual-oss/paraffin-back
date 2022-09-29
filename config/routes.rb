@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       get 'completed'
     end
 
+    resources :resources, only: %i[show]
+
     get 'current_user', to: 'users#current'
 
   end
