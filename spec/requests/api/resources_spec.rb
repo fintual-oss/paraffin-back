@@ -79,11 +79,11 @@ describe 'Resources API' do
       operationId 'getResourceAverageEvaluation'
 
       let(:id) { create(:resource).id }
-      let(:resource_evaluation) { 
-        create(:resource_evaluation, 
-                resource: Resource.find(id),
-                evaluation: 3
-                ) }
+      let(:resource_evaluation) do
+        create(:resource_evaluation,
+               resource: Resource.find(id),
+               evaluation: 3)
+      end
 
       response '200', 'Success' do
         schema type: :object,
@@ -103,5 +103,4 @@ describe 'Resources API' do
       end
     end
   end
-
 end

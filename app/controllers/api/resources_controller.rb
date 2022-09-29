@@ -13,8 +13,13 @@ module Api
 
     def average_evaluation
       resource = Resource.find(params[:resource_id])
-      average_evaluation = ResourceEvaluation.where(resource:).average(:evaluation)
-      evaluation = average_evaluation ? average_evaluation.round(1) : 'Sin evaluación'
+      average_evaluation = ResourceEvaluation.where(resource:)
+                                             .average(:evaluation)
+      evaluation = if average_evaluation
+                     average_evaluation.round(1)
+                   else
+                     'Sin evaluación'
+                   end
       render json: { average_evaluation: evaluation }
     end
   end
