@@ -4,7 +4,7 @@ module Api
       resource = Resource.find(params[:id])
       render json: resource
     end
-
+    
     def index
       learning_unit = LearningUnit.find(params[:learning_unit_id])
       resources = learning_unit.resources

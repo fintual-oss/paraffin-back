@@ -43,7 +43,7 @@ describe 'Resources API' do
   end
 
   path '/api/resources/{id}' do
-    get 'Returns Resource' do
+    get 'Returns a Resource info' do
       tags 'Resources'
       parameter name: :id, in: :path, type: :string
       produces 'application/json'
@@ -71,6 +71,7 @@ describe 'Resources API' do
       end
     end
   end
+
 
   path '/api/resources/{id}/average_evaluation' do
     get 'Returns Resource average evaluation' do
@@ -104,4 +105,5 @@ describe 'Resources API' do
       end
     end
   end
+  
 end

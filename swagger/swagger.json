@@ -281,7 +281,8 @@
     },
     "/api/resources/{id}": {
       "get": {
-        "summary": "Returns Resource",
+        "summary": "Returns a Resource info",
+
         "tags": [
           "Resources"
         ],
