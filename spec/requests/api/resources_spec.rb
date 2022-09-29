@@ -55,8 +55,7 @@ describe 'Resources API' do
         schema type: :object,
                properties: {
                  id: { type: :integer },
-                 name: { type: :string },
-                 url: { type: :string }
+                 name: { type: :string }
                }
         run_test!
       end
@@ -71,7 +70,6 @@ describe 'Resources API' do
       end
     end
   end
-
 
   path '/api/resources/{id}/average_evaluation' do
     get 'Returns Resource average evaluation' do
@@ -105,5 +103,4 @@ describe 'Resources API' do
       end
     end
   end
-  
 end
