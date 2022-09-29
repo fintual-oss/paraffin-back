@@ -55,7 +55,8 @@ describe 'Resources API' do
         schema type: :object,
                properties: {
                  id: { type: :integer },
-                 name: { type: :string }
+                 name: { type: :string },
+                 url: { type: :string }
                }
         run_test!
       end

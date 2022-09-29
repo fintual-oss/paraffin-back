@@ -309,6 +309,51 @@
                     },
                     "name": {
                       "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/api/resources/{id}/average_evaluation": {
+      "get": {
+        "summary": "Returns Resource average evaluation",
+        "tags": [
+          "Resources"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getResourceAverageEvaluation",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "average_evaluation": {
+                      "type": "string"
                     }
                   }
                 }
