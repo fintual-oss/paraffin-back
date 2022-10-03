@@ -27,6 +27,13 @@ module Api
       end
     end
 
+    def evaluation
+      resource_evaluation = ResourceEvaluation.find_by(
+        resource_id: params[:resource_id], user_id: current_user.id
+      )
+      render json: { evaluation: resource_evaluation.evaluation }, status: :ok
+    end
+
     private
 
     def calculate_average_evaluation(resource_id)
