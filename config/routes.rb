@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
     resources :resources, only: %i[show] do
       get 'average_evaluation'
+      post 'completed', to: 'learning_units#complete_learning_unit'
+      delete 'completed', to: 'learning_units#uncomplete_learning_unit'
     end
 
     resources :resources, only: %i[show]
