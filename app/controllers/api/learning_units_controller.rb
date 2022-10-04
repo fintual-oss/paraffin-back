@@ -29,15 +29,29 @@ module Api
           learning_unit: @learning_unit,
           user: current_user
         )
-      render json: { completed_learning_unit: }
+        if completed_learning_unit.valid?
+          render json: { completed: true }
+        else
+          status = :bad_request
+          code = 400
+          message = 'Bad Request'
+          render json: { status:, code:, message: }, status:
+        end
     end
 
     def uncomplete_learning_unit
       completed_learning_unit = CompletedLearningUnit.find_by(
         learning_unit_id: params[:learning_unit_id], user_id: current_user
       )
-      deleted_learning_unit = completed_learning_unit.destroy
-      render json: { deleted_learning_unit: }
+      if completed_learning_unit
+        deleted_learning_unit = completed_learning_unit.destroy
+        render json: { deleted: true }
+      else
+        status = :not_found
+        code = 404
+        message = 'Record_not_found'
+        render json: { status:, code:, message: }, status:
+      end
     end
 
     private

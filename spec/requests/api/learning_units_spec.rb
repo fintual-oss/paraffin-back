@@ -73,6 +73,7 @@ describe 'Learning Units API' do
   end
 
   path '/api/learning_units/{learning_unit_id}/completed' do
+
     get 'Return Learning Unit status' do
       tags 'Learning Units'
       description 'Retrieves if current user completed provided Learning Unit'
@@ -88,6 +89,80 @@ describe 'Learning Units API' do
                  completed: { type: :boolean }
                }
 
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '404', 'Learning Unit not found' do
+        let(:learning_unit_id) { 'invalid' }
+        run_test!
+      end
+    end
+
+    post 'Complete a Learning Unit' do
+      tags 'Learning Units'
+      description 'Completes a learning unit by the specific user'
+      parameter name: :learning_unit_id, in: :path, type: :string
+      produces 'application/json'
+      operationId 'postLearningUnitStatus'
+
+      let(:learning_unit) { create(:learning_unit, name: 'ruby') }
+      let(:learning_unit_id) { learning_unit.id }
+
+      response '200', 'Success' do
+        schema type: :object,
+        properties: {
+          completed: { type: :boolean }
+        }
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '400', 'Bad Request' do
+        let!(:completed_learning_unit) do
+          create(
+            :completed_learning_unit,
+            user:,
+            learning_unit:
+          )
+        end
+        run_test!
+      end
+
+      response '404', 'Learning Unit not found' do
+        let(:learning_unit_id) { 'invalid' }
+        run_test!
+      end
+    end
+
+    delete 'Uncomplete a Learning Unit' do
+      tags 'Learning Units'
+      parameter name: :learning_unit_id, in: :path, type: :string
+      description 'Uncomplete a learning unit by the specific user'
+      produces 'application/json'
+      operationId 'deleteLearningUnitStatus'
+
+      let(:learning_unit) { create(:learning_unit, name: 'ruby') }
+      let(:learning_unit_id) { learning_unit.id }
+      let!(:completed_learning_unit) do
+        create(
+          :completed_learning_unit,
+          user:,
+          learning_unit:
+        )
+      end
+
+      response '200', 'Success' do
+        schema type: :object,
+        properties: {
+          deleted: { type: :boolean }
+        }
         run_test!
       end
 
