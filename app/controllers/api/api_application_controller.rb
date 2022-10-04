@@ -11,7 +11,7 @@ class Api::ApiApplicationController < ActionController::API
       status = :unauthorized
       code = 401
       message = 'User_not_authenticated'
-      render json: {status:, code:, message: }, status:
+      render json: { status:, code:, message: }, status:
     end
   end
 

@@ -1,7 +1,6 @@
 module Api
   class LearningUnitsController < ApiApplicationController
-
-    before_action :get_learning_unit, only: [:complete_learning_unit]
+    before_action :set_learning_unit, only: [:complete_learning_unit]
 
     def show
       learning_unit = LearningUnit.find(params[:id])
@@ -25,20 +24,25 @@ module Api
     end
 
     def complete_learning_unit
-      completed_learning_unit = CompletedLearningUnit.create(learning_unit: @learning_unit,
-        user: current_user)
-        render json: {completed_learning_unit:}
+      completed_learning_unit =
+        CompletedLearningUnit.create(
+          learning_unit: @learning_unit,
+          user: current_user
+        )
+      render json: { completed_learning_unit: }
     end
 
     def uncomplete_learning_unit
-      completed_learning_unit = CompletedLearningUnit.find_by(learning_unit_id: params[:learning_unit_id], user_id: current_user)
+      completed_learning_unit = CompletedLearningUnit.find_by(
+        learning_unit_id: params[:learning_unit_id], user_id: current_user
+      )
       deleted_learning_unit = completed_learning_unit.destroy
-      render json: {deleted_learning_unit:}
+      render json: { deleted_learning_unit: }
     end
 
     private
 
-    def get_learning_unit
+    def set_learning_unit
       @learning_unit = LearningUnit.find(params[:learning_unit_id])
     end
   end
