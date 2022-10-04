@@ -13,5 +13,4 @@ class CompletedLearningUnit < ApplicationRecord
   belongs_to :learning_unit
 
   validates :user, uniqueness: { scope: [:learning_unit] }
-
 end

@@ -29,14 +29,11 @@ module Api
           learning_unit: @learning_unit,
           user: current_user
         )
-        if completed_learning_unit.valid?
-          render json: { completed: true }
-        else
-          status = :bad_request
-          code = 400
-          message = 'Bad Request'
-          render json: { status:, code:, message: }, status:
-        end
+      if completed_learning_unit.valid?
+        render json: { completed: true }
+      else
+        bad_request
+      end
     end
 
     def uncomplete_learning_unit
@@ -44,13 +41,10 @@ module Api
         learning_unit_id: params[:learning_unit_id], user_id: current_user
       )
       if completed_learning_unit
-        deleted_learning_unit = completed_learning_unit.destroy
+        completed_learning_unit.destroy!
         render json: { deleted: true }
       else
-        status = :not_found
-        code = 404
-        message = 'Record_not_found'
-        render json: { status:, code:, message: }, status:
+        not_found
       end
     end
 
@@ -58,6 +52,20 @@ module Api
 
     def set_learning_unit
       @learning_unit = LearningUnit.find(params[:learning_unit_id])
+    end
+
+    def bad_request
+      status = :bad_request
+      code = 400
+      message = 'Bad Request'
+      render json: { status:, code:, message: }, status:
+    end
+
+    def not_found
+      status = :not_found
+      code = 404
+      message = 'Record_not_found'
+      render json: { status:, code:, message: }, status:
     end
   end
 end
