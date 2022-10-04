@@ -84,146 +84,6 @@
         }
       }
     },
-    "/api/curriculums/{curriculum_id}/learning_units": {
-      "get": {
-        "summary": "Returns all Learning Unit from a Curriculum",
-        "tags": [
-          "Learning Units"
-        ],
-        "parameters": [
-          {
-            "name": "curriculum_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "operationId": "getCurriculumLearningUnits",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "integer"
-                      },
-                      "name": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "name"
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Curriculum not found"
-          }
-        }
-      }
-    },
-    "/api/learning_units/{id}": {
-      "get": {
-        "summary": "Returns Learning Unit",
-        "tags": [
-          "Learning Units"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "operationId": "getLearningUnit",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Learning Unit not found"
-          }
-        }
-      }
-    },
-    "/api/learning_units/{learning_unit_id}/completed": {
-      "get": {
-        "summary": "Return Learning Unit status",
-        "tags": [
-          "Learning Units"
-        ],
-        "description": "Retrieves if current user completed provided Learning Unit",
-        "parameters": [
-          {
-            "name": "learning_unit_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "operationId": "getLearningUnitStatus",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "completed": {
-                      "type": "boolean"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Learning Unit not found"
-          }
-        }
-      }
-    },
     "/api/learning_units/{learning_unit_id}/resources": {
       "get": {
         "summary": "Returns all Resources from a Learning Unit",
@@ -282,7 +142,6 @@
     "/api/resources/{id}": {
       "get": {
         "summary": "Returns a Resource info",
-
         "tags": [
           "Resources"
         ],
@@ -309,9 +168,6 @@
                       "type": "integer"
                     },
                     "name": {
-                      "type": "string"
-                    },
-                    "url": {
                       "type": "string"
                     }
                   }
