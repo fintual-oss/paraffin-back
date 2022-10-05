@@ -164,4 +164,44 @@ describe 'Resources API' do
       end
     end
   end
+
+  # create
+  path '/api/learning_units/{learning_unit_id}/resources' do
+    post 'Creates a new Resource' do
+      tags 'Resources'
+      consumes 'application/json'
+      parameter name: :learning_unit_id, in: :path, type: :string
+      parameter name: :resource, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          url: { type: :string },
+          user_id: { type: :integer },
+          learning_unit_id: { type: :integer }
+        },
+        required: %w[name url]
+      }
+      operationId 'createResource'
+
+      let(:learning_unit_id) { create(:learning_unit).id }
+      let(:resource) { { name: 'Resource name', url: 'https://google.com' } }
+      let(:user_id) { create(:user).id }
+
+      response '201', 'Resource created' do
+        schema type: :object,
+               properties: {
+                id: { type: :integer },
+                name: { type: :string },
+                url: { type: :string }
+               }
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+    end
+  end
+
+
 end

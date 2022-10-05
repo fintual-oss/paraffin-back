@@ -60,5 +60,22 @@ module Api
       resource_evaluation.evaluation = evaluation
       resource_evaluation
     end
+
+    def create
+      learning_unit_id = params[:learning_unit_id]
+      name = params[:name]
+      url = params[:url]
+      user_id = params[:user]
+      resource_new = Resource.find_or_create_by({
+        "learning_unit_id": learning_unit_id,
+        "name": name,
+        "url": url,
+        "user_id": user_id})
+      if resource_new.save
+        render json: resource_new, status: :created
+      else
+        render json: resource_new.errors, status: :unprocessable_entity
+      end
+    end
   end
 end
