@@ -70,8 +70,6 @@ module Api
       end
     end
 
-    private
-
     def set_new_resource
       {
         "learning_unit_id": params[:learning_unit_id],
