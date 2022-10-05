@@ -6,6 +6,9 @@ describe 'Resources API' do
 
   before do |response|
     sign_in user unless response.metadata[:skip_before]
+    if response.metadata[:create_evaluation]
+      create(:resource_evaluation, resource:, user:)
+    end
   end
 
   path '/api/learning_units/{learning_unit_id}/resources' do
@@ -78,42 +81,29 @@ describe 'Resources API' do
       produces 'application/json'
       operationId 'getResourceAverageEvaluation'
 
-      context 'when there is an evaluation' do
-        let(:resource_id) { create(:resource).id }
+      let(:resource) { create(:resource) }
+      let(:resource_id) { resource.id }
 
-        before do
-          create(:resource_evaluation,
-                 resource_id:,
-                 evaluation: 3)
-        end
-
-        response '200', 'Success' do
-          schema type: :object,
-                 properties: {
-                   average_evaluation: { type: :string }
-                 }
-          run_test!
-        end
+      response '200', 'Success', create_evaluation: true do
+        schema type: :object,
+               properties: {
+                 average_evaluation: { type: :string }
+               }
+        run_test!
       end
 
-      context 'when there is no authenticated user' do
-        let(:resource_id) { create(:resource).id }
-
-        response '401', 'Unauthorized', skip_before: true do
-          run_test!
-        end
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
       end
 
-      context 'when the resource is invalid' do
-        response '404', 'Resource not found' do
-          let(:resource_id) { 'invalid' }
-          run_test!
-        end
+      response '404', 'Resource not found' do
+        let(:resource_id) { 'invalid' }
+        run_test!
       end
     end
   end
 
-  path '/api/resources/{resource_id}/evaluate?evaluation={evaluation}' do
+  path '/api/resources/{resource_id}/evaluation?evaluation={evaluation}' do
     post 'Evaluate a resource' do
       tags 'Resources'
       parameter name: :resource_id, in: :path, type: :string
@@ -153,39 +143,24 @@ describe 'Resources API' do
       produces 'application/json'
       operationId 'getResourceEvaluation'
 
-      context 'when there is an evaluation' do
-        let(:resource) { create(:resource) }
-        let(:resource_id) { resource.id }
+      let(:resource) { create(:resource) }
+      let(:resource_id) { resource.id }
 
-        before do
-          create(:resource_evaluation,
-                 resource:,
-                 user:,
-                 evaluation: 3)
-        end
-
-        response '200', 'Success' do
-          schema type: :object,
-                 properties: {
-                   evaluation: { type: :integer }
-                 }
-          run_test!
-        end
+      response '200', 'Success', create_evaluation: true do
+        schema type: :object,
+               properties: {
+                 evaluation: { type: :integer }
+               }
+        run_test!
       end
 
-      context 'when there is no authenticated user' do
-        let(:resource_id) { create(:resource).id }
-
-        response '401', 'Unauthorized', skip_before: true do
-          run_test!
-        end
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
       end
 
-      context 'when the resource is not found' do
-        response '404', 'Resource not found' do
-          let(:resource_id) { 'invalid' }
-          run_test!
-        end
+      response '404', 'Resource not found' do
+        let(:resource_id) { 'invalid' }
+        run_test!
       end
     end
   end
