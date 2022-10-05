@@ -13,14 +13,52 @@ module Api
 
     def average_evaluation
       resource = Resource.find(params[:resource_id])
-      average_evaluation = ResourceEvaluation.where(resource:)
-                                             .average(:evaluation)
-      evaluation = if average_evaluation
-                     average_evaluation.round(1)
-                   else
-                     'Sin evaluación'
-                   end
+      evaluation = calculate_average_evaluation(resource.id)
       render json: { average_evaluation: evaluation }
+    end
+
+    def evaluate
+      resource_id = params[:resource_id]
+      Resource.find(resource_id)
+      evaluation = params[:evaluation]
+      resource_evaluation = new_or_update_evaluation(resource_id, evaluation)
+      if resource_evaluation.save
+        render json: resource_evaluation, status: :created
+      else
+        render json: resource_evaluation.errors, status: :unproccessable_entity
+      end
+    end
+
+    def evaluation
+      resource = Resource.find(params[:resource_id])
+      resource_evaluation = ResourceEvaluation.find_by(
+        resource:, user_id: current_user.id
+      )
+      if resource_evaluation
+        render json: { evaluation: resource_evaluation.evaluation }, status: :ok
+      else
+        render json: { evaluation: nil }, status: :ok
+      end
+    end
+
+    private
+
+    def calculate_average_evaluation(resource_id)
+      average_evaluation = ResourceEvaluation.where(resource_id:)
+                                             .average(:evaluation)
+      if average_evaluation
+        average_evaluation.round(1)
+      else
+        'Sin evaluación'
+      end
+    end
+
+    def new_or_update_evaluation(resource_id, evaluation)
+      resource_evaluation = ResourceEvaluation
+                            .find_or_initialize_by(user_id: current_user.id,
+                                                   resource_id:)
+      resource_evaluation.evaluation = evaluation
+      resource_evaluation
     end
   end
 end

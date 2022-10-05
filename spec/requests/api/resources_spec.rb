@@ -2,10 +2,13 @@ require 'swagger_helper'
 require 'rails_helper'
 
 describe 'Resources API' do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
 
   before do |response|
     sign_in user unless response.metadata[:skip_before]
+    if response.metadata[:create_evaluation]
+      create(:resource_evaluation, resource:, user:)
+    end
   end
 
   path '/api/learning_units/{learning_unit_id}/resources' do
@@ -71,21 +74,17 @@ describe 'Resources API' do
     end
   end
 
-  path '/api/resources/{id}/average_evaluation' do
+  path '/api/resources/{resource_id}/average_evaluation' do
     get 'Returns Resource average evaluation' do
       tags 'Resources'
-      parameter name: :id, in: :path, type: :string
+      parameter name: :resource_id, in: :path, type: :string
       produces 'application/json'
       operationId 'getResourceAverageEvaluation'
 
-      let(:id) { create(:resource).id }
-      let(:resource_evaluation) do
-        create(:resource_evaluation,
-               resource: Resource.find(id),
-               evaluation: 3)
-      end
+      let(:resource) { create(:resource) }
+      let(:resource_id) { resource.id }
 
-      response '200', 'Success' do
+      response '200', 'Success', create_evaluation: true do
         schema type: :object,
                properties: {
                  average_evaluation: { type: :string }
@@ -98,7 +97,69 @@ describe 'Resources API' do
       end
 
       response '404', 'Resource not found' do
-        let(:id) { 'invalid' }
+        let(:resource_id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
+  path '/api/resources/{resource_id}/evaluation?evaluation={evaluation}' do
+    post 'Evaluate a resource' do
+      tags 'Resources'
+      parameter name: :resource_id, in: :path, type: :string
+      parameter name: :evaluation, in: :path, type: :integer
+      produces 'application/json'
+      operationId 'evaluateResource'
+
+      let(:resource_id) { create(:resource).id }
+      let(:evaluation) { 2 }
+
+      response '201', 'Created' do
+        schema type: :object,
+               properties: {
+                 evaluation: { type: :integer },
+                 id: { type: :integer },
+                 user_id: { type: :integer },
+                 resource_id: { type: :integer }
+               }
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '404', 'Resource not found' do
+        let(:resource_id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
+  path '/api/resources/{resource_id}/evaluation' do
+    get "Returns current user's resource evaluation" do
+      tags 'Resources'
+      parameter name: :resource_id, in: :path, type: :string
+      produces 'application/json'
+      operationId 'getResourceEvaluation'
+
+      let(:resource) { create(:resource) }
+      let(:resource_id) { resource.id }
+
+      response '200', 'Success', create_evaluation: true do
+        schema type: :object,
+               properties: {
+                 evaluation: { type: :integer }
+               }
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '404', 'Resource not found' do
+        let(:resource_id) { 'invalid' }
         run_test!
       end
     end
