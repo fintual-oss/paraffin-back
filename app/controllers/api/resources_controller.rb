@@ -12,12 +12,14 @@ module Api
     end
 
     def average_evaluation
-      evaluation = calculate_average_evaluation(params[:resource_id])
+      resource = Resource.find(params[:resource_id])
+      evaluation = calculate_average_evaluation(resource.id)
       render json: { average_evaluation: evaluation }
     end
 
     def evaluate
       resource_id = params[:resource_id]
+      Resource.find(resource_id)
       evaluation = params[:evaluation]
       resource_evaluation = new_or_update_evaluation(resource_id, evaluation)
       if resource_evaluation.save
@@ -28,10 +30,15 @@ module Api
     end
 
     def evaluation
+      resource = Resource.find(params[:resource_id])
       resource_evaluation = ResourceEvaluation.find_by(
-        resource_id: params[:resource_id], user_id: current_user.id
+        resource:, user_id: current_user.id
       )
-      render json: { evaluation: resource_evaluation.evaluation }, status: :ok
+      if resource_evaluation
+        render json: { evaluation: resource_evaluation.evaluation }, status: :ok
+      else
+        render json: { evaluation: nil }, status: :ok
+      end
     end
 
     private
