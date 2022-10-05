@@ -62,20 +62,23 @@ module Api
     end
 
     def create
-      learning_unit_id = params[:learning_unit_id]
-      name = params[:name]
-      url = params[:url]
-      user_id = params[:user]
-      resource_new = Resource.find_or_create_by({
-        "learning_unit_id": learning_unit_id,
-        "name": name,
-        "url": url,
-        "user_id": user_id})
+      resource_new = Resource.find_or_create_by(set_new_resource)
       if resource_new.save
         render json: resource_new, status: :created
       else
         render json: resource_new.errors, status: :unprocessable_entity
       end
+    end
+
+    private
+
+    def set_new_resource
+      {
+        "learning_unit_id": params[:learning_unit_id],
+        "name": params[:name],
+        "url": params[:url],
+        "user_id": params[:user]
+      }
     end
   end
 end

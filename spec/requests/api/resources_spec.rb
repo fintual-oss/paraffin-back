@@ -176,23 +176,22 @@ describe 'Resources API' do
         properties: {
           name: { type: :string },
           url: { type: :string },
-          user_id: { type: :integer },
-          learning_unit_id: { type: :integer }
+          user: { type: :integer }
         },
         required: %w[name url]
       }
       operationId 'createResource'
 
       let(:learning_unit_id) { create(:learning_unit).id }
-      let(:resource) { { name: 'Resource name', url: 'https://google.com' } }
-      let(:user_id) { create(:user).id }
+      let(:resource) { { name: 'Resource name', url: 'https://google.com', learning_unit_id:, user: user.id } }
 
       response '201', 'Resource created' do
         schema type: :object,
                properties: {
-                id: { type: :integer },
-                name: { type: :string },
-                url: { type: :string }
+                 id: { type: :integer },
+                 name: { type: :string },
+                 url: { type: :string },
+                 user: { type: :integer }
                }
         run_test!
       end
@@ -202,6 +201,4 @@ describe 'Resources API' do
       end
     end
   end
-
-
 end
