@@ -165,7 +165,6 @@ describe 'Resources API' do
     end
   end
 
-  # create
   path '/api/learning_units/{learning_unit_id}/resources' do
     post 'Creates a new Resource' do
       tags 'Resources'
