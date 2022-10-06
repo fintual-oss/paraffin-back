@@ -1,30 +1,77 @@
-# This file should contain all the record creation needed to seed the database
-# with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created
-# alongside the database with db:setup).
 
-f_user = User.create(name: 'Ale', email: 'ale@paraffin.com', password: 'password')
-s_user = User.create(name: 'Cris', email: 'cris@paraffin.com', password: 'password')
-t_user = User.create(name: 'Rony', email: 'rony@paraffin.com', password: 'password')
-User.create(name: 'Cecy', email: 'cecy@paraffin.com', password: 'password')
-first_curr = Curriculum.create(name: 'Fullstack Developer')
-f_learning_unit = LearningUnit.create(name: 'Ruby')
-s_learning_unit = LearningUnit.create(name: 'Rails')
-CurriculumAffiliation.create(curriculum: first_curr,
-                             learning_unit: f_learning_unit)
-CurriculumAffiliation.create(curriculum: first_curr,
-                             learning_unit: s_learning_unit)
-f_resource = Resource.create(user: f_user, learning_unit: f_learning_unit,
-                             name: 'Ruby for dummies', url: 'fakeurl.io')
-s_resource = Resource.create(user: s_user, learning_unit: f_learning_unit,
-                             name: 'The best Ruby', url: 'fakeurl.io')
-ResourceComment.create(user: s_user, resource: f_resource,
-                       content: 'Vale pico tu wea')
-ResourceEvaluation.create(user: t_user, resource: f_resource, evaluation: 5)
-ResourceEvaluation.create(user: s_user, resource: f_resource, evaluation: 3)
-ResourceEvaluation.create(user: t_user, resource: s_resource, evaluation: 1)
-CompletedLearningUnit.create(user: f_user, learning_unit: f_learning_unit)
+ale = User.create(name: 'Alejandro Leiva', email: 'ale@paraffin.com', password: 'password')
+cris = User.create(name: 'Cristopher "Tofu" Gómez', email: 'cris@paraffin.com', password: 'password')
+carlos = User.create(name: 'Carlos "Carlangas" Riquelme', email: 'carlos@paraffin.com', password: 'password')
+pablo = User.create(name: 'Pablo "Pabs" Abara', email: 'pablo@paraffin.com', password: 'password')
+ceci = User.create(name: 'Cecilia Ramallo', email: 'cecy@paraffin.com', password: 'password')
+vane = User.create(name: 'Vanesa Pulgar', email: 'vane@paraffin.com', password: 'password')
+isa = User.create(name: 'Isabel Vega', email: 'isa@paraffin.com', password: 'password')
+juan = User.create(name: 'Juan Santos', email: 'juan@paraffin.com', password: 'password')
+nacho = User.create(name: 'Ignacio Heck', email: 'nacho@paraffin.com', password: 'password')
+ronny = User.create(name: 'Ronald Tichauer', email: 'ronny@paraffin.com', password: 'password')
+valentin = User.create(name: 'Valentin Jadot', email: 'valentin@paraffin.com', password: 'password')
+manu = User.create(name: 'Manuel Pérez', email: 'manu@paraffin.com', password: 'password')
+
+fin = Curriculum.create(name: 'FIN: Fullstack Developer')
+docker = LearningUnit.create(name: 'Docker')
+git = LearningUnit.create(name: 'Git - control de versiones')
+ruby = LearningUnit.create(name: 'Ruby')
+rails = LearningUnit.create(name: 'Rails')
+js = LearningUnit.create(name: 'JavaScript')
+react = LearningUnit.create(name: 'React')
+nextjs = LearningUnit.create(name: 'NextJS')
+
+CurriculumAffiliation.create(curriculum: fin, learning_unit: docker)
+CurriculumAffiliation.create(curriculum: fin, learning_unit: git) 
+CurriculumAffiliation.create(curriculum: fin, learning_unit: ruby) 
+CurriculumAffiliation.create(curriculum: fin, learning_unit: rails)
+CurriculumAffiliation.create(curriculum: fin, learning_unit: js) 
+CurriculumAffiliation.create(curriculum: fin, learning_unit: react)                                                         
+CurriculumAffiliation.create(curriculum: fin, learning_unit: nextjs) 
+
+docker_rails = Resource.create(user: manu, learning_unit: docker, name: 'Quickstart: Compose and Rails', url: 'https://docs.docker.com/samples/rails/')
+github = Resource.create(user: valentin, learning_unit: git, name: 'Introduction to Git and GitHub', url: 'https://www.coursera.org/learn/introduction-git-github')
+git_branching = Resource.create(user: cris, learning_unit: git, name: 'Learn Git Branching', url: 'https://learngitbranching.js.org/?locale=es_AR')
+ruby_udemy = Resource.create(user: manu, learning_unit: ruby, name: 'Learn to Code with Ruby', url: 'https://www.udemy.com/course/learn-to-code-with-ruby-lang')
+rails_ar = Resource.create(user: ale, learning_unit: rails, name: 'Active Record Basics', url: 'https://guides.rubyonrails.org/active_record_basics.html')
+rails_ten = Resource.create(user: manu, learning_unit: rails, name: 'Learn Rails (10 hrs)', url: 'https://www.codecademy.com/learn/learn-rails')
+rails_rspec = Resource.create(user: ronny, learning_unit: rails, name: 'Introduction to RSpec', url: 'https://dev.to/kevinluo201/introduce-rspec-request-spec-4pbl')
+js_codepen = Resource.create(user: isa, learning_unit: js, name: 'CodePen - interactivo para aprender HTML/CSS', url: 'https://codepen.io/')
+js_prettier = Resource.create(user: isa, learning_unit: js, name: 'Prettier: auto-formatting', url: 'https://prettier.io/')
+react_redux = Resource.create(user: carlos, learning_unit: react, name: 'React - the complete guide (incluye redux)', url: 'https://www.udemy.com/course/react-the-complete-guide-incl-redux/')
+react_ten = Resource.create(user: juan, learning_unit: react, name: 'React Tutorial - 11 horas', url: 'https://scrimba.com/learn/learnreact')
+next_eleven = Resource.create(user: isa, learning_unit: nextjs, name: 'Data Fetching', url: 'https://nextjs.org/docs/basic-features/data-fetching/overview')
+next_fireship = Resource.create(user: valentin, learning_unit: nextjs, name: 'Fireship.io', url: 'https://fireship.io/courses/react-next-firebase/')
+next_front = Resource.create(user: isa, learning_unit: nextjs, name: 'How to separate front & back', url: 'https://medium.com/@fishpercolator/how-to-separate-frontend-backend-with-rails-api-nuxt-js-and-devise-jwt-cf7dd9da9d16')
+react_scrimba = Resource.create(user: nacho, learning_unit: react, name: 'Learn React in Scrimba', url: 'https://scrimba.com/learn/learnreact')
+
+ResourceEvaluation.create(user: cris, resource: docker_rails, evaluation: 2, comment: "hoal")
+ResourceEvaluation.create(user: juan, resource: docker_rails, evaluation: 3, comment: "chale")
+ResourceEvaluation.create(user: vane, resource: docker_rails, evaluation: 5, comment: "MEJOR TUTORIAL")
+ResourceEvaluation.create(user: ronny, resource: github, evaluation: 4, comment: "Recomiendo usar github actions")
+ResourceEvaluation.create(user: ceci, resource: github, evaluation: 5, comment: "muy bien explicado")
+ResourceEvaluation.create(user: cris, resource: git_branching, evaluation: 5, comment: "explicación muy interactiva de cómo funcionan las ramas")
+ResourceEvaluation.create(user: manu, resource: ruby_udemy, evaluation: 5, comment: "si necesitan la clave está en Slack")
+ResourceEvaluation.create(user: ale, resource: ruby_udemy, evaluation: 4, comment: "es muy detallado, igual se pueden saltar algunas partes")
+ResourceEvaluation.create(user: nacho, resource: ruby_udemy, evaluation: 2, comment: "demasiado largo para mi gusto")
+ResourceEvaluation.create(user: ale, resource: rails_ar, evaluation: 5, comment: "directamente de la documentación de rails")
+ResourceEvaluation.create(user: carlos, resource: rails_ten, evaluation: 4, comment: "está preciso y conciso")
+ResourceEvaluation.create(user: vane, resource: rails_ten, evaluation: 5, comment: "definitivamente MEJOR CURSO de rails")
+ResourceEvaluation.create(user: juan, resource: rails_rspec, evaluation: 4, comment: "buen punto de partida para lanzarse con tests")
+ResourceEvaluation.create(user: nacho, resource: js_codepen, evaluation: 5, comment: "muy interactiva la plataforma, a mi me sirvió bastante")
+ResourceEvaluation.create(user: ale, resource: js_codepen, evaluation: 5, comment: "muy bueno y práctico, está un poco desactualizado siiiii")
+ResourceEvaluation.create(user: pablo, resource: js_prettier, evaluation: 2, comment: "destesto los linter")
+ResourceEvaluation.create(user: ronny, resource: js_prettier, evaluation: 5, comment: "siempre se pueden eliminar reglas")
+ResourceEvaluation.create(user: manu, resource: react_ten, evaluation: 2, comment: "maoma no más")
+ResourceEvaluation.create(user: valentin, resource: next_fireship, evaluation: 5, comment: "este profe es la zolaaaa")
+ResourceEvaluation.create(user: isa, resource: next_front, evaluation: 1, comment: "no lo hagan :(")
+
+CompletedLearningUnit.create(user: ale, learning_unit: git)
+CompletedLearningUnit.create(user: ale, learning_unit: docker)
+CompletedLearningUnit.create(user: ale, learning_unit: ruby)
+CompletedLearningUnit.create(user: ale, learning_unit: js)
+
 if Rails.env.development?
-  AdminUser.create!(email: 'admin@example.com', password: 'password',
+  AdminUser.create!(email: 'ale@paraffin.com', password: 'password',
                     password_confirmation: 'password')
 end
