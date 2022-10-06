@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_04_200418) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_06_123117) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_200418) do
     t.datetime "updated_at", null: false
     t.bigint "resource_id"
     t.bigint "user_id"
+    t.string "comment"
     t.index ["resource_id"], name: "index_resource_evaluations_on_resource_id"
     t.index ["user_id", "resource_id"], name: "index_resource_evaluations_on_user_id_and_resource_id", unique: true
     t.index ["user_id"], name: "index_resource_evaluations_on_user_id"

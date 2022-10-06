@@ -19,9 +19,8 @@ module Api
 
     def evaluate
       resource_id = params[:resource_id]
-      Resource.find(resource_id)
-      evaluation = params[:evaluation]
-      resource_evaluation = new_or_update_evaluation(resource_id, evaluation)
+      Resource.find(resource_id) # if not throw 404
+      resource_evaluation = new_or_update_evaluation(resource_id)
       if resource_evaluation.save
         render json: resource_evaluation, status: :created
       else
@@ -62,11 +61,12 @@ module Api
       end
     end
 
-    def new_or_update_evaluation(resource_id, evaluation)
+    def new_or_update_evaluation(resource_id)
       resource_evaluation = ResourceEvaluation
                             .find_or_initialize_by(user_id: current_user.id,
                                                    resource_id:)
-      resource_evaluation.evaluation = evaluation
+      resource_evaluation.evaluation = params[:evaluation]
+      resource_evaluation.comment = params[:comment]
       resource_evaluation
     end
 
