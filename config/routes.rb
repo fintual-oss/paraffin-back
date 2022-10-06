@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       get 'completed'
       post 'completed', to: 'learning_units#complete_learning_unit'
       delete 'completed', to: 'learning_units#uncomplete_learning_unit'
-      resources :resources, only: %i[index]
+      resources :resources, only: %i[index create]
     end
 
     resources :resources, only: %i[show] do

@@ -41,6 +41,15 @@ module Api
       end
     end
 
+    def create
+      resource_new = Resource.find_or_create_by(set_new_resource)
+      if resource_new.save
+        render json: resource_new, status: :created
+      else
+        render json: resource_new.errors, status: :unprocessable_entity
+      end
+    end
+
     private
 
     def calculate_average_evaluation(resource_id)
@@ -59,6 +68,15 @@ module Api
                                                    resource_id:)
       resource_evaluation.evaluation = evaluation
       resource_evaluation
+    end
+
+    def set_new_resource
+      {
+        "learning_unit_id": params[:learning_unit_id],
+        "name": params[:name],
+        "url": params[:url],
+        "user_id": params[:user]
+      }
     end
   end
 end
