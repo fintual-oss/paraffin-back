@@ -27,7 +27,9 @@ describe 'Resource Evaluations API' do
                    evaluation: { type: :integer },
                    resource_id: { type: :string },
                    user_id: { type: :integer },
-                   comment: { type: :string }
+                   user_name: { type: :string },
+                   comment: { type: :string },
+                   created_at: { type: :string }
                  }
                },
                required: %w[id evaluation]
