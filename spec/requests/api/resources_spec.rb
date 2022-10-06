@@ -103,16 +103,26 @@ describe 'Resources API' do
     end
   end
 
-  path '/api/resources/{resource_id}/evaluation?evaluation={evaluation}' do
+  path '/api/resources/{resource_id}/evaluation' do
     post 'Evaluate a resource' do
       tags 'Resources'
-      parameter name: :resource_id, in: :path, type: :string
-      parameter name: :evaluation, in: :path, type: :integer
+      consumes 'application/json'
       produces 'application/json'
+      parameter name: :resource_id, in: :path, type: :string
+      parameter name: :resource_evaluation, in: :body, schema: {
+        type: :object,
+        properties: {
+          evaluation: { type: :integer },
+          comment: { type: :string }
+        },
+        required: %w[evaluation]
+      }
       operationId 'evaluateResource'
 
       let(:resource_id) { create(:resource).id }
-      let(:evaluation) { 2 }
+      let(:resource_evaluation) do
+        { evaluation: '3', comment: 'Este sería un comentario de prueba' }
+      end
 
       response '201', 'Created' do
         schema type: :object,
@@ -120,6 +130,7 @@ describe 'Resources API' do
                  evaluation: { type: :integer },
                  id: { type: :integer },
                  user_id: { type: :integer },
+                 comment: { type: :string, null: true },
                  resource_id: { type: :integer }
                }
         run_test!
