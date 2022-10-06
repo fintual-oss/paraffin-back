@@ -2,7 +2,9 @@ module Api
   class ResourceEvaluationsController < ApiApplicationController
     def index
       evaluations = Resource.find(params[:resource_id])
-                            .resource_evaluations.includes(:user)
+                            .resource_evaluations
+                            .order(created_at: :desc)
+                            .includes(:user)
       evaluations_data = prepare_evaluations_data(evaluations)
       render json: evaluations_data
     end
