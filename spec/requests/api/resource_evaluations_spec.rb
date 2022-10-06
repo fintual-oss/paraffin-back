@@ -16,7 +16,7 @@ describe 'Resource Evaluations API' do
       operationId 'getResourceEvaluations'
       let(:resource) { create(:resource) }
       let(:resource_id) { resource.id }
-      let(:resource_evaluation) { create(:resource_evaluation, user:).id }
+      let(:resource_evaluation) { create(:resource_evaluation, user:) }
 
       response '200', 'Success' do
         schema type: :array,
