@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       get 'average_evaluation'
       get 'evaluation'
       post 'evaluation', to: 'resources#evaluate'
+      resources :resource_evaluations, only: %i[index]
     end
 
     resources :resources, only: %i[show]
