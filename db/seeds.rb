@@ -45,33 +45,26 @@ next_fireship = Resource.create(user: valentin, learning_unit: nextjs, name: 'Fi
 next_front = Resource.create(user: isa, learning_unit: nextjs, name: 'How to separate front & back', url: 'https://medium.com/@fishpercolator/how-to-separate-frontend-backend-with-rails-api-nuxt-js-and-devise-jwt-cf7dd9da9d16')
 react_scrimba = Resource.create(user: nacho, learning_unit: react, name: 'Learn React in Scrimba', url: 'https://scrimba.com/learn/learnreact')
 
-
-evaluations = [
-  {user: cris, resource: docker_rails, evaluation: 2, comment: "hoal"},
-  {user: juan, resource: docker_rails, evaluation: 3, comment: "chale"},
-  {user: vane, resource: docker_rails, evaluation: 5, comment: "MEJOR TUTORIAL"},
-  {user: ronny, resource: github, evaluation: 4, comment: "Recomiendo usar github actions"},
-  {user: ceci, resource: github, evaluation: 5, comment: "muy bien explicado"},
-  {user: cris, resource: git_branching, evaluation: 5, comment: "explicación muy interactiva de cómo funcionan las ramas"},
-  {user: manu, resource: ruby_udemy, evaluation: 5, comment: "si necesitan la clave está en Slack"},
-  {user: ale, resource: ruby_udemy, evaluation: 4, comment: "es muy detallado, igual se pueden saltar algunas partes"},
-  {user: nacho, resource: ruby_udemy, evaluation: 2, comment: "demasiado largo para mi gusto"},
-  {user: ale, resource: rails_ar, evaluation: 5, comment: "directamente de la documentación de rails"},
-  {user: carlos, resource: rails_ten, evaluation: 4, comment: "está preciso y conciso"},
-  {user: vane, resource: rails_ten, evaluation: 5, comment: "definitivamente MEJOR CURSO de rails"},
-  {user: juan, resource: rails_rspec, evaluation: 4, comment: "buen punto de partida para lanzarse con tests"},
-  {user: nacho, resource: js_codepen, evaluation: 5, comment: "muy interactiva la plataforma, a mi me sirvió bastante"},
-  {user: ale, resource: js_codepen, evaluation: 5, comment: "muy bueno y práctico, está un poco desactualizado siiiii"},
-  {user: pablo, resource: js_prettier, evaluation: 2, comment: "destesto los linter"},
-  {user: ronny, resource: js_prettier, evaluation: 5, comment: "siempre se pueden eliminar reglas"},
-  {user: manu, resource: react_ten, evaluation: 2, comment: "maoma no más"},
-  {user: valentin, resource: next_fireship, evaluation: 5, comment: "este profe es la zolaaaa"},
-  {user: isa, resource: next_front, evaluation: 1, comment: "no lo hagan :("}
-]
-
-evaluations.map do |e|
-  ResourceEvaluation.create(user: e.user, resource: e.user, evaluation: e.evaluation), comment: e.comment)
-end
+ResourceEvaluation.create(user: cris, resource: docker_rails, evaluation: 2, comment: "hoal")
+ResourceEvaluation.create(user: juan, resource: docker_rails, evaluation: 3, comment: "chale")
+ResourceEvaluation.create(user: vane, resource: docker_rails, evaluation: 5, comment: "MEJOR TUTORIAL")
+ResourceEvaluation.create(user: ronny, resource: github, evaluation: 4, comment: "Recomiendo usar github actions")
+ResourceEvaluation.create(user: ceci, resource: github, evaluation: 5, comment: "muy bien explicado")
+ResourceEvaluation.create(user: cris, resource: git_branching, evaluation: 5, comment: "explicación muy interactiva de cómo funcionan las ramas")
+ResourceEvaluation.create(user: manu, resource: ruby_udemy, evaluation: 5, comment: "si necesitan la clave está en Slack")
+ResourceEvaluation.create(user: ale, resource: ruby_udemy, evaluation: 4, comment: "es muy detallado, igual se pueden saltar algunas partes")
+ResourceEvaluation.create(user: nacho, resource: ruby_udemy, evaluation: 2, comment: "demasiado largo para mi gusto")
+ResourceEvaluation.create(user: ale, resource: rails_ar, evaluation: 5, comment: "directamente de la documentación de rails")
+ResourceEvaluation.create(user: carlos, resource: rails_ten, evaluation: 4, comment: "está preciso y conciso")
+ResourceEvaluation.create(user: vane, resource: rails_ten, evaluation: 5, comment: "definitivamente MEJOR CURSO de rails")
+ResourceEvaluation.create(user: juan, resource: rails_rspec, evaluation: 4, comment: "buen punto de partida para lanzarse con tests")
+ResourceEvaluation.create(user: nacho, resource: js_codepen, evaluation: 5, comment: "muy interactiva la plataforma, a mi me sirvió bastante")
+ResourceEvaluation.create(user: ale, resource: js_codepen, evaluation: 5, comment: "muy bueno y práctico, está un poco desactualizado siiiii")
+ResourceEvaluation.create(user: pablo, resource: js_prettier, evaluation: 2, comment: "destesto los linter")
+ResourceEvaluation.create(user: ronny, resource: js_prettier, evaluation: 5, comment: "siempre se pueden eliminar reglas")
+ResourceEvaluation.create(user: manu, resource: react_ten, evaluation: 2, comment: "maoma no más")
+ResourceEvaluation.create(user: valentin, resource: next_fireship, evaluation: 5, comment: "este profe es la zolaaaa")
+ResourceEvaluation.create(user: isa, resource: next_front, evaluation: 1, comment: "no lo hagan :(")
 
 CompletedLearningUnit.create(user: ale, learning_unit: git)
 CompletedLearningUnit.create(user: ale, learning_unit: docker)
@@ -79,6 +72,6 @@ CompletedLearningUnit.create(user: ale, learning_unit: ruby)
 CompletedLearningUnit.create(user: ale, learning_unit: js)
 
 if Rails.env.development?
-  AdminUser.create!(email: 'admin@example.com', password: 'password',
+  AdminUser.create!(email: 'ale@paraffin.com', password: 'password',
                     password_confirmation: 'password')
 end
