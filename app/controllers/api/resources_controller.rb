@@ -34,9 +34,10 @@ module Api
         resource:, user_id: current_user.id
       )
       if resource_evaluation
-        render json: { evaluation: resource_evaluation.evaluation, comment: resource_evaluation.comment }, status: :ok
+        render json: { evaluation: resource_evaluation.evaluation,
+                       comment: resource_evaluation.comment }, status: :ok
       else
-        render json: { evaluation: nil, comment: nil}, status: :ok
+        render json: { evaluation: nil, comment: nil }, status: :ok
       end
     end
 
