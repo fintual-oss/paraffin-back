@@ -19,9 +19,8 @@ class Resource < ApplicationRecord
   validates :url, url: { allow_blank: false }
 
   private
-  
+
   def average_evaluation
     resource_evaluations.average(:evaluation)
   end
-  
 end
