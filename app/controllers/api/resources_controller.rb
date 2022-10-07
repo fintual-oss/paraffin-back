@@ -6,9 +6,9 @@ module Api
     end
 
     def index
-      learning_unit = LearningUnit.find(params[:learning_unit_id])
-      resources = learning_unit.resources
-      render json: resources
+      resources = LearningUnit.find(params[:learning_unit_id])&.resources
+      render json: resources, only: %i[id name url],
+             methods: [:average_evaluation]
     end
 
     def average_evaluation
