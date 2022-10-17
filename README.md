@@ -24,7 +24,7 @@ All (most) of this code was writen in Puerto Natales, under the benevolent prote
 
 1. Clone this repo and cd into your directory.
     
-    git clone git@github.com:rtichauerv/paraffin.git && cd paraffin
+    git clone git@github.com:fintual-oss/paraffin.git && cd paraffin
 
 2. In another terminal window, build and run your app with Compose.
 
