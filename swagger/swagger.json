@@ -84,6 +84,298 @@
         }
       }
     },
+    "/api/curriculums/{curriculum_id}/learning_units": {
+      "get": {
+        "summary": "Returns all Learning Unit from a Curriculum",
+        "tags": [
+          "Learning Units"
+        ],
+        "parameters": [
+          {
+            "name": "curriculum_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getCurriculumLearningUnits",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Curriculum not found"
+          }
+        }
+      }
+    },
+    "/api/learning_units/{id}": {
+      "get": {
+        "summary": "Returns Learning Unit",
+        "tags": [
+          "Learning Units"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getLearningUnit",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Learning Unit not found"
+          }
+        }
+      }
+    },
+    "/api/learning_units/{learning_unit_id}/completed": {
+      "get": {
+        "summary": "Return Learning Unit status",
+        "tags": [
+          "Learning Units"
+        ],
+        "description": "Retrieves if current user completed provided Learning Unit",
+        "parameters": [
+          {
+            "name": "learning_unit_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getLearningUnitStatus",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "completed": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Learning Unit not found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Complete a Learning Unit",
+        "tags": [
+          "Learning Units"
+        ],
+        "description": "Completes a learning unit by the specific user",
+        "parameters": [
+          {
+            "name": "learning_unit_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "postLearningUnitStatus",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "completed": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Learning Unit not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Uncomplete a Learning Unit",
+        "tags": [
+          "Learning Units"
+        ],
+        "parameters": [
+          {
+            "name": "learning_unit_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Uncomplete a learning unit by the specific user",
+        "operationId": "deleteLearningUnitStatus",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deleted": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Learning Unit not found"
+          }
+        }
+      }
+    },
+    "/api/resources/{resource_id}/resource_evaluations": {
+      "get": {
+        "summary": "Returns all Resource Evaluations",
+        "tags": [
+          "Resource Evaluations"
+        ],
+        "parameters": [
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getResourceEvaluations",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "evaluation": {
+                        "type": "integer"
+                      },
+                      "resource_id": {
+                        "type": "string"
+                      },
+                      "user_id": {
+                        "type": "integer"
+                      },
+                      "user_name": {
+                        "type": "string"
+                      },
+                      "comment": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "evaluation"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
     "/api/learning_units/{learning_unit_id}/resources": {
       "get": {
         "summary": "Returns all Resources from a Learning Unit",
@@ -137,6 +429,55 @@
             "description": "Learning Unit not found"
           }
         }
+      },
+      "post": {
+        "summary": "Creates a new Resource",
+        "tags": [
+          "Resources"
+        ],
+        "parameters": [
+          {
+            "name": "learning_unit_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "createResource",
+        "responses": {
+          "201": {
+            "description": "Resource created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "user": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ]
+              }
+            }
+          }
+        }
       }
     },
     "/api/resources/{id}": {
@@ -184,7 +525,7 @@
         }
       }
     },
-    "/api/resources/{id}/average_evaluation": {
+    "/api/resources/{resource_id}/average_evaluation": {
       "get": {
         "summary": "Returns Resource average evaluation",
         "tags": [
@@ -192,7 +533,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "resource_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -211,6 +552,121 @@
                   "properties": {
                     "average_evaluation": {
                       "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/api/resources/{resource_id}/evaluation": {
+      "post": {
+        "summary": "Evaluate a resource",
+        "tags": [
+          "Resources"
+        ],
+        "parameters": [
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "evaluateResource",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "evaluation": {
+                      "type": "integer"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "comment": {
+                      "type": "string",
+                      "null": true
+                    },
+                    "resource_id": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "evaluation": {
+                    "type": "integer"
+                  },
+                  "comment": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "evaluation"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Returns current user's resource evaluation",
+        "tags": [
+          "Resources"
+        ],
+        "parameters": [
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getResourceEvaluation",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "evaluation": {
+                      "type": "integer"
                     }
                   }
                 }
