@@ -10,6 +10,7 @@
 class Curriculum < ApplicationRecord
   has_many :curriculum_affiliations
   has_many :learning_units, through: :curriculum_affiliations
+  has_many :cycles
 
   validates :name, presence: true
 end
