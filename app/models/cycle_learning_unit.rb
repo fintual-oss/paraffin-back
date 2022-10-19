@@ -1,0 +1,2 @@
+class CycleLearningUnit < ApplicationRecord
+end
