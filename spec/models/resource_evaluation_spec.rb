@@ -8,6 +8,7 @@
 #  updated_at  :datetime         not null
 #  resource_id :bigint
 #  user_id     :bigint
+#  comment     :string
 #
 require 'rails_helper'
 
