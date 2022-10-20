@@ -30,7 +30,9 @@ describe 'Learning Units API' do
                  type: :object,
                  properties: {
                    id: { type: :integer },
-                   name: { type: :string }
+                   name: { type: :string },
+                   description: { type: :string },
+                   image_url: { type: :string, nullable: true }
                  }
                },
                required: %w[id name]
@@ -62,7 +64,9 @@ describe 'Learning Units API' do
         schema type: :object,
                properties: {
                  id: { type: :integer },
-                 name: { type: :string }
+                 name: { type: :string },
+                 description: { type: :string },
+                 image_url: { type: :string, nullable: true }
                }
 
         run_test!
