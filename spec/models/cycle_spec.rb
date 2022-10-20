@@ -18,6 +18,13 @@ RSpec.describe Cycle, type: :model do
     it do
       expect do
         FactoryBot.create(:cycle,
+                          order_number: nil)
+      end.to raise_error ActiveRecord::NotNullViolation
+    end
+
+    it do
+      expect do
+        FactoryBot.create(:cycle,
                           learning_goals_description: nil)
       end.to raise_error ActiveRecord::NotNullViolation
     end

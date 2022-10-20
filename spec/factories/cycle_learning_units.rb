@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :cycle_learning_unit do
-    cycle_id { 1 }
-    learning_unit_id { 1 }
+    association :cycle, factory: :cycle
+    association :learning_unit, factory: :learning_unit
   end
 end
