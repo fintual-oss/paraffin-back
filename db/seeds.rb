@@ -1,4 +1,3 @@
-
 ale = User.create(name: 'Alejandro Leiva', email: 'ale@paraffin.com', password: 'password')
 cris = User.create(name: 'Cristopher "Tofu" Gómez', email: 'cris@paraffin.com', password: 'password')
 carlos = User.create(name: 'Carlos "Carlangas" Riquelme', email: 'carlos@paraffin.com', password: 'password')
@@ -13,25 +12,31 @@ valentin = User.create(name: 'Valentin Jadot', email: 'valentin@paraffin.com', p
 manu = User.create(name: 'Manuel Pérez', email: 'manu@paraffin.com', password: 'password')
 
 fin = Curriculum.create(name: 'FIN: Fullstack Developer')
-docker = LearningUnit.create(name: 'Docker', description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', image_url: '/src/public/LearningUnit.jpg')
-git = LearningUnit.create(name: 'Git - control de versiones', description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', image_url: '/src/public/LearningUnit.jpg')
-ruby = LearningUnit.create(name: 'Ruby', description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', image_url: '/src/public/LearningUnit.jpg')
-rails = LearningUnit.create(name: 'Rails', description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', image_url: '/src/public/LearningUnit.jpg')
-js = LearningUnit.create(name: 'JavaScript', description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', image_url: '/src/public/LearningUnit.jpg')
-react = LearningUnit.create(name: 'React', description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', image_url: '/src/public/LearningUnit.jpg')
-nextjs = LearningUnit.create(name: 'NextJS', description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', image_url: '/src/public/LearningUnit.jpg')
+
+learning_unit_names = ['Docker','Git - control de versiones','Ruby','Rails','JavaScript','React','NextJS']
+learning_units = []
+
+learning_unit_names.each do |unit_name|
+  learning_units.push(LearningUnit.create(name: unit_name, description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", image_url: '/src/public/LearningUnit.jpg'))
+end
+
+docker,git,ruby,rails,js,react,nextjs = learning_units
 
 cycle1 = Cycle.create(curriculum: fin, name: 'Backend basics', order_number: 1, learning_goals_description: 'Learn development fundamentals. Learn backend basics', challenge_description: 'Develop a monolithic basic web app that enables users to send messages to each other', boilerplate_url: 'https://github.com/fintual-oss/paraffin-back')
 cycle2 = Cycle.create(curriculum: fin, name: 'Frontend basics', order_number: 2, learning_goals_description: 'Create an API. Learn frontend basics', challenge_description: 'Develop an API based on the boilerplate to consume it in a front-only web app that enables users to send messages to each other', boilerplate_url: 'https://github.com/fintual-oss/paraffin-front')
 cycle3 = Cycle.create(curriculum: fin, name: 'Product vision', order_number: 3, learning_goals_description: 'Create a proffesional level web app service', challenge_description: 'Putting previous cycles learnings together by finishing up your web app with a product vision in mind', boilerplate_url: 'https://github.com/fintual-oss/paraffin-back')
 
-CycleLearningUnit.create(cycle: cycle1, learning_unit: docker)
-CycleLearningUnit.create(cycle: cycle1, learning_unit: git)
-CycleLearningUnit.create(cycle: cycle1, learning_unit: ruby)
-CycleLearningUnit.create(cycle: cycle1, learning_unit: rails)
-CycleLearningUnit.create(cycle: cycle2, learning_unit: js)
-CycleLearningUnit.create(cycle: cycle2, learning_unit: react)
-CycleLearningUnit.create(cycle: cycle2, learning_unit: nextjs)
+[docker, git, ruby, rails].each do |unit|
+  CycleLearningUnit.create(cycle: cycle1, learning_unit: unit)
+end
+
+[js, react, nextjs].each do |unit|
+  CycleLearningUnit.create(cycle: cycle2, learning_unit: unit)
+end
+
+[nextjs].each do |unit|
+  CycleLearningUnit.create(cycle: cycle3, learning_unit: unit)
+end
 
 CurriculumAffiliation.create(curriculum: fin, learning_unit: docker)
 CurriculumAffiliation.create(curriculum: fin, learning_unit: git)
