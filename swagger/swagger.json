@@ -116,6 +116,13 @@
                       },
                       "name": {
                         "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "image_url": {
+                        "type": "string",
+                        "nullable": true
                       }
                     }
                   },
@@ -166,6 +173,13 @@
                     },
                     "name": {
                       "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "image_url": {
+                      "type": "string",
+                      "nullable": true
                     }
                   }
                 }

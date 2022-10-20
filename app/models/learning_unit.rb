@@ -17,4 +17,5 @@ class LearningUnit < ApplicationRecord
   has_many :cycles, through: :cycle_learning_units
 
   validates :name, presence: true
+  validates :description, presence: true
 end
