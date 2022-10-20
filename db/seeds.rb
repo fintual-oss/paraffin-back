@@ -33,18 +33,6 @@ CycleLearningUnit.create(cycle: cycle2, learning_unit: js)
 CycleLearningUnit.create(cycle: cycle2, learning_unit: react)
 CycleLearningUnit.create(cycle: cycle2, learning_unit: nextjs)
 
-cycle1 = Cycle.create(curriculum: fin, name: 'Backend basics', order_number: 1, learning_goals_description: 'Learn development fundamentals. Learn backend basics', challenge_description: 'Develop a monolithic basic web app that enables users to send messages to each other', boilerplate_url: 'https://github.com/fintual-oss/paraffin-back')
-cycle2 = Cycle.create(curriculum: fin, name: 'Frontend basics', order_number: 2, learning_goals_description: 'Create an API. Learn frontend basics', challenge_description: 'Develop an API based on the boilerplate to consume it in a front-only web app that enables users to send messages to each other', boilerplate_url: 'https://github.com/fintual-oss/paraffin-front')
-cycle3 = Cycle.create(curriculum: fin, name: 'Product vision', order_number: 3, learning_goals_description: 'Create a proffesional level web app service', challenge_description: 'Putting previous cycles learnings together by finishing up your web app with a product vision in mind', boilerplate_url: 'https://github.com/fintual-oss/paraffin-back')
-
-CycleLearningUnit.create(cycle: cycle1, learning_unit: docker)
-CycleLearningUnit.create(cycle: cycle1, learning_unit: git)
-CycleLearningUnit.create(cycle: cycle1, learning_unit: ruby)
-CycleLearningUnit.create(cycle: cycle1, learning_unit: rails)
-CycleLearningUnit.create(cycle: cycle2, learning_unit: js)
-CycleLearningUnit.create(cycle: cycle2, learning_unit: react)
-CycleLearningUnit.create(cycle: cycle2, learning_unit: nextjs)
-
 CurriculumAffiliation.create(curriculum: fin, learning_unit: docker)
 CurriculumAffiliation.create(curriculum: fin, learning_unit: git)
 CurriculumAffiliation.create(curriculum: fin, learning_unit: ruby)
