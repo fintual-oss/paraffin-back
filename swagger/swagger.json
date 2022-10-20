@@ -84,6 +84,57 @@
         }
       }
     },
+    "/api/curriculums/{curriculum_id}/cycles": {
+      "get": {
+        "summary": "Returns all Cycles from a Curriculum",
+        "tags": [
+          "Cycles"
+        ],
+        "parameters": [
+          {
+            "name": "curriculum_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getCycles",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "learning_goals_description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Curriculum not found"
+          }
+        }
+      }
+    },
     "/api/curriculums/{curriculum_id}/learning_units": {
       "get": {
         "summary": "Returns all Learning Unit from a Curriculum",
