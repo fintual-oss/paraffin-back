@@ -4,11 +4,11 @@
       <img src="https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/ccd583a310fc605f82c1f2345fadb0a7/large.png" class="object-contain h-36 w-full object-center" />
     </div>
       <h2 class="text-center text-5xl font-bold tracking-tight text-gray-900 uppercase">
-        CAP<span class="text-8xl text-red-900">.</span><span class="text-xl text-blue-900 font-bold">Paraffin</span>
+        SerDev<span class="text-8xl text-red-900">.</span><span class="text-xl text-blue-900 font-bold">Sign In</span>
       </h2>
   </div>
 
-  <div class="mt-6 text-center text-lg font-bold tracking-tight uppercase">
+  <div class="mt-2 text-center text-lg font-bold tracking-tight uppercase">
     <p class="notice text-green-900"><%= notice %></p>
     <p class="alert text-red-900"><%= alert %></p>
   </div>
@@ -55,7 +55,8 @@
             border-transparent bg-indigo-600 py-2 px-4 text-sm 
             font-medium text-white shadow-sm hover:bg-indigo-700 
             focus:outline-none focus:ring-2 focus:ring-indigo-500 
-            focus:ring-offset-2 max-widht:100" %>
+            focus:ring-offset-2 mb-6" %>
+             <%= render "devise/shared/links" %>
         </div>
       <% end %>
 

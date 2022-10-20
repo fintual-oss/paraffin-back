@@ -7,13 +7,14 @@
     <div class="mx-auto h-36 w-auto text-center text-8xl">
       <img src="https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/ccd583a310fc605f82c1f2345fadb0a7/large.png" class="object-contain h-36 w-full object-center" />
     </div>
-      <h2 class="text-center text-5xl font-bold tracking-tight text-gray-900 uppercase mt-8">
-        Sign Up
+  
+      <h2 class="text-center text-5xl font-bold tracking-tight text-gray-900 uppercase">
+        SerDev<span class="text-8xl text-red-900">.</span><span class="text-xl text-blue-900 font-bold">Sign Up</span>
       </h2>
   </div>
 
 
-  <div class="mt-6 text-center text-lg font-bold tracking-tight uppercase">
+  <div class="mt-2 text-center text-lg font-bold tracking-tight uppercase">
     <p class="notice text-green-900"><%= notice %></p>
     <p class="alert text-red-900"><%= alert %></p>
   </div>
@@ -25,25 +26,33 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, :class => "block text-sm font-medium text-gray-700" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, :class => "block text-sm font-medium text-gray-700" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", :class => "block w-full appearance-none rounded-md border border-gray-300 
+            px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 
+            focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, :class => "block text-sm font-medium text-gray-700" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "block w-full appearance-none rounded-md border border-gray-300 
+            px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 
+            focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", :class => "flex w-full justify-center rounded-md border 
+            border-transparent bg-indigo-600 py-2 px-4 text-sm 
+            font-medium text-white shadow-sm hover:bg-indigo-700 
+            focus:outline-none focus:ring-2 focus:ring-indigo-500 
+            focus:ring-offset-2 mb-6" %>
     <%= render "devise/shared/links" %>
   </div>
 <% end %>
