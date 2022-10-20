@@ -13,5 +13,8 @@ class LearningUnit < ApplicationRecord
   has_many :curriculums, through: :curriculum_affiliations
   has_many :completed_learning_units
 
+  has_many :cycle_learning_units
+  has_many :cycles, through: :cycle_learning_units
+
   validates :name, presence: true
 end
