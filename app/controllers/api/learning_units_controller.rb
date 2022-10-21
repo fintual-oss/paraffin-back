@@ -8,6 +8,12 @@ module Api
     end
 
     def index
+      cycle = Cycle.find(params[:cycle_id])
+      learning_units = cycle.learning_units
+      render json: learning_units, only: %i[id name description image_url]
+    end
+
+    def curriculum_learning_units
       curriculum = Curriculum.find(params[:curriculum_id])
       learning_units = curriculum.learning_units
       render json: learning_units
