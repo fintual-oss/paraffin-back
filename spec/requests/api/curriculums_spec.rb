@@ -27,10 +27,6 @@ describe 'Curriculums API' do
 
         run_test!
       end
-
-      response '401', 'Unauthorized', skip_before: true do
-        run_test!
-      end
     end
   end
 
@@ -50,10 +46,6 @@ describe 'Curriculums API' do
                  name: { type: :string }
                }
 
-        run_test!
-      end
-
-      response '401', 'Unauthorized', skip_before: true do
         run_test!
       end
 
