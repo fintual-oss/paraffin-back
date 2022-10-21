@@ -32,9 +32,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         }
       }
@@ -74,9 +71,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Curriculum not found"
@@ -125,9 +119,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Curriculum not found"
@@ -185,9 +176,6 @@
               }
             }
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "404": {
             "description": "Curriculum not found"
           }
@@ -236,9 +224,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Learning Unit not found"
@@ -432,9 +417,6 @@
               }
             }
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "404": {
             "description": "Resource not found"
           }
@@ -486,9 +468,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Learning Unit not found"
@@ -581,9 +560,6 @@
               }
             }
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "404": {
             "description": "Resource not found"
           }
@@ -622,9 +598,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Resource not found"
@@ -775,9 +748,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         }
       }
