@@ -35,7 +35,7 @@ describe 'Learning Units API' do
                    image_url: { type: :string, nullable: true }
                  }
                },
-               required: %w[id name]
+               required: %w[id name description image_url]
 
         run_test!
       end
@@ -46,6 +46,38 @@ describe 'Learning Units API' do
 
       response '404', 'Curriculum not found' do
         let(:curriculum_id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
+  path '/api/cycles/{cycle_id}/learning_units' do
+    get 'Returns all Learning Unit from a Cycle' do
+      tags 'Learning Units'
+      produces 'application/json'
+      parameter name: :cycle_id, in: :path, type: :string
+      operationId 'getCycleLearningUnits'
+
+      let(:cycle_id) { create(:cycle, name: 'first cycle').id }
+
+      response '200', 'Success' do
+        schema type: :array,
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   name: { type: :string },
+                   description: { type: :string },
+                   image_url: { type: :string, nullable: true }
+                 }
+               },
+               required: %w[id name description image_url]
+
+        run_test!
+      end
+
+      response '404', 'Cycle not found' do
+        let(:cycle_id) { 'invalid' }
         run_test!
       end
     end
