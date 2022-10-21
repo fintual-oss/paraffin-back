@@ -32,10 +32,6 @@ describe 'Cycles API' do
         run_test!
       end
 
-      response '401', 'Unauthorized', skip_before: true do
-        run_test!
-      end
-
       response '404', 'Curriculum not found' do
         let(:curriculum_id) { 'invalid' }
         run_test!
