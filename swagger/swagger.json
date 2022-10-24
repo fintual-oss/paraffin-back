@@ -126,6 +126,69 @@
         }
       }
     },
+    "/api/cycles/{cycle_id}/learning_unit_successions": {
+      "get": {
+        "summary": "Returns all learning units successions in the cycle",
+        "tags": [
+          "Cycles"
+        ],
+        "parameters": [
+          {
+            "name": "cycle_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "listLearningUnitSuccessions",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "predecessor_id": {
+                        "type": "integer"
+                      },
+                      "successor_id": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Record not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/curriculums/{curriculum_id}/learning_units": {
       "get": {
         "summary": "Returns all Learning Unit from a Curriculum",
