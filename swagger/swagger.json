@@ -636,6 +636,12 @@
                       },
                       "url": {
                         "type": "string"
+                      },
+                      "average_evaluation": {
+                        "type": "string"
+                      },
+                      "number_of_evaluations": {
+                        "type": "integer"
                       }
                     }
                   },
