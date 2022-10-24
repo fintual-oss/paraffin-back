@@ -23,8 +23,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :curriculums, only: %i[index show] do
-      resources :learning_units, only: %i[index]
+      get 'learning_units', to: 'learning_units#curriculum_learning_units'
       resources :cycles, only: %i[index]
+    end
+
+    resources :cycles, only: %i[] do
+      resources :learning_units, only: %i[index]
     end
 
     resources :learning_units, only: %i[show] do

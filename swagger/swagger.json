@@ -179,7 +179,9 @@
                   },
                   "required": [
                     "id",
-                    "name"
+                    "name",
+                    "description",
+                    "image_url"
                   ]
                 }
               }
@@ -190,6 +192,64 @@
           },
           "404": {
             "description": "Curriculum not found"
+          }
+        }
+      }
+    },
+    "/api/cycles/{cycle_id}/learning_units": {
+      "get": {
+        "summary": "Returns all Learning Unit from a Cycle",
+        "tags": [
+          "Learning Units"
+        ],
+        "parameters": [
+          {
+            "name": "cycle_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getCycleLearningUnits",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "image_url": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "image_url"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cycle not found"
           }
         }
       }
