@@ -83,6 +83,9 @@ ResourceEvaluation.create(user: manu, resource: react_ten, evaluation: 2, commen
 ResourceEvaluation.create(user: valentin, resource: next_fireship, evaluation: 5, comment: "este profe es la zolaaaa")
 ResourceEvaluation.create(user: isa, resource: next_front, evaluation: 1, comment: "no lo hagan :(")
 
+LearningUnitSuccession.create(cycle: cycle1, predecessor: git, successor: ruby)
+LearningUnitSuccession.create(cycle: cycle1, predecessor: ruby, successor: rails)
+
 CompletedLearningUnit.create(user: ale, learning_unit: git)
 CompletedLearningUnit.create(user: ale, learning_unit: docker)
 CompletedLearningUnit.create(user: ale, learning_unit: ruby)

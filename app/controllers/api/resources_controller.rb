@@ -21,7 +21,7 @@ module Api
 
     def evaluate
       resource_id = params[:resource_id]
-      Resource.find(resource_id) # if not throw 404
+      Resource.find(resource_id)
       resource_evaluation = new_or_update_evaluation(resource_id)
       if resource_evaluation.save
         render json: resource_evaluation, status: :created

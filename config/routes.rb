@@ -27,8 +27,9 @@ Rails.application.routes.draw do
       resources :cycles, only: %i[index]
     end
 
-    resources :cycles, only: %i[] do
+    resources :cycles, only: [] do
       resources :learning_units, only: %i[index]
+      resources :learning_unit_successions, only: %i[index]
     end
 
     resources :learning_units, only: %i[show] do
