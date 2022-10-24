@@ -7,7 +7,7 @@ describe 'Resources API' do
   before do |response|
     sign_in user unless response.metadata[:skip_before]
     if response.metadata[:create_evaluation]
-      create(:resource_evaluation, resource:, user:)
+      create(:resource_evaluation, resource:, user:, evaluation: 3)
     end
   end
 
@@ -18,20 +18,28 @@ describe 'Resources API' do
       parameter name: :learning_unit_id, in: :path, type: :string
       operationId 'getLearningUnitResources'
 
-      let(:learning_unit_id) { create(:learning_unit).id }
+      let(:learning_unit) { create(:learning_unit) }
+      let(:learning_unit_id) { learning_unit.id }
+      let(:resource) { create(:resource, learning_unit:) }
 
-      response '200', 'Success' do
+      response '200', 'Success', create_evaluation: true do
         schema type: :array,
                items: {
                  type: :object,
                  properties: {
                    id: { type: :integer },
                    name: { type: :string },
-                   url: { type: :string }
+                   url: { type: :string },
+                   average_evaluation: { type: :string },
+                   number_of_evaluations: { type: :integer }
                  }
                },
                required: %w[id name]
-        run_test!
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(data[0]['average_evaluation']).to eq('3.0')
+          expect(data[0]['number_of_evaluations']).to eq(1)
+        end
       end
 
       response '404', 'Learning Unit not found' do

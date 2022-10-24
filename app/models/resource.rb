@@ -23,4 +23,8 @@ class Resource < ApplicationRecord
   def average_evaluation
     resource_evaluations.average(:evaluation)
   end
+
+  def number_of_evaluations
+    resource_evaluations.count(:evaluation)
+  end
 end
