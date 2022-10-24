@@ -34,10 +34,6 @@ describe 'Resources API' do
         run_test!
       end
 
-      response '401', 'Unauthorized', skip_before: true do
-        run_test!
-      end
-
       response '404', 'Learning Unit not found' do
         let(:learning_unit_id) { 'invalid' }
         run_test!
@@ -63,10 +59,6 @@ describe 'Resources API' do
         run_test!
       end
 
-      response '401', 'Unauthorized', skip_before: true do
-        run_test!
-      end
-
       response '404', 'Resource not found' do
         let(:id) { 'invalid' }
         run_test!
@@ -89,10 +81,6 @@ describe 'Resources API' do
                properties: {
                  average_evaluation: { type: :string }
                }
-        run_test!
-      end
-
-      response '401', 'Unauthorized', skip_before: true do
         run_test!
       end
 

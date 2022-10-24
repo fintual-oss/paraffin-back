@@ -1,6 +1,9 @@
 module Api
   class LearningUnitsController < ApiApplicationController
     before_action :set_learning_unit, only: [:complete_learning_unit]
+    before_action :authenticate_user!,
+                  only: %i[completed complete_learning_unit
+                           uncomplete_learning_unit]
 
     def show
       learning_unit = LearningUnit.find(params[:id])

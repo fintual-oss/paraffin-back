@@ -1,5 +1,7 @@
 module Api
   class ResourcesController < ApiApplicationController
+    before_action :authenticate_user!, only: %i[evaluate evaluation create]
+
     def show
       resource = Resource.find(params[:id])
       render json: resource
