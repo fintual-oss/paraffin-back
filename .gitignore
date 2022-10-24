@@ -32,3 +32,6 @@
 
 # Coverage reports directory
 coverage/
+
+# Ignore .env file
+.env

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_20_185603) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_20_193201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_185603) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "learning_unit_successions", force: :cascade do |t|
+    t.bigint "cycle_id", null: false
+    t.bigint "predecessor_id", null: false
+    t.bigint "successor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cycle_id"], name: "index_learning_unit_successions_on_cycle_id"
+    t.index ["predecessor_id"], name: "index_learning_unit_successions_on_predecessor_id"
+    t.index ["successor_id"], name: "index_learning_unit_successions_on_successor_id"
+    t.check_constraint "predecessor_id <> successor_id", name: "different_learning_units_for_succession"
+  end
+
   create_table "learning_units", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -139,6 +151,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_185603) do
   add_foreign_key "completed_learning_units", "users"
   add_foreign_key "curriculum_affiliations", "curriculums"
   add_foreign_key "curriculum_affiliations", "learning_units"
+  add_foreign_key "learning_unit_successions", "cycles"
+  add_foreign_key "learning_unit_successions", "learning_units", column: "predecessor_id"
+  add_foreign_key "learning_unit_successions", "learning_units", column: "successor_id"
   add_foreign_key "resource_comments", "resources"
   add_foreign_key "resource_comments", "users"
   add_foreign_key "resource_evaluations", "resources"
