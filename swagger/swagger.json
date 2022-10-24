@@ -126,6 +126,61 @@
         }
       }
     },
+    "/api/cycles/{id}": {
+      "get": {
+        "summary": "Returns Cycle details",
+        "tags": [
+          "Cycles"
+        ],
+        "description": "Retrieves the details of a cycle",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getCycle",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "order_number": {
+                      "type": "integer"
+                    },
+                    "learning_goals_description": {
+                      "type": "string"
+                    },
+                    "challenge_description": {
+                      "type": "string"
+                    },
+                    "boilerplate_url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cycle not found"
+          }
+        }
+      }
+    },
     "/api/cycles/{cycle_id}/learning_unit_successions": {
       "get": {
         "summary": "Returns all learning units successions in the cycle",
