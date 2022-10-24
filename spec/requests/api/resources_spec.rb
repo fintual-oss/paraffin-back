@@ -21,17 +21,23 @@ describe 'Resources API' do
       let(:learning_unit_id) { create(:learning_unit).id }
 
       response '200', 'Success' do
-        schema type: :array,
+        schema: {type: :array,
                items: {
                  type: :object,
                  properties: {
                    id: { type: :integer },
                    name: { type: :string },
-                   url: { type: :string }
-                 }
+                   url: { type: :string },
+                   average_evaluation: { type: :string },
+                   number_of_evaluations: { type: :integer }
+                  }
                },
                required: %w[id name]
-        run_test!
+              }
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(data).to match_json_schema(schema)
+        end
       end
 
       response '404', 'Learning Unit not found' do
