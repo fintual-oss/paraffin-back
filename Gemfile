@@ -59,6 +59,12 @@ gem 'rswag-ui'
 
 gem 'rack-cors'
 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+gem 'dotenv'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
