@@ -119,6 +119,7 @@ GEM
     diff-lcs (1.5.0)
     digest (3.1.0)
     docile (1.4.0)
+    dotenv (2.8.1)
     erubi (1.11.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -413,6 +414,7 @@ DEPENDENCIES
   capybara
   debug
   devise!
+  dotenv
   factory_bot_rails
   importmap-rails
   jbuilder

@@ -4,7 +4,12 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.0]
   def self.up
     # rubocop:disable Rails/BulkChangeTable
     change_table :users do |t|
+      t.string :name
+      t.string :uid
+      t.string :avatar_url
+      t.string :provider
       ## Database authenticatable
+      
       t.string :email, null: true
       t.string :encrypted_password, null: false, default: ''
 
