@@ -1,15 +1,129 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* ####### DEVISE VIEWS ####### */
+
+/* Container */
+
+.flex-container {
+  height: 100%;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaf4ff;
+  width: 600px;
+  border-radius: 15px;
+  font-family:'Trebuchet MS';
+  border-color: #a1bae3;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* Text */
+
+.text-title {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.text-label {
+  margin: 10px;
+  font-size: 0.9em;
+}
+
+.text-alert {
+  margin: 10px;
+  font-size: 0.5em;
+}
+
+/* Form */
+
+.input-form {
+  margin:5px;
+  width: 250px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 8px;
+  color:#001a3a
+}
+
+.input-form:focus {
+  border-width: 2px;
+  border-color: #4285f4;
+  outline:none;
+}
+
+.input-form:active {
+  background-color: #ffffff;
+}
+
+/* Devise Button */
+
+.devise-link-button {
+  background-image: linear-gradient(#0dccea, #0d70ea);
+  width: 250px;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: Montserrat,sans-serif;
+  font-size: .9em;
+  margin-top: 20px;
+  padding: 10px 15px;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.devise-action-button {
+  background-image: linear-gradient(#ffee00, #ea710d);
+  width: 250px;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: Montserrat,sans-serif;
+  font-size: .9em;
+  margin-top: 20px;
+  padding: 10px 15px;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* Google Button */
+
+.google-container {
+  margin-bottom: 40px;
+  background-color: #4285f4;
+  width: 250px;
+  height: 47px;
+  border-radius: 5px;
+  padding: 0.5px;
+}
+
+.google-text {
+  margin-top: -40px;
+  margin-left: 65px;
+  color:white;
+  font-family: 'Trebuchet MS';
+  font-weight: bold;
+  font-size: 1em;
+}
