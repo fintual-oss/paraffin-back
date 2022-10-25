@@ -4,34 +4,34 @@
       <img src="https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/ccd583a310fc605f82c1f2345fadb0a7/large.png" class="object-contain h-36 w-full object-center" />
     </div>
       <h2 class="text-center text-5xl font-bold tracking-tight text-gray-900 uppercase">
-        CAP<span class="text-8xl text-red-900">.</span><span class="text-xl text-blue-900 font-bold">Paraffin</span>
+        Ser<span class="text-8xl text-red-900">.</span>Dev<span class="text-xl text-blue-900 font-bold">Sign In</span>
       </h2>
   </div>
 
-  <div class="mt-6 text-center text-lg font-bold tracking-tight uppercase">
+  <div class="mt-2 text-center text-lg font-bold tracking-tight uppercase">
     <p class="notice text-green-900"><%= notice %></p>
     <p class="alert text-red-900"><%= alert %></p>
   </div>
 
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <%= form_for(resource, as: resource_name, :html => {:class => "space-y-6"}, url: session_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, :html => {class: "space-y-6"}, url: session_path(resource_name)) do |f| %>
         <div>
-          <%= f.label :email, :class => "block text-sm font-medium text-gray-700" %>
+          <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
             <%= f.email_field :email,
               autofocus: true,
               autocomplete: "email",
-              :class => "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+              class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
           </div>
         </div>
 
         <div>
-          <%= f.label :password, :class => "block text-sm font-medium text-gray-700" %>
+          <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
           <%= f.password_field :password,
             autocomplete: "current-password",
-            :class => "block w-full appearance-none rounded-md border border-gray-300 
+            class: "block w-full appearance-none rounded-md border border-gray-300 
             px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 
             focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
           </div>
@@ -41,21 +41,22 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center">
             <%= f.check_box :remember_me,
-              :class => "h-4 w-4 rounded border-gray-300 text-indigo-600
+              class: "h-4 w-4 rounded border-gray-300 text-indigo-600
                 focus:ring-indigo-500" %>
             <%= f.label "Recordar mis datos",
-              :class => "ml-2 block text-sm text-gray-900" %>
+              class: "ml-2 block text-sm text-gray-900" %>
           </div>
         </div>
         <% end %>
 
         <div>
-          <%= f.submit "Ingresar a Paraffin",
-            :class => "flex w-full justify-center rounded-md border 
+          <%= f.submit "Ingresar",
+            class: "flex w-full justify-center rounded-md border 
             border-transparent bg-indigo-600 py-2 px-4 text-sm 
             font-medium text-white shadow-sm hover:bg-indigo-700 
             focus:outline-none focus:ring-2 focus:ring-indigo-500 
-            focus:ring-offset-2" %>
+            focus:ring-offset-2 mb-6" %>
+             <%= render "devise/shared/links" %>
         </div>
       <% end %>
 
