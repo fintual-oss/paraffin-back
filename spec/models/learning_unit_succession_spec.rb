@@ -8,7 +8,9 @@ RSpec.describe LearningUnitSuccession, type: :model do
   end
 
   describe 'validations' do
-    let(:learning_unit) { create(:learning_unit) }
+    let(:cycle) { create(:cycle) }
+    let(:predecessor) { create(:learning_unit, cycles: [cycle]) }
+    let(:successor) { create(:learning_unit, cycles: [cycle]) }
 
     it { is_expected.to validate_presence_of(:cycle) }
 
@@ -18,9 +20,17 @@ RSpec.describe LearningUnitSuccession, type: :model do
 
     it do
       expect do
-        FactoryBot.create(:learning_unit_succession,
-                          predecessor: learning_unit,
-                          successor: learning_unit)
+        FactoryBot.create(
+          :learning_unit_succession, cycle:, predecessor: successor, successor:
+        )
+      end.to raise_error ActiveRecord::RecordInvalid
+    end
+
+    it do
+      expect do
+        FactoryBot.create(
+          :learning_unit_succession, predecessor:, successor:
+        )
       end.to raise_error ActiveRecord::RecordInvalid
     end
   end
