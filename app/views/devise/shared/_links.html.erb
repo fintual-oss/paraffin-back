@@ -1,13 +1,27 @@
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name), class:"link" %><br />
+<% end %>
+
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= form_for "Login with Google",
+        url: omniauth_authorize_path(resource_name, provider), 
+        method: :post,
+        class:"form",
+        data: {turbo: "false"} do |f| %>
+          <%= f.submit type: "image", src: url_for("/assets/btn_google_dark_normal_ios.svg"), class:"google-icon"%>
+          <%= f.submit "Sign in with Google", class:"google-text"%>
+    <% end %>
+  <% end %>
+<% end %>
+
+
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Ingresar a tu cuenta", new_session_path(resource_name), class:"devise-link-button" %><br />
+  <%= link_to "Ingresar con email", new_session_path(resource_name), class:"devise-link-button" %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "Crear una cuenta", new_registration_path(resource_name), class:"devise-link-button" %><br />
-<% end %>
-
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
@@ -18,16 +32,66 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end %>
 
-<div class="google-container">
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= form_for "Login with Google",
-      url: omniauth_authorize_path(resource_name, provider), 
-      method: :post,
-      data: {turbo: "false"} do |f| %>
-        <%= f.submit "Sign in with Google", type: "image", src: url_for("/assets/btn_google_dark_normal_ios.svg") %>
-        <p class="google-text" ><%=f.submit "Sign in with Google"%></p>
-    <% end %>
-  <% end %>
-<% end %>
-</div>
+
+<style>
+
+  /* Devise Button */
+
+  .devise-link-button {
+    margin-top:10px;
+    margin-bottom: 40px;
+    background-color: #0D4899;
+    text-decoration:none;
+    width: 250px;
+    height: 47px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color:  #ffffff;
+    cursor: pointer;
+    font-family: Montserrat,sans-serif;
+    font-size: .9em;
+    padding: 15px 15px;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  /* Google Button */
+
+  .google-text {
+    background-color: #4285f4;
+    width: 200px;
+    height: 46px;
+    border-radius: 5px;
+    border: none;
+    color:  #ffffff;
+    font-family: 'Trebuchet MS';
+    font-weight: bold;
+    font-size: 1em;
+  } 
+
+  .google-icon {
+    margin-left: -5px;
+    width: 53px;
+  } 
+
+  .form {
+    margin-top:30px;
+    display: flex;
+    align-items: center;
+  }
+
+   /* Google Button */
+
+  .link {
+    color: #0D4899;
+    text-decoration:none;
+  }
+
+</style>
+
+
+
+

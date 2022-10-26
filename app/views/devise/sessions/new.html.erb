@@ -1,6 +1,6 @@
 <div class="flex-container">
   <div class="form-container"> 
-    <h2 class="text-title">Log In</h2>
+    <h2 class="text-title">Inicio de sesión 🎮</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-label">
@@ -20,11 +20,100 @@
         </div>
       <% end %>
 
-      <div class="devise-action-button">
-        <%= f.submit "Ingresar a tu cuenta", class:"btn btn-primary" %>
-      </div>
+        <%= f.submit "Ingresar a mi cuenta", class:"devise-action-button" %>
+
     <% end %>
 
     <%= render "devise/shared/links" %>
   </div>
 </div>
+
+<style>
+
+  /* Container */
+
+  .flex-container {
+    height: 100%;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eaf4ff;
+    width: 600px;
+    border-radius: 15px;
+    font-family:'Trebuchet MS';
+    border-color: #a1bae3;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  /* Text */
+
+  .text-title {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-size: 2.2em;
+  }
+
+  .text-label {
+    margin: 10px;
+    font-size: 0.9em;
+    
+
+  }
+
+  /* Form */
+
+  .input-form {
+    margin:5px;
+    margin-bottom: 10px;
+    width: 250px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 8px;
+    color:#001a3a;
+    border: none;
+  }
+
+  .input-form:focus {
+    border-width: 2px;
+    border-color: #4285f4;
+  }
+
+  /* Devise Button */
+
+  .devise-action-button {
+    background-image: linear-gradient(#0dccea, #0d70ea);
+    width: 270px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+    box-sizing: border-box;
+    color:  #ffffff;
+    cursor: pointer;
+    font-family: Montserrat,sans-serif;
+    font-size: .9em;
+    margin: 10px 0px 30px 5px;
+    padding: 10px 15px;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+</style>
+
+
+
