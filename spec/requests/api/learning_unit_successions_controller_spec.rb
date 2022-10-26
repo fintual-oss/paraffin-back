@@ -5,9 +5,9 @@ describe 'Learning Unit Successions API' do
   let!(:user) { create(:user) }
   let(:curriculum) { create(:curriculum) }
   let(:cycle) { create(:cycle) }
-  let(:first_learning_unit) { create(:learning_unit) }
-  let(:second_learning_unit) { create(:learning_unit) }
-  let(:third_learning_unit) { create(:learning_unit) }
+  let!(:first_learning_unit) { create(:learning_unit, cycles: [cycle]) }
+  let!(:second_learning_unit) { create(:learning_unit, cycles: [cycle]) }
+  let!(:third_learning_unit) { create(:learning_unit, cycles: [cycle]) }
 
   before do |response|
     create(
