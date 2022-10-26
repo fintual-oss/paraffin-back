@@ -20,24 +20,24 @@ All (most) of this code was writen in Puerto Natales, under the benevolent prote
 
 ## Getting Started
 
-0. Before everything, you should have Docker and Docker Compose in your computer (Docker desktop includes both).
+0. Before everything, you should have Docker and Docker Compose in your computer ([Docker desktop](https://docs.docker.com/desktop/install/mac-install/) includes both).
 
 1. Clone this repo and cd into your directory.
     
     ```sh
-    git clone git@github.com:fintual-oss/paraffin.git && cd paraffin
+    git clone git@github.com:fintual-oss/paraffin-back.git && cd paraffin-back
     ```
 
 2. In another terminal window, build and run your app with Compose.
 
     ```sh
-    $ docker compose up --build
+    docker compose up --build
     ```
 
 3. You need to create the database. In another terminal, run:
 
     ```sh
-    $ docker compose run web rake db:create db:migrate db:seed
+    docker compose run web rake db:create db:migrate db:seed
     ```
 
 4. Finally, enter http://localhost:3000/ in a browser to see the application running.
