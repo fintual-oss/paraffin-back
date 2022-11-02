@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: learning_unit_successions
+#
+#  id             :bigint           not null, primary key
+#  cycle_id       :bigint           not null
+#  predecessor_id :bigint           not null
+#  successor_id   :bigint           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 class LearningUnitSuccession < ApplicationRecord
   belongs_to :predecessor, class_name: 'LearningUnit'
   belongs_to :successor, class_name: 'LearningUnit'
