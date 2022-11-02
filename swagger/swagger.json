@@ -645,6 +645,23 @@
                       },
                       "number_of_evaluations": {
                         "type": "integer"
+                      },
+                      "resource_labels": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            }
+                          }
+                        }
                       }
                     }
                   },

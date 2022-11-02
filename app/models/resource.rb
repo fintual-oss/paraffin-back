@@ -31,6 +31,6 @@ class Resource < ApplicationRecord
   end
 
   def resource_labels
-    labels.select(:id, :name, :icon)
+    labels.select(:id, :name, :description)
   end
 end

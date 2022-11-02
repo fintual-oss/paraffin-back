@@ -91,9 +91,9 @@ CompletedLearningUnit.create(user: ale, learning_unit: docker)
 CompletedLearningUnit.create(user: ale, learning_unit: ruby)
 CompletedLearningUnit.create(user: ale, learning_unit: js)
 
-paid = Label.create(name: "Paid", icon: "pi-dollar")
-media = Label.create(name: "Media", icon: "pi-video")
-article = Label.create(name: "Article", icon: "pi-book")
+paid = Label.create(name: "Paid", description: "This resource is paid")
+media = Label.create(name: "Media", description: "Includes a video")
+article = Label.create(name: "Article", description: "Is an article")
 
 
 [github, ruby_udemy, react_redux].each do |resource|
