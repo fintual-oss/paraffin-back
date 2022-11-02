@@ -25,11 +25,11 @@ class User < ApplicationRecord
   has_many :completed_learning_units
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, oauth_id: auth.oauth_id).first_or_create do |user|
+    where(provider: auth.provider,
+          oauth_id: auth.oauth_id).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
     end
   end
-  
 end
