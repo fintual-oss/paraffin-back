@@ -5,5 +5,9 @@ module Users
       store_location_for(resource, params[:redirect_to])
       super
     end
+
+    def after_sign_in_path_for(resource)
+      stored_location_for(resource) || root_path
+    end
   end
 end
