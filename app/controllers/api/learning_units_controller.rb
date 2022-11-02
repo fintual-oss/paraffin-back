@@ -53,7 +53,7 @@ module Api
         completed_learning_unit.destroy!
         render json: { deleted: true }
       else
-        not_found
+        record_not_found
       end
     end
 
@@ -61,20 +61,6 @@ module Api
 
     def set_learning_unit
       @learning_unit = LearningUnit.find(params[:learning_unit_id])
-    end
-
-    def bad_request
-      status = :bad_request
-      code = 400
-      message = 'Bad Request'
-      render json: { status:, code:, message: }, status:
-    end
-
-    def not_found
-      status = :not_found
-      code = 404
-      message = 'Record_not_found'
-      render json: { status:, code:, message: }, status:
     end
   end
 end
