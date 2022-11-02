@@ -15,6 +15,8 @@ class Resource < ApplicationRecord
   belongs_to :learning_unit
   has_many :resource_comments
   has_many :resource_evaluations
+  has_many :resource_labels
+  has_many :labels, through: :resource_labels
 
   validates :url, url: { allow_blank: false }
 

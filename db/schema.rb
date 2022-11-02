@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_20_193201) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_02_150916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_193201) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "icon", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "learning_unit_successions", force: :cascade do |t|
     t.bigint "cycle_id", null: false
     t.bigint "predecessor_id", null: false
@@ -123,6 +130,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_193201) do
     t.index ["user_id"], name: "index_resource_evaluations_on_user_id"
   end
 
+  create_table "resource_labels", force: :cascade do |t|
+    t.bigint "resource_id", null: false
+    t.bigint "label_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_resource_labels_on_label_id"
+    t.index ["resource_id"], name: "index_resource_labels_on_resource_id"
+  end
+
+  create_table "resource_tags", force: :cascade do |t|
+    t.bigint "resource_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resource_id"], name: "index_resource_tags_on_resource_id"
+    t.index ["tag_id"], name: "index_resource_tags_on_tag_id"
+  end
+
   create_table "resources", force: :cascade do |t|
     t.string "name"
     t.string "url"
@@ -132,6 +157,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_193201) do
     t.bigint "learning_unit_id"
     t.index ["learning_unit_id"], name: "index_resources_on_learning_unit_id"
     t.index ["user_id"], name: "index_resources_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "icon", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -158,6 +190,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_193201) do
   add_foreign_key "resource_comments", "users"
   add_foreign_key "resource_evaluations", "resources"
   add_foreign_key "resource_evaluations", "users"
+  add_foreign_key "resource_labels", "labels"
+  add_foreign_key "resource_labels", "resources"
+  add_foreign_key "resource_tags", "resources"
+  add_foreign_key "resource_tags", "tags"
   add_foreign_key "resources", "learning_units"
   add_foreign_key "resources", "users"
 end
