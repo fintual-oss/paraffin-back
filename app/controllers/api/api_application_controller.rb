@@ -16,6 +16,10 @@ class Api::ApiApplicationController < ActionController::API
 
   private
 
+  def current_user
+    @current_user ||= User.find_by(id: doorkeeper_token[:resource_owner_id])
+  end
+
   def record_not_found
     status = :not_found
     code = 404

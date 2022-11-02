@@ -22,4 +22,9 @@ class User < ApplicationRecord
   has_many :resource_comments
   has_many :resource_evaluations
   has_many :completed_learning_units
+
+  def self.authenticate(email, password)
+    user = User.find_for_authentication(email:)
+    user&.valid_password?(password) ? user : nil
+  end
 end

@@ -9,6 +9,8 @@ gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 # Devise gem for authentication
 gem 'devise', github: 'heartcombo/devise', ref: 'f8d1ea90bc3'
 
+gem 'doorkeeper', '~> 5.4.0'
+
 # Active Admin for backoffice
 gem 'activeadmin'
 

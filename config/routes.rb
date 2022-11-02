@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  use_doorkeeper do
+    skip_controllers :authorizations, :applications, :authorized_applications
+  end
+
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
   root 'curriculums#show'
 
   namespace :api do
+    resources :users, only: %i[create]
     resources :curriculums, only: %i[index show] do
       get 'learning_units', to: 'learning_units#curriculum_learning_units'
       resources :cycles, only: %i[index]

@@ -95,3 +95,7 @@ if Rails.env.development?
   AdminUser.create!(email: 'ale@paraffin.com', password: 'password',
                     password_confirmation: 'password')
 end
+
+if Doorkeeper::Application.count.zero?
+  Doorkeeper::Application.create(name: "Frontend", redirect_uri: "", scopes: "")
+end
