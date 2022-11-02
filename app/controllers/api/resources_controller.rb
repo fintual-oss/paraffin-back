@@ -10,7 +10,7 @@ module Api
     def index
       resources = LearningUnit.find(params[:learning_unit_id])&.resources
       render json: resources, only: %i[id name url],
-             methods: %i[average_evaluation number_of_evaluations]
+             methods: %i[average_evaluation number_of_evaluations resource_labels]
     end
 
     def average_evaluation

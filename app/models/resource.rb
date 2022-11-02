@@ -29,4 +29,8 @@ class Resource < ApplicationRecord
   def number_of_evaluations
     resource_evaluations.count(:evaluation)
   end
+
+  def resource_labels
+    labels.select(:id, :name, :icon)
+  end
 end
