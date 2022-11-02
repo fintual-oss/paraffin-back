@@ -1,6 +1,8 @@
 module Api
   class ResourcesController < ApiApplicationController
-    before_action :authenticate_user!, only: %i[evaluate evaluation create]
+    before_action :authenticate_user!,
+                  only: %i[evaluate evaluation create completed
+                           complete_resource uncomplete_resource]
 
     def show
       resource = Resource.find(params[:id])
@@ -53,6 +55,42 @@ module Api
         render json: resource_new, status: :created
       else
         render json: resource_new.errors, status: :unprocessable_entity
+      end
+    end
+
+    def completed
+      resource_id = Resource.find(params[:resource_id])
+      completed_by_user = CompletedResource.find_by(
+        user: current_user,
+        resource_id:
+      )
+      completed = completed_by_user ? true : false
+      render json: { completed: }
+    end
+
+    def complete_resource
+      resource = Resource.find(params[:resource_id])
+      completed_resource =
+        CompletedResource.create(
+          resource:,
+          user: current_user
+        )
+      if completed_resource.valid?
+        render json: { completed: true }
+      else
+        bad_request
+      end
+    end
+
+    def uncomplete_resource
+      completed_resource = CompletedResource.find_by(
+        resource_id: params[:resource_id], user_id: current_user
+      )
+      if completed_resource
+        completed_resource.destroy!
+        render json: { deleted: true }
+      else
+        record_not_found
       end
     end
 
