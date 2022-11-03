@@ -1,11 +1,10 @@
 class Users::SessionsController < Devise::SessionsController
-
   def new
     self.resource = resource_class.new(sign_in_params)
     store_location_for(resource, params[:redirect_to])
     super
   end
-  
+
   def after_sign_out_path_for(_resource_or_scope)
     new_user_session_path
   end
