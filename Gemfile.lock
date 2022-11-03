@@ -10,6 +10,15 @@ GIT
       responders
       warden (~> 1.2.3)
 
+GIT
+  remote: https://github.com/omniauth/omniauth-github.git
+  revision: 0ac46b59ccdabd4cbe5be4a665df269355081915
+  branch: master
+  specs:
+    omniauth-github (2.0.1)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -422,6 +431,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   omniauth
+  omniauth-github!
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
   pg (~> 1.1)
