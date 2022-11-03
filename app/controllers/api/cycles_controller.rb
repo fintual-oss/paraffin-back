@@ -6,7 +6,7 @@ module Api
     def index
       cycles = @curriculum.cycles
       render json: cycles,
-             only: %i[id name learning_goals_description]
+             only: %i[id order_number name learning_goals_description]
     end
 
     def show

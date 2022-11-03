@@ -111,6 +111,9 @@
                       "name": {
                         "type": "string"
                       },
+                      "order_number": {
+                        "type": "integer"
+                      },
                       "learning_goals_description": {
                         "type": "string"
                       }

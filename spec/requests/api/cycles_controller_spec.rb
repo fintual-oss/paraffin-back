@@ -25,6 +25,7 @@ describe 'Cycles API' do
                  properties: {
                    id: { type: :integer },
                    name: { type: :string },
+                   order_number: { type: :integer },
                    learning_goals_description: { type: :string }
                  }
                }
