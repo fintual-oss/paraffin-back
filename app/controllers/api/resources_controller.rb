@@ -67,7 +67,7 @@ module Api
         user: current_user,
         resource_id:
       )
-      completed = completed_by_user ? true : false
+      completed = completed_by_user.present?
       render json: { completed: }
     end
 
@@ -86,7 +86,7 @@ module Api
       completed_resource = CompletedResource.find_by(
         resource_id: params[:resource_id], user_id: current_user
       )
-      if completed_resource
+      if completed_resource.present?
         completed_resource.destroy!
         render json: { deleted: true }
       else
