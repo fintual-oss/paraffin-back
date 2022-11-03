@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :label do
     name { 'paid' }
-    icon { 'pi-dollar' }
+    description { 'This resource is paid' }
   end
 end
