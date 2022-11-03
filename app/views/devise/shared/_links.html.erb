@@ -3,16 +3,24 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
+ 
     <%= form_for "Login with Google",
-        url: omniauth_authorize_path(resource_name, provider), 
+        url: omniauth_authorize_path(resource_name, resource_class.omniauth_providers[0]), 
         method: :post,
-        class:"form",
+        class:"google-form",
         data: {turbo: "false"} do |f| %>
           <%= f.submit type: "image", src: url_for("/assets/btn_google_dark_normal_ios.svg"), class:"google-icon"%>
           <%= f.submit "Sign in with Google", class:"google-text"%>
     <% end %>
-  <% end %>
+        <%= form_for "Login with Github",
+        url: omniauth_authorize_path(resource_name, resource_class.omniauth_providers[1]), 
+        method: :post,
+        class:"github-form",
+        data: {turbo: "false"} do |f| %>
+          <%= f.submit type: "image", src: url_for("/assets/GitHub-Mark-120px-plus.png"), class:"github-icon"%>
+          <%= f.submit "Login with Github", class:"github-text"%>
+    <% end %>
+
 <% end %>
 
 
@@ -68,13 +76,39 @@
     font-size: 1em;
   } 
 
+  .github-icon {
+    border-color: #000000;
+    margin-left: 2px;
+    margin-right: 4px;
+    width: 43px;
+  } 
+
+  .github-text {
+    background-color: #000000;
+    margin-top: 2px;
+    width: 200px;
+    height: 46px;
+    border-radius: 5px;
+    border: none;
+    color:  #ffffff;
+    font-family: 'Trebuchet MS';
+    font-weight: bold;
+    font-size: 1em;
+  } 
+
   .google-icon {
     margin-left: -5px;
     width: 53px;
   } 
 
-  .form {
-    margin-top:30px;
+  .google-form {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  .github-form {
+    margin-top: 5px;
     display: flex;
     align-items: center;
   }
