@@ -22,9 +22,9 @@ module Api
     def average_evaluation
       resource = Resource.find(params[:resource_id])
       evaluation =
-        Resources::ResourceEvaluationService.new.calculate_average_evaluation(
+        Resources::ResourceEvaluationService.new(
           resource.id
-        )
+        ).calculate_average_evaluation
       render json: { average_evaluation: evaluation }
     end
 
