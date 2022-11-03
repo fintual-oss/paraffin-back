@@ -48,6 +48,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_194703) do
     t.index ["user_id", "learning_unit_id"], name: "index_completed_learning_units_on_user_id_and_learning_unit_id", unique: true
   end
 
+  create_table "completed_resources", force: :cascade do |t|
+    t.bigint "resource_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "resource_id"], name: "index_completed_resources_on_user_id_and_resource_id", unique: true
+  end
+
   create_table "curriculum_affiliations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -180,6 +188,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_194703) do
 
   add_foreign_key "completed_learning_units", "learning_units"
   add_foreign_key "completed_learning_units", "users"
+  add_foreign_key "completed_resources", "resources"
+  add_foreign_key "completed_resources", "users"
   add_foreign_key "curriculum_affiliations", "curriculums"
   add_foreign_key "curriculum_affiliations", "learning_units"
   add_foreign_key "learning_unit_successions", "cycles"
