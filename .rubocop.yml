@@ -2503,13 +2503,13 @@ Metrics/CyclomaticComplexity:
   Max: 7
 
 Metrics/MethodLength:
-  Description: 'Avoid methods longer than 15 lines of code.'
+  Description: 'Avoid methods longer than 10 lines of code.'
   StyleGuide: '#short-methods'
   Enabled: true
   VersionAdded: '0.25'
   VersionChanged: '1.5'
   CountComments: false  # count full line comments?
-  Max: 15
+  Max: 10
   CountAsOne: []
   AllowedMethods: []
   AllowedPatterns: []
