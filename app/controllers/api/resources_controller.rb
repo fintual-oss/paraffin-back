@@ -21,7 +21,10 @@ module Api
 
     def average_evaluation
       resource = Resource.find(params[:resource_id])
-      evaluation = calculate_average_evaluation(resource.id)
+      evaluation =
+        Resources::ResourceEvaluationService.new.calculate_average_evaluation(
+          resource.id
+        )
       render json: { average_evaluation: evaluation }
     end
 
@@ -70,11 +73,8 @@ module Api
 
     def complete_resource
       resource = Resource.find(params[:resource_id])
-      completed_resource =
-        CompletedResource.create(
-          resource:,
-          user: current_user
-        )
+      completed_resource = CompletedResource.create(resource:,
+                                                    user: current_user)
       if completed_resource.valid?
         render json: { completed: true }
       else
@@ -95,16 +95,6 @@ module Api
     end
 
     private
-
-    def calculate_average_evaluation(resource_id)
-      average_evaluation = ResourceEvaluation.where(resource_id:)
-                                             .average(:evaluation)
-      if average_evaluation
-        average_evaluation.round(1)
-      else
-        'Sin evaluación'
-      end
-    end
 
     def new_or_update_evaluation(resource_id)
       resource_evaluation = ResourceEvaluation
