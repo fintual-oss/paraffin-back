@@ -59,6 +59,10 @@ gem 'rswag-ui'
 
 gem 'rack-cors'
 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -76,6 +80,7 @@ group :development, :test do
   gem 'rubocop-rails', '2.15.2', require: false
   gem 'rubocop-rspec', '2.11.1', require: false
   gem 'rswag-specs'
+  gem 'dotenv-rails'
 end
 
 group :development do
