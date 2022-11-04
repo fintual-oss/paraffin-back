@@ -7,7 +7,7 @@ module Api
 
     def show
       curriculum = Curriculum.find(params[:id])
-      render json: curriculum, only: %i[id name]
+      render json: curriculum, only: %i[id name description]
     end
   end
 end
