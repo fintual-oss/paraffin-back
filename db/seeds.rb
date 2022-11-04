@@ -11,7 +11,7 @@ ronny = User.create(name: 'Ronald Tichauer', email: 'ronny@paraffin.com', passwo
 valentin = User.create(name: 'Valentin Jadot', email: 'valentin@paraffin.com', password: 'password')
 manu = User.create(name: 'Manuel Pérez', email: 'manu@paraffin.com', password: 'password')
 
-fin = Curriculum.create(name: 'FIN: Fullstack Developer')
+fin = Curriculum.create(name: 'FIN: Fullstack Developer', description:'Aprende lo básico para comenzar tu camino a ser desarrollador fullstack.\n Comienza con una aplicación en monolito, continúa separando el back y el front con una API y termina puliendo tu producto hasta el siguiente nivel.')
 
 learning_unit_names = ['Docker','Git - control de versiones','Ruby','Rails','JavaScript','React','NextJS']
 learning_units = []
@@ -22,9 +22,9 @@ end
 
 docker,git,ruby,rails,js,react,nextjs = learning_units
 
-cycle1 = Cycle.create(curriculum: fin, name: 'Backend basics', order_number: 1, learning_goals_description: 'Learn development fundamentals. Learn backend basics', challenge_description: 'Develop a monolithic basic web app that enables users to send messages to each other', boilerplate_url: 'https://github.com/fintual-oss/paraffin-back')
-cycle2 = Cycle.create(curriculum: fin, name: 'Frontend basics', order_number: 2, learning_goals_description: 'Create an API. Learn frontend basics', challenge_description: 'Develop an API based on the boilerplate to consume it in a front-only web app that enables users to send messages to each other', boilerplate_url: 'https://github.com/fintual-oss/paraffin-front')
-cycle3 = Cycle.create(curriculum: fin, name: 'Product vision', order_number: 3, learning_goals_description: 'Create a proffesional level web app service', challenge_description: 'Putting previous cycles learnings together by finishing up your web app with a product vision in mind', boilerplate_url: 'https://github.com/fintual-oss/paraffin-back')
+cycle1 = Cycle.create(curriculum: fin, name: 'Backend basics', order_number: 1, learning_goals_description: 'Aprende los fundamentos del desarrollo web, con foco en el backend\nConstruye tu primera aplicación web\nUtiliza un gestor de versiones', challenge_description: 'Develop a monolithic basic web app that enables users to send messages to each other', boilerplate_url: 'https://github.com/fintual-oss/paraffin-back')
+cycle2 = Cycle.create(curriculum: fin, name: 'Frontend basics', order_number: 2, learning_goals_description: 'Crea una API\nAprende lo básico del desarrollo frontend\nCrea una aplicación front que consuma una API de terceros', challenge_description: 'Develop an API based on the boilerplate to consume it in a front-only web app that enables users to send messages to each other', boilerplate_url: 'https://github.com/fintual-oss/paraffin-front')
+cycle3 = Cycle.create(curriculum: fin, name: 'Product vision', order_number: 3, learning_goals_description: 'Crea una aplicación web de nivel profesional\nAPlica conceptos de branding y de producto para crear una aplicación consistente', challenge_description: 'Putting previous cycles learnings together by finishing up your web app with a product vision in mind', boilerplate_url: 'https://github.com/fintual-oss/paraffin-back')
 
 [docker, git, ruby, rails].each do |unit|
   CycleLearningUnit.create(cycle: cycle1, learning_unit: unit)
