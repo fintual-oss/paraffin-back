@@ -62,8 +62,8 @@ next_fireship = Resource.create(user: valentin, learning_unit: nextjs, name: 'Fi
 next_front = Resource.create(user: isa, learning_unit: nextjs, name: 'How to separate front & back', url: 'https://medium.com/@fishpercolator/how-to-separate-frontend-backend-with-rails-api-nuxt-js-and-devise-jwt-cf7dd9da9d16')
 react_scrimba = Resource.create(user: nacho, learning_unit: react, name: 'Learn React in Scrimba', url: 'https://scrimba.com/learn/learnreact')
 
-ResourceEvaluation.create(user: cris, resource: docker_rails, evaluation: 2, comment: "hoal")
-ResourceEvaluation.create(user: juan, resource: docker_rails, evaluation: 3, comment: "chale")
+ResourceEvaluation.create(user: cris, resource: docker_rails, evaluation: 2, comment: "Gran curso")
+ResourceEvaluation.create(user: juan, resource: docker_rails, evaluation: 3, comment: "No lo comprendi")
 ResourceEvaluation.create(user: vane, resource: docker_rails, evaluation: 5, comment: "MEJOR TUTORIAL")
 ResourceEvaluation.create(user: ronny, resource: github, evaluation: 4, comment: "Recomiendo usar github actions")
 ResourceEvaluation.create(user: ceci, resource: github, evaluation: 5, comment: "muy bien explicado")
@@ -90,6 +90,23 @@ CompletedLearningUnit.create(user: ale, learning_unit: git)
 CompletedLearningUnit.create(user: ale, learning_unit: docker)
 CompletedLearningUnit.create(user: ale, learning_unit: ruby)
 CompletedLearningUnit.create(user: ale, learning_unit: js)
+
+paid = Label.create(name: "Paid", description: "This resource is paid")
+media = Label.create(name: "Media", description: "Includes a video")
+article = Label.create(name: "Article", description: "Is an article")
+
+
+[github, ruby_udemy, react_redux].each do |resource|
+  ResourceLabel.create(resource: resource, label_id: paid)
+end
+
+[github, ruby_udemy, rails_ten, react_redux].each do |resource|
+  ResourceLabel.create(resource: resource, label: media)
+end
+
+[docker_rails, rails_ar, rails_rspec, next_eleven, next_front].each do |resource|
+  ResourceLabel.create(resource: resource, label: article)
+end
 
 if Rails.env.development?
   AdminUser.create!(email: 'ale@paraffin.com', password: 'password',

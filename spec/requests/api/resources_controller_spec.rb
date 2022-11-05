@@ -31,7 +31,16 @@ describe 'Resources API' do
                    name: { type: :string },
                    url: { type: :string },
                    average_evaluation: { type: :string },
-                   number_of_evaluations: { type: :integer }
+                   number_of_evaluations: { type: :integer },
+                   resource_labels: { type: :array,
+                                      items: {
+                                        type: :object,
+                                        properties: {
+                                          id: { type: :integer },
+                                          name: { type: :string },
+                                          description: { type: :string }
+                                        }
+                                      } }
                  }
                },
                required: %w[id name]
