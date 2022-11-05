@@ -17,7 +17,7 @@ class LearningUnitSuccession < ApplicationRecord
 
   def learning_units_must_belong_to_cycle
     return if (
-      [predecessor, successor] - (cycle.present? ? cycle.learning_units : [])
+      [predecessor, successor] - (cycle&.learning_units.presence || [])
     ).empty?
 
     errors.add(:cycle, 'Learning units must belong to the cycle')
