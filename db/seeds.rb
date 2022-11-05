@@ -97,15 +97,15 @@ article = Label.create(name: "Article", description: "Is an article")
 
 
 [github, ruby_udemy, react_redux].each do |resource|
-  ResourceLabel.create(resource_id: resource.id, label_id: paid.id)
+  ResourceLabel.create(resource: resource, label_id: paid)
 end
 
 [github, ruby_udemy, rails_ten, react_redux].each do |resource|
-  ResourceLabel.create(resource_id: resource.id, label_id: media.id)
+  ResourceLabel.create(resource: resource, label: media)
 end
 
 [docker_rails, rails_ar, rails_rspec, next_eleven, next_front].each do |resource|
-  ResourceLabel.create(resource_id: resource.id, label_id: article.id)
+  ResourceLabel.create(resource: resource, label: article)
 end
 
 if Rails.env.development?
