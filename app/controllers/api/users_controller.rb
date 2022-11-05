@@ -1,6 +1,6 @@
 module Api
   class UsersController < ApiApplicationController
-    before_action :doorkeeper_authorize!, only: %i[current]
+    # before_action :doorkeeper_authorize!, only: %i[current]
 
     def create
       user = User.new(
