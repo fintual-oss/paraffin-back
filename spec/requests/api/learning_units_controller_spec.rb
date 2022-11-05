@@ -64,7 +64,8 @@ describe 'Learning Units API' do
                    id: { type: :integer },
                    name: { type: :string },
                    description: { type: :string },
-                   image_url: { type: :string, nullable: true }
+                   image_url: { type: :string, nullable: true },
+                   completed: { type: :boolean }
                  }
                },
                required: %w[id name description image_url]
