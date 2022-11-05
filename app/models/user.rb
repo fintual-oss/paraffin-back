@@ -23,6 +23,7 @@ class User < ApplicationRecord
   has_many :resource_comments
   has_many :resource_evaluations
   has_many :completed_learning_units
+  has_many :user_cycle_states
 
   def self.from_omniauth(auth)
     where(provider: auth.provider,
