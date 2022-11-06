@@ -1,7 +1,7 @@
 module Api
   class CyclesController < ApiApplicationController
     before_action :set_curriculum, only: [:index]
-    before_action :set_cycle, only: [:show]
+    before_action :set_cycle, only: [:show, :mark_as_completed]
 
     def index
       cycles = @curriculum.cycles
@@ -23,6 +23,12 @@ module Api
 
     def set_cycle
       @cycle = Cycle.find(params[:id])
+    end
+
+    def completed_learning_units?
+      @cycle.learning_units.all? do |learning_unit|
+        CompletedLearningUnit.exists?(user: current_user, learning_unit:)
+      end
     end
   end
 end
