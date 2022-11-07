@@ -4,23 +4,29 @@ module Api
     before_action :set_cycle, only: [:show]
 
     def index
-      cycles = @curriculum.cycles
-      cycles_data = cycles.map do |cycle|
+      cycles_data = @curriculum.cycles.map do |cycle|
         {
           id: cycle.id,
           order_number: cycle.order_number,
           name: cycle.name,
           learning_goals_description: cycle.learning_goals_description,
-          completed: is_completed?(cycle)
+          completed: completed?(cycle)
         }
       end
       render json: cycles_data
     end
 
     def show
-      render json: @cycle,
-             only: %i[id name order_number learning_goals_description
-                      challenge_description boilerplate_url]
+      cycle_data = {
+        id: @cycle.id,
+        name: @cycle.name,
+        order_number: @cycle.order_number,
+        learning_goals_description: @cycle.learning_goals_description,
+        challenge_description: @cycle.challenge_description,
+        boilerplate_url: @cycle.boilerplate_url,
+        completed: completed?(@cycle)
+      }
+      render json: cycle_data
     end
 
     def complete
@@ -33,13 +39,6 @@ module Api
       else
         bad_request
       end
-    end
-
-    def uncomplete
-      cycle = Cycle.find(params[:cycle_id])
-      cycle_state = UserCycleState.find_by(user: current_user, cycle:)
-      cycle_state.completed_at = nil if cycle_state
-      success
     end
 
     private
@@ -62,9 +61,10 @@ module Api
       UserCycleState.create(cycle:, user: current_user)
     end
 
-    def is_completed?(cycle)
+    def completed?(cycle)
       state = UserCycleState.find_by(cycle:, user: current_user)
       return false unless state
+
       state.completed_at ? true : false
     end
 
