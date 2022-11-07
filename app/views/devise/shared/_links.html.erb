@@ -7,12 +7,12 @@
     <%= form_for "Login with #{provider}",
         url: omniauth_authorize_path(resource_name, provider), 
         method: :post,
-        class:"#{provider}" == "google_oauth2" ? "google-form" : "github-form",
+        class:"#{provider}-form",
         data: {turbo: "false"} do |f| %>
           <%= f.submit type: "image", src: url_for("#{provider}" == "google_oauth2" ? "/assets/btn_google.svg" : "/assets/btn_github.png"),
-            class:"#{provider}" == "google_oauth2" ? "google-icon" : "github-icon"%>
+            class:"#{provider}-icon"%>
           <%= f.submit  "Sign in with #{"#{provider}" == "google_oauth2" ? "Google" : "GitHub" }",
-            class:"#{provider}" == "google_oauth2" ? "google-text" : "github-text"%>
+            class:"#{provider}-text"%>
     <% end %>
   <% end %>
 <% end %>
@@ -57,7 +57,7 @@
     touch-action: manipulation;
   }
 
-  .google-text {
+  .google_oauth2-text {
     background-color: #4285f4;
     width: 200px;
     height: 46px;
@@ -91,12 +91,12 @@
     cursor: pointer
   } 
 
-  .google-icon {
+  .google_oauth2-icon {
     margin-left: -5px;
     width: 53px;
   } 
 
-  .google-form {
+  .google_oauth2-form {
     margin-top: 40px;
     display: flex;
     align-items: center;
