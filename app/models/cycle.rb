@@ -17,4 +17,5 @@ class Cycle < ApplicationRecord
   has_many :cycle_learning_units
   has_many :learning_units, through: :cycle_learning_units
   has_many :learning_unit_successions
+  has_many :user_cycle_states
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_03_205722) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_05_194703) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -151,6 +151,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_205722) do
     t.index ["user_id"], name: "index_resources_on_user_id"
   end
 
+  create_table "user_cycle_states", force: :cascade do |t|
+    t.bigint "cycle_id", null: false
+    t.bigint "user_id", null: false
+    t.string "repository_link"
+    t.datetime "completed_at", precision: nil
+    t.integer "reviewer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cycle_id"], name: "index_user_cycle_states_on_cycle_id"
+    t.index ["user_id"], name: "index_user_cycle_states_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -181,4 +193,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_205722) do
   add_foreign_key "resource_labels", "resources"
   add_foreign_key "resources", "learning_units"
   add_foreign_key "resources", "users"
+  add_foreign_key "user_cycle_states", "cycles"
+  add_foreign_key "user_cycle_states", "users"
 end
