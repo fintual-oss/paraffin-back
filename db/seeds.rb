@@ -108,6 +108,10 @@ end
   ResourceLabel.create(resource: resource, label: article)
 end
 
+CompletedResource.create(user: ale, resource: docker_rails)
+CompletedResource.create(user: ale, resource: ruby_udemy)
+CompletedResource.create(user: cris, resource: js_codepen)
+
 if Rails.env.development?
   AdminUser.create!(email: 'ale@paraffin.com', password: 'password',
                     password_confirmation: 'password')

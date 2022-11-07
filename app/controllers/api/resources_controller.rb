@@ -1,6 +1,8 @@
 module Api
   class ResourcesController < ApiApplicationController
-    before_action :authenticate_user!, only: %i[evaluate evaluation create]
+    before_action :authenticate_user!,
+                  only: %i[evaluate evaluation create completed
+                           complete_resource uncomplete_resource]
 
     def show
       resource = Resource.find(params[:id])
@@ -19,7 +21,10 @@ module Api
 
     def average_evaluation
       resource = Resource.find(params[:resource_id])
-      evaluation = calculate_average_evaluation(resource.id)
+      evaluation =
+        Resources::ResourceEvaluationService.new(
+          resource.id
+        ).calculate_average_evaluation
       render json: { average_evaluation: evaluation }
     end
 
@@ -56,17 +61,38 @@ module Api
       end
     end
 
-    private
+    def completed
+      resource_id = Resource.find(params[:resource_id])
+      completed_by_user = CompletedResource.find_by(
+        user: current_user,
+        resource_id:
+      )
+      completed = completed_by_user.present?
+      render json: { completed: }
+    end
 
-    def calculate_average_evaluation(resource_id)
-      average_evaluation = ResourceEvaluation.where(resource_id:)
-                                             .average(:evaluation)
-      if average_evaluation
-        average_evaluation.round(1)
+    def complete_resource
+      resource = Resource.find(params[:resource_id])
+      completed_resource = CompletedResource.create(resource:,
+                                                    user: current_user)
+      return render json: { completed: true } if completed_resource.valid?
+
+      bad_request
+    end
+
+    def uncomplete_resource
+      completed_resource = CompletedResource.find_by(
+        resource_id: params[:resource_id], user_id: current_user
+      )
+      if completed_resource.present?
+        completed_resource.destroy!
+        render json: { deleted: true }
       else
-        'Sin evaluación'
+        record_not_found
       end
     end
+
+    private
 
     def new_or_update_evaluation(resource_id)
       resource_evaluation = ResourceEvaluation

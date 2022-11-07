@@ -47,6 +47,9 @@ Rails.application.routes.draw do
       get 'average_evaluation'
       get 'evaluation'
       post 'evaluation', to: 'resources#evaluate'
+      get 'completed'
+      post 'completed', to: 'resources#complete_resource'
+      delete 'completed', to: 'resources#uncomplete_resource'
       resources :resource_evaluations, only: %i[index]
     end
 

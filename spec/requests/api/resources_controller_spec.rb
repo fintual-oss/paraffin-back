@@ -9,6 +9,13 @@ describe 'Resources API' do
     if response.metadata[:create_evaluation]
       create(:resource_evaluation, resource:, user:, evaluation: 3)
     end
+    if response.metadata[:create_completed_resource]
+      create(
+        :completed_resource,
+        user:,
+        resource:
+      )
+    end
   end
 
   path '/api/learning_units/{learning_unit_id}/resources' do
@@ -212,6 +219,96 @@ describe 'Resources API' do
       end
 
       response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+    end
+  end
+
+  path '/api/resources/{resource_id}/completed' do
+    get 'Return Resource completed status' do
+      tags 'Resources'
+      description 'Retrieves status of the resource for the actual user'
+      parameter name: :resource_id, in: :path, type: :string
+      produces 'application/json'
+      operationId 'getResourceStatus'
+
+      let(:resource_id) { create(:resource, name: 'ruby_course').id }
+
+      response '200', 'Success' do
+        schema type: :object,
+               properties: {
+                 completed: { type: :boolean }
+               }
+
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '404', 'Resource not found' do
+        let(:resource_id) { 'invalid' }
+        run_test!
+      end
+    end
+
+    post 'Complete a Resource' do
+      tags 'Resources'
+      description 'Completes a resources by the specific user'
+      parameter name: :resource_id, in: :path, type: :string
+      produces 'application/json'
+      operationId 'postResourceStatus'
+
+      let(:resource) { create(:resource, name: 'ruby_course') }
+      let(:resource_id) { resource.id }
+
+      response '200', 'Success' do
+        schema type: :object,
+               properties: {
+                 completed: { type: :boolean }
+               }
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '400', 'Bad Request', create_completed_resource: true do
+        run_test!
+      end
+
+      response '404', 'Resource not found' do
+        let(:resource_id) { 'invalid' }
+        run_test!
+      end
+    end
+
+    delete 'Uncomplete a Resource' do
+      tags 'Resources'
+      parameter name: :resource_id, in: :path, type: :string
+      description 'Uncomplete a resource by the specific user'
+      produces 'application/json'
+      operationId 'deleteResourceStatus'
+
+      let(:resource) { create(:resource, name: 'ruby_course') }
+      let(:resource_id) { resource.id }
+
+      response '200', 'Success', create_completed_resource: true do
+        schema type: :object,
+               properties: {
+                 deleted: { type: :boolean }
+               }
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '404', 'Resource not found' do
+        let(:resource_id) { 'invalid' }
         run_test!
       end
     end

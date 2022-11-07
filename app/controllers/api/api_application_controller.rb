@@ -22,4 +22,11 @@ class Api::ApiApplicationController < ActionController::API
     message = 'Record_not_found'
     render json: { status:, code:, message: }, status:
   end
+
+  def bad_request
+    status = :bad_request
+    code = 400
+    message = 'Bad Request'
+    render json: { status:, code:, message: }, status:
+  end
 end

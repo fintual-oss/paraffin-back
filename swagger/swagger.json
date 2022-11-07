@@ -924,6 +924,134 @@
         }
       }
     },
+    "/api/resources/{resource_id}/completed": {
+      "get": {
+        "summary": "Return Resource completed status",
+        "tags": [
+          "Resources"
+        ],
+        "description": "Retrieves if the current user completed the provided Resource",
+        "parameters": [
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getResourceStatus",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "completed": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Complete a Resource",
+        "tags": [
+          "Resources"
+        ],
+        "description": "Completes a resources by the specific user",
+        "parameters": [
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "postResourceStatus",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "completed": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Uncomplete a Resource",
+        "tags": [
+          "Resources"
+        ],
+        "parameters": [
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Uncomplete a resource by the specific user",
+        "operationId": "deleteResourceStatus",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deleted": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
     "/api/current_user": {
       "get": {
         "summary": "Returns current user",

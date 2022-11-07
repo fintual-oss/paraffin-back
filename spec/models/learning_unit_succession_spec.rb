@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: learning_unit_successions
+#
+#  id             :bigint           not null, primary key
+#  cycle_id       :bigint           not null
+#  predecessor_id :bigint           not null
+#  successor_id   :bigint           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe LearningUnitSuccession, type: :model do
