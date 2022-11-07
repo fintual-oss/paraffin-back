@@ -3,26 +3,19 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
- 
-    <%= form_for "Login with Google",
-        url: omniauth_authorize_path(resource_name, resource_class.omniauth_providers[0]), 
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= form_for "Login with #{provider}",
+        url: omniauth_authorize_path(resource_name, provider), 
         method: :post,
-        class:"google-form",
+        class:"#{provider}" == "google_oauth2" ? "google-form" : "github-form",
         data: {turbo: "false"} do |f| %>
-          <%= f.submit type: "image", src: url_for("/assets/btn_google_dark_normal_ios.svg"), class:"google-icon"%>
-          <%= f.submit "Sign in with Google", class:"google-text"%>
+          <%= f.submit type: "image", src: url_for("#{provider}" == "google_oauth2" ? "/assets/btn_google.svg" : "/assets/btn_github.png"),
+            class:"#{provider}" == "google_oauth2" ? "google-icon" : "github-icon"%>
+          <%= f.submit  "Sign in with #{"#{provider}" == "google_oauth2" ? "Google" : "GitHub" }",
+            class:"#{provider}" == "google_oauth2" ? "google-text" : "github-text"%>
     <% end %>
-        <%= form_for "Login with Github",
-        url: omniauth_authorize_path(resource_name, resource_class.omniauth_providers[1]), 
-        method: :post,
-        class:"github-form",
-        data: {turbo: "false"} do |f| %>
-          <%= f.submit type: "image", src: url_for("/assets/GitHub-Mark-120px-plus.png"), class:"github-icon"%>
-          <%= f.submit "Login with Github", class:"github-text"%>
-    <% end %>
-
+  <% end %>
 <% end %>
-
 
 <%- if controller_name != 'sessions' %>
   <%= link_to "Ingresar con email", new_session_path(resource_name), class:"devise-link-button" %><br />
@@ -74,6 +67,7 @@
     font-family: 'Trebuchet MS';
     font-weight: bold;
     font-size: 1em;
+    cursor: pointer
   } 
 
   .github-icon {
@@ -94,6 +88,7 @@
     font-family: 'Trebuchet MS';
     font-weight: bold;
     font-size: 1em;
+    cursor: pointer
   } 
 
   .google-icon {
