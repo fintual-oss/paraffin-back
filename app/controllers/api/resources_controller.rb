@@ -75,7 +75,8 @@ module Api
       resource = Resource.find(params[:resource_id])
       completed_resource = CompletedResource.create(resource:,
                                                     user: current_user)
-      render json: { completed: true } if completed_resource.valid?
+      return render json: { completed: true } if completed_resource.valid?
+
       bad_request
     end
 
