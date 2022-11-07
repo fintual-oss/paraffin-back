@@ -26,7 +26,8 @@ describe 'Cycles API' do
                    id: { type: :integer },
                    name: { type: :string },
                    order_number: { type: :integer },
-                   learning_goals_description: { type: :string }
+                   learning_goals_description: { type: :string },
+                   completed: { type: :boolean }
                  }
                }
 
@@ -60,7 +61,8 @@ describe 'Cycles API' do
                  order_number: { type: :integer },
                  learning_goals_description: { type: :string },
                  challenge_description: { type: :string },
-                 boilerplate_url: { type: :string }
+                 boilerplate_url: { type: :string },
+                 completed: { type: :boolean }
                }
 
         run_test!

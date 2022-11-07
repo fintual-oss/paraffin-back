@@ -116,6 +116,9 @@
                       },
                       "learning_goals_description": {
                         "type": "string"
+                      },
+                      "completed": {
+                        "type": "boolean"
                       }
                     }
                   }
@@ -172,6 +175,9 @@
                     },
                     "boilerplate_url": {
                       "type": "string"
+                    },
+                    "completed": {
+                      "type": "boolean"
                     }
                   }
                 }
