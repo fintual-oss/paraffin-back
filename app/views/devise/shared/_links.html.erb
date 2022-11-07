@@ -4,17 +4,18 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= form_for "Login with Google",
+    <%= form_for "Login with #{provider}",
         url: omniauth_authorize_path(resource_name, provider), 
         method: :post,
-        class:"form",
+        class:"#{provider}-form",
         data: {turbo: "false"} do |f| %>
-          <%= f.submit type: "image", src: url_for("/assets/btn_google_dark_normal_ios.svg"), class:"google-icon"%>
-          <%= f.submit "Sign in with Google", class:"google-text"%>
+          <%= f.submit type: "image", src: url_for("#{provider}" == "google_oauth2" ? "/assets/btn_google.svg" : "/assets/btn_github.png"),
+            class:"#{provider}-icon"%>
+          <%= f.submit  "Sign in with #{"#{provider}" == "google_oauth2" ? "Google" : "GitHub" }",
+            class:"#{provider}-text"%>
     <% end %>
   <% end %>
 <% end %>
-
 
 <%- if controller_name != 'sessions' %>
   <%= link_to "Ingresar con email", new_session_path(resource_name), class:"devise-link-button" %><br />
@@ -56,7 +57,7 @@
     touch-action: manipulation;
   }
 
-  .google-text {
+  .google_oauth2-text {
     background-color: #4285f4;
     width: 200px;
     height: 46px;
@@ -66,15 +67,43 @@
     font-family: 'Trebuchet MS';
     font-weight: bold;
     font-size: 1em;
+    cursor: pointer
   } 
 
-  .google-icon {
+  .github-icon {
+    border-color: #000000;
+    margin-left: 2px;
+    margin-right: 4px;
+    width: 43px;
+  } 
+
+  .github-text {
+    background-color: #000000;
+    margin-top: 2px;
+    width: 200px;
+    height: 46px;
+    border-radius: 5px;
+    border: none;
+    color:  #ffffff;
+    font-family: 'Trebuchet MS';
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer
+  } 
+
+  .google_oauth2-icon {
     margin-left: -5px;
     width: 53px;
   } 
 
-  .form {
-    margin-top:30px;
+  .google_oauth2-form {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  .github-form {
+    margin-top: 5px;
     display: flex;
     align-items: center;
   }

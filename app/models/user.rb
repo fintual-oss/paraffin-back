@@ -17,7 +17,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:google_oauth2]
+         :omniauthable, omniauth_providers: %i[google_oauth2 github]
 
   has_many :resources
   has_many :resource_comments
@@ -26,12 +26,12 @@ class User < ApplicationRecord
   has_many :user_cycle_states
   has_many :completed_resources
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider,
-          oauth_id: auth.oauth_id).first_or_create do |user|
-      user.email = auth.info.email
+  def self.from_omniauth(access_token)
+    where(provider: access_token.provider,
+          oauth_id: access_token.oauth_id).first_or_create do |user|
+      user.email = access_token.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.name = auth.info.name
+      user.name = access_token.info.name
     end
   end
 end
