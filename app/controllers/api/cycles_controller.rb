@@ -5,8 +5,16 @@ module Api
 
     def index
       cycles = @curriculum.cycles
-      render json: cycles,
-             only: %i[id order_number name learning_goals_description]
+      cycles_data = cycles.map do |cycle|
+        {
+          id: cycle.id,
+          order_number: cycle.order_number,
+          name: cycle.name,
+          learning_goals_description: cycle.learning_goals_description,
+          completed: is_completed?(cycle)
+        }
+      end
+      render json: cycles_data
     end
 
     def show
@@ -18,9 +26,9 @@ module Api
     def complete
       cycle = Cycle.find(params[:cycle_id])
       if completed_learning_units?(cycle)
-        UserCycleState.find_or_create_by(user: current_user, cycle:) do |state|
-          state.completed_at = Time.current unless state.completed_at
-        end
+        state = UserCycleState.find_or_create_by(user: current_user, cycle:)
+        state.completed_at = Time.current unless state.completed_at
+        state.save
         success
       else
         bad_request
@@ -52,6 +60,12 @@ module Api
 
     def create_cycle_state(cycle)
       UserCycleState.create(cycle:, user: current_user)
+    end
+
+    def is_completed?(cycle)
+      state = UserCycleState.find_by(cycle:, user: current_user)
+      return false unless state
+      state.completed_at ? true : false
     end
 
     def success
