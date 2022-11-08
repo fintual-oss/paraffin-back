@@ -97,7 +97,7 @@ article = Label.create(name: "Article", description: "Is an article")
 
 
 [github, ruby_udemy, react_redux].each do |resource|
-  ResourceLabel.create(resource: resource, label_id: paid)
+  ResourceLabel.create(resource: resource, label: paid)
 end
 
 [github, ruby_udemy, rails_ten, react_redux].each do |resource|

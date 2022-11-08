@@ -12,8 +12,7 @@ module Api
 
     def index
       cycle = Cycle.find(params[:cycle_id])
-      learning_units = cycle.learning_units
-      render json: learning_units, only: %i[id name description image_url]
+      render json: learning_units_with_complition_status(cycle)
     end
 
     def curriculum_learning_units
@@ -61,6 +60,33 @@ module Api
 
     def set_learning_unit
       @learning_unit = LearningUnit.find(params[:learning_unit_id])
+    end
+
+    def learning_units_with_complition_status(cycle)
+      cycle.learning_units.map do |learning_unit|
+        learning_unit_data = learning_unit.as_json
+        learning_unit_data['completed'] = marked_as_completed?(learning_unit)
+        learning_unit_data
+      end
+    end
+
+    def marked_as_completed?(learning_unit)
+      user = current_user
+      CompletedLearningUnit.exists?(user:, learning_unit:)
+    end
+
+    def bad_request
+      status = :bad_request
+      code = 400
+      message = 'Bad Request'
+      render json: { status:, code:, message: }, status:
+    end
+
+    def not_found
+      status = :not_found
+      code = 404
+      message = 'Record_not_found'
+      render json: { status:, code:, message: }, status:
     end
   end
 end

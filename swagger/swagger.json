@@ -344,6 +344,9 @@
                       "image_url": {
                         "type": "string",
                         "nullable": true
+                      },
+                      "completed": {
+                        "type": "boolean"
                       }
                     }
                   },
