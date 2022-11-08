@@ -26,6 +26,8 @@ class User < ApplicationRecord
   has_many :user_cycle_states
   has_many :completed_resources
 
+  validates :name, presence: true
+
   def self.from_omniauth(access_token)
     where(provider: access_token.provider,
           oauth_id: access_token.oauth_id).first_or_create do |user|
