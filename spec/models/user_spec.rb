@@ -20,4 +20,8 @@ RSpec.describe User, type: :model do
       expect(build(:user)).to be_valid
     end
   end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
+  end
 end
