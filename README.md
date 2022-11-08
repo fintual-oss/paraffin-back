@@ -27,6 +27,14 @@ All (most) of this code was writen in Puerto Natales, under the benevolent prote
     ```sh
     git clone git@github.com:fintual-oss/paraffin-back.git && cd paraffin-back
     ```
+    
+2. Add a .env file with the following ENV variables:
+```
+GITHUB_KEY=xxx
+GITHUB_SECRET=xxx
+GOOGLE_OAUTH_CLIENT_ID=xxx
+GOOGLE_OAUTH_CLIENT_SECRET=xxx
+```
 
 2. In another terminal window, build and run your app with Compose.
 
@@ -41,3 +49,4 @@ All (most) of this code was writen in Puerto Natales, under the benevolent prote
     ```
 
 4. Finally, enter http://localhost:3000/ in a browser to see the application running.
+
