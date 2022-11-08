@@ -64,9 +64,9 @@ module Api
 
     def completed?(cycle)
       state = UserCycleState.find_by(cycle:, user: current_user)
-      return false unless state
+      return false if state.nil?
 
-      state.completed_at ? true : false
+      state.completed_at.present?
     end
 
     def success
