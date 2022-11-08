@@ -1,5 +1,5 @@
 <div class="flex-container">
-  <div class="form-container"> 
+  <div class="form-container">
 
     <h2 class="text-title">Nueva cuenta 💙</h2>
 
@@ -9,6 +9,11 @@
       <div>
         <%= f.label :email, class:"text-label" %><br />
         <%= f.email_field :email, autocomplete: "email", class:"input-form" %>
+      </div>
+
+      <div>
+        <%= f.label "Nombre", class:"text-label" %><br />
+        <%= f.text_field :name, autocomplete: "name", class:"input-form" %>
       </div>
 
       <div>

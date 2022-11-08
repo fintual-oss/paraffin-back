@@ -26,7 +26,8 @@ describe 'Cycles API' do
                    id: { type: :integer },
                    name: { type: :string },
                    order_number: { type: :integer },
-                   learning_goals_description: { type: :string }
+                   learning_goals_description: { type: :string },
+                   completed: { type: :boolean }
                  }
                }
 
@@ -60,7 +61,8 @@ describe 'Cycles API' do
                  order_number: { type: :integer },
                  learning_goals_description: { type: :string },
                  challenge_description: { type: :string },
-                 boilerplate_url: { type: :string }
+                 boilerplate_url: { type: :string },
+                 completed: { type: :boolean }
                }
 
         run_test!
@@ -68,6 +70,37 @@ describe 'Cycles API' do
 
       response '404', 'Cycle not found' do
         let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
+  path '/api/cycles/{cycle_id}/complete' do
+    post 'Complete a Cycle' do
+      tags 'Cycles'
+      description 'Completes a cycle by the specific user'
+      parameter name: :cycle_id, in: :path, type: :string
+      produces 'application/json'
+      operationId 'postCycleStatus'
+
+      let(:cycle_id) { create(:cycle, name: 'first cycle').id }
+      let(:learning_unit) { create(:learning_unit, name: 'ruby') }
+      let(:clu) { create(:cycle_learning_unit, cycle_id:, learning_unit:) }
+
+      response '200', 'Success' do
+        schema type: :object,
+               properties: {
+                 status: { type: :string }
+               }
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '404', 'Cycle not found' do
+        let(:cycle_id) { 'invalid' }
         run_test!
       end
     end
