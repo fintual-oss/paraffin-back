@@ -2,6 +2,7 @@ module Api
   class CyclesController < ApiApplicationController
     before_action :set_curriculum, only: [:index]
     before_action :set_cycle, only: [:show]
+    before_action :authenticate_user!, only: [:complete]
 
     def index
       cycles_data = @curriculum.cycles.map do |cycle|

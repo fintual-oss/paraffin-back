@@ -74,4 +74,35 @@ describe 'Cycles API' do
       end
     end
   end
+
+  path '/api/cycles/{cycle_id}/complete' do
+    post 'Complete a Cycle' do
+      tags 'Cycles'
+      description 'Completes a cycle by the specific user'
+      parameter name: :cycle_id, in: :path, type: :string
+      produces 'application/json'
+      operationId 'postCycleStatus'
+
+      let(:cycle_id) { create(:cycle, name: 'first cycle').id }
+      let(:learning_unit) { create(:learning_unit, name: 'ruby') }
+      let(:clu) { create(:cycle_learning_unit, cycle_id:, learning_unit:) }
+
+      response '200', 'Success' do
+        schema type: :object,
+               properties: {
+                 status: { type: :string }
+               }
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      response '404', 'Cycle not found' do
+        let(:cycle_id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
 end

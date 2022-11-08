@@ -190,6 +190,49 @@
         }
       }
     },
+    "/api/cycles/{cycle_id}/complete": {
+      "post": {
+        "summary": "Complete a Cycle",
+        "tags": [
+          "Cycles"
+        ],
+        "description": "Completes a cycle by the specific user",
+        "parameters": [
+          {
+            "name": "cycle_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "postCycleStatus",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Cycle not found"
+          }
+        }
+      }
+    },
     "/api/cycles/{cycle_id}/learning_unit_successions": {
       "get": {
         "summary": "Returns all learning units successions in the cycle",
