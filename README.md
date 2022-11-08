@@ -36,7 +36,7 @@ GOOGLE_OAUTH_CLIENT_ID=xxx
 GOOGLE_OAUTH_CLIENT_SECRET=xxx
 ```
 
-2. In another terminal window, build and run your app with Compose.
+3. In another terminal window, build and run your app with Compose.
 
     ```sh
     docker compose up --build
