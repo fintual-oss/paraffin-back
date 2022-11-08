@@ -3,6 +3,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, only: [:create]
   # rubocop:enable Rails/LexicallyScopedActionFilter
 
+  def new
+    self.resource = resource_class.new(sign_up_params)
+    store_location_for(resource, params[:redirect_to])
+    super
+  end
+
   def update_resource(resource, params)
     if resource.provider == 'google_oauth2' || resource.provider == 'github'
       params.delete('current_password')
