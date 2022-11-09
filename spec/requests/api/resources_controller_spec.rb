@@ -243,10 +243,6 @@ describe 'Resources API' do
         run_test!
       end
 
-      response '401', 'Unauthorized', skip_before: true do
-        run_test!
-      end
-
       response '404', 'Resource not found' do
         let(:resource_id) { 'invalid' }
         run_test!

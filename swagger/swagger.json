@@ -982,7 +982,7 @@
         "tags": [
           "Resources"
         ],
-        "description": "Retrieves if the current user completed the provided Resource",
+        "description": "Retrieves status of the resource for the actual user",
         "parameters": [
           {
             "name": "resource_id",
@@ -1009,9 +1009,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Resource not found"
