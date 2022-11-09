@@ -1,6 +1,6 @@
 <div class="flex-container">
-  <div class="form-container">
-
+  <div class="form-container"> 
+    <p class="text-header">ser.dev</p>
     <h2 class="text-title">Nueva cuenta 💙</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -41,7 +41,7 @@
 
   .flex-container {
     height: 100%;
-    margin-top: 100px;
+    margin-top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,11 +65,18 @@
     touch-action: manipulation;
   }
 
-  .text-title {
-    margin-top: 30px;
-    margin-bottom: 40px;
-    font-weight: bold;
+  .text-header {
     font-size: 2.2em;
+    color: #212B70;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    font-weight: bold;
+  }
+
+  .text-title {
+    margin-top: 5px;
+    margin-bottom: 25px;
+    font-size: 1.4em;
   }
 
   .text-label {
@@ -104,7 +111,7 @@
     cursor: pointer;
     font-family: Montserrat,sans-serif;
     font-size: .9em;
-    margin: 10px 0px 30px 5px;
+    margin: 10px 0px 20px 5px;
     padding: 10px 15px;
     text-align: center;
     user-select: none;
