@@ -9,7 +9,7 @@
         method: :post,
         class:"#{provider}-form",
         data: {turbo: "false"} do |f| %>
-          <%= f.submit type: "image", src: url_for("#{provider}" == "google_oauth2" ? "/assets/btn_google.svg" : "/assets/btn_github.png"),
+          <%= f.submit type: "image", src: url_for("https://raw.githubusercontent.com/fintual-oss/paraffin-back/main/app/assets/images/#{"#{provider}" == "google_oauth2" ? "btn_google.svg" : "btn_github.png" }"),
             class:"#{provider}-icon"%>
           <%= f.submit  "Sign in with #{"#{provider}" == "google_oauth2" ? "Google" : "GitHub" }",
             class:"#{provider}-text"%>
