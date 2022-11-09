@@ -1,7 +1,7 @@
 module Api
   class ResourcesController < ApiApplicationController
     before_action :authenticate_user!,
-                  only: %i[evaluate evaluation create completed
+                  only: %i[evaluate evaluation create
                            complete_resource uncomplete_resource]
 
     def show
